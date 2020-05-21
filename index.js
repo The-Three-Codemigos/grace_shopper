@@ -6,10 +6,17 @@ const server = express();
 const morgan = require('morgan');
 server.use(morgan('dev'));
 
+const bodyParser = require('body-parser');
+server.use(bodyParser.json());
+
 const path = require('path');
 server.use(express.static(path.join(__dirname, 'build')));
 
 server.use('/api', require('./routes'));
+
+server.use((req, res, next) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'))
+});
 
 const { client } = require('./db');
 
