@@ -34,7 +34,7 @@ Finally you can run `npm run server:dev` to start the web server.
 
 In a second terminal navigate back to the local repo and run `npm run client:dev` to start the react server. 
 
-This is set up to run on a proxy, so that you can make calls back to your `api` without needing absolute paths. You can instead `axois.get('/api/posts')` or whatever without needing to know the root URL.
+This is set up to run on a proxy, so that you can make calls back to your `api` without needing absolute paths. You can instead `axios.get('/api/posts')` or whatever without needing to know the root URL.
 
 Once both dev commands are running, you can start developing... the server restarts thanks to `nodemon`, and the client restarts thanks to `react-scripts`.
 
@@ -85,19 +85,6 @@ This creates a heroku project which will live at https://hopeful-project-name.he
 
 It will also create a postgres database for you, on the free tier.
 
-### Getting Ready to Deploy (each time)
-
-Before you deploy you should run the following:
-
-```bash
-npm run client:build
-
-git add .
-
-git commit -m "adds front-end of current master to ./build"
-```
-
-This will run the `react-script` which will put the entire compiled front-end into the `/build` folder. Our express application serves this folder as if it was a static folder, so that's perfect.
 
 ### Deploying
 
