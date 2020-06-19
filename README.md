@@ -24,7 +24,7 @@ git init
 
 Then go to GitHub, create a new repository, and add that remote to this local repo.
 
-Then, run `npm init` to install all node modules.
+Then, run `npm install` to install all node modules.
 
 You should decide on a name for your local testing database, and edit `db/index.js` changing the value of `DB_NAME`.
 
