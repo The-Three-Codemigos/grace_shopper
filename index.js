@@ -7,8 +7,7 @@ const morgan = require('morgan');
 server.use(morgan('dev'));
 
 // handle application/json requests
-const bodyParser = require('body-parser');
-server.use(bodyParser.json());
+server.use(express.json());
 
 // here's our static files
 const path = require('path');
