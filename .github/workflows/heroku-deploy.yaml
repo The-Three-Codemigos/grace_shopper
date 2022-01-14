@@ -17,7 +17,7 @@ jobs:
           # fetch complete commit history on all branches
           fetch-depth: 0
       - name: Test Suite
-        run: npm run test:unit
+        run: npm install && npm run test:unit
       # to configure secrets on github repo visit the following link
       # https://github.com/AkhileshNS/heroku-deploy
       - name: Set Heroku Credentials
