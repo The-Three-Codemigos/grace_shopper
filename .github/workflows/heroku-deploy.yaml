@@ -23,17 +23,17 @@ jobs:
         run: |
           cat > ~/.netrc <<EOF
             machine api.heroku.com
-              login $heroku_email
-              password $heroku_api_key
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY
             machine git.heroku.com
-              login $heroku_email
-              password $heroku_api_key 
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY 
           EOF
         env:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
       - name: Add Heroku Remote
-        run: heroku git:remote --app ${{ secrets.HEROKU_APP_NAME }}
+        run: heroku git:remote -a ${{ secrets.HEROKU_APP_NAME }}
         env:
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
       - name: Push to Heroku
