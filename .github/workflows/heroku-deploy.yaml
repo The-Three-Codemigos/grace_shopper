@@ -37,4 +37,4 @@ jobs:
         env:
           heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
       - name: Push to Heroku
-        run: git push heroku main:refs/heads/main
+        run: git push heroku heroku-deploy:refs/heads/main
