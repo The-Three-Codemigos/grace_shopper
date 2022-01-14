@@ -10,7 +10,8 @@
     "server:dev": "nodemon index.js",
     "db:build": "node ./db/init_db",
     "start": "node index.js",
-    "test:unit": "jest"
+    "test:unit": "jest",
+    "test:ci": "jest --forceExit"
   },
   "keywords": [],
   "author": "",
