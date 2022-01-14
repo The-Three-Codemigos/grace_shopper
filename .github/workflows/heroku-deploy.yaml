@@ -1,0 +1,40 @@
+name: Heroku Deploy
+on:
+  push:
+    branches:
+      - 'main'
+      - 'heroku-setup'
+  pull_request:
+    branches:
+      - 'main'
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          # fetch complete commit history on all branches
+          fetch-depth: 0
+      # to configure secrets on github repo visit the following link
+      # https://github.com/AkhileshNS/heroku-deploy
+      - name: Set Heroku Credentials
+        run: |
+          cat > ~/.netrc <<EOF
+            machine api.heroku.com
+              login $heroku_email
+              password $heroku_api_key
+            machine git.heroku.com
+              login $heroku_email
+              password $heroku_api_key 
+          EOF
+        env:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+      - name: Add Heroku Remote
+        run: heroku git:remote --app ${{ secrets.HEROKU_APP_NAME }}
+        env:
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
+      - name: Push to Heroku
+        run: git push heroku main:refs/heads/main
