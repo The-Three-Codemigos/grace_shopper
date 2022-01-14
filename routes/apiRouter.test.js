@@ -13,6 +13,6 @@ describe('/api/health endpoint', () => {
   it('should respond with { healthy: true }', async () => {
     const response = await request.get('/api/health');
     expect(response.status).toBe(200);
-    expect(response.body.healthy).toBe(false);
+    expect(response.body.healthy).toBe(true);
   });
 });

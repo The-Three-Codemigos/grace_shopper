@@ -27,11 +27,11 @@ const { client } = require('./db');
 // connect to the server
 const PORT = process.env.PORT || 4000;
 
-// define a server handle to close open tcp connection after ./routes/*.test.js
+// define a server handle to close open tcp connection after unit tests have run
 const handle = server.listen(PORT, async () => {
   console.log(`Server is running on ${PORT}!`);
 
-  // if server is started in github actions context skip db connection
+  // if server is running in github actions context skip db connection
   if (!process.env.CI) {
     try {
       await client.connect();
