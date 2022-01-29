@@ -24,7 +24,7 @@ $ git init
 
 3. `npm install` to add project dependencies to your local machine.
 
-4. You should decide on a name for your local testing database, and edit `db/index.js` changing the value of `DB_NAME`. Once you decide on that name, make sure to run `createdb` from your command line to spin up your database.
+4. Choose a name for your local database instance and edit `db/index.js` to assign the name to `DB_NAME`. Next, run `createdb <your-db-name-goes-here>` from your command line to spin up your database.
 
 5. `npm run start:dev` will build your react app and start your express server in concurrent mode (meaning that both processes run in the same terminal window). Once this command is running, you can start developing! The server restarts thanks to `nodemon`, and the client restarts thanks to `react-scripts`.
 
