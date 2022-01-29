@@ -20,7 +20,7 @@ $ rm -rf .git
 $ git init
 ```
 
-2. Create a bare GitHub repo (no `.gitignore`, `README.md`, `CHANGELOG.md`, or license) and copy the ssh address to assign to your local clone with `git add remote origin <paste-your-ssh-address-here>`
+2. Create a bare GitHub repo (no `.gitignore`, `README.md`, `CHANGELOG.md`, or license) and copy the ssh address to assign to your local clone with `git remote add origin <paste-your-ssh-address-here>`
 
 3. `npm install` to add project dependencies to your local machine.
 
