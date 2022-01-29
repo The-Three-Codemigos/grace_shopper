@@ -33,8 +33,6 @@ jobs:
           HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
       - name: Add Heroku Remote
         run: heroku git:remote -a ${{ secrets.HEROKU_APP_NAME }}
-        env:
-          HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
       - name: Push to Heroku
         # github.ref_name is the branch name that triggered the workflow
         # you can assign any branch(es) you like in the on: block at the top of this yaml
