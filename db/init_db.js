@@ -1,9 +1,9 @@
-// code to build and initialize DB goes here
 const {
   client,
   // declare your model imports here
   // for example, User
-} = require('./index');
+  User,
+} = require('./');
 
 async function buildTables() {
   try {
