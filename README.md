@@ -33,6 +33,13 @@ $ git init
 ## Project Structure
 
 ```bash
+├── .github/workflows
+│   └── heroku-deploy.yaml
+│  
+├── api
+│   ├── apiRouter.test.js
+│   └── index.js
+│
 ├── db
 │   ├── models
 │   │   ├── index.js
@@ -43,10 +50,6 @@ $ git init
 │
 ├── public
 │   └── index.html
-│
-├── api
-│   ├── apiRouter.test.js
-│   └── index.js
 │
 ├── src
 │   ├── axios-services
