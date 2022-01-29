@@ -3,7 +3,7 @@
 This full stack app boilerplate consists of:
 
 - an Express web server,
-- a PostgreSQL database,
+- a PostgreSQL database instance,
 - and a React front-end
 
 You'll also find a bunch of convenient commands and workflows that will allow you to develop your app locally and deploy it to heroku. Let's dive in!
