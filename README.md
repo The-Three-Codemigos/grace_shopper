@@ -26,7 +26,7 @@ $ git init
 
 4. Choose a name for your local database instance and edit `db/index.js` to assign the name to `DB_NAME`. Next, run `createdb <your-db-name-goes-here>` from your command line to spin up your database.
 
-5. `npm run start:dev` will build your react app and start your express server in concurrent mode (meaning that both processes run in the same terminal window). Once this command is running, you can start developing! `nodemon` and `react-scripts` will listen to file changes and update continuously (hot-module-reloading).
+5. `npm run start:dev` will build your React app and start your express server in concurrent mode (meaning that both processes run in the same terminal window). Once this command is running, you can start developing! `nodemon` and `react-scripts` will listen to file changes and update continuously (hot-module-reloading).
 
 <em>NB: If you see a `proxy error` message in the terminal, just hard refresh your browser window and you'll be all set.</em>
 
@@ -36,14 +36,15 @@ $ git init
 ├── db
 │   ├── models
 │   │   ├── index.js
-│   │   └── users.js
+│   │   └── user.js
+│   ├── client.js
 │   ├── index.js
 │   └── init_db.js
 │
 ├── public
 │   └── index.html
 │
-├── routes
+├── api
 │   ├── apiRouter.test.js
 │   └── index.js
 │
@@ -53,6 +54,9 @@ $ git init
 │   ├── components
 │   │   ├── App.js
 │   │   └── index.js
+│   ├── style
+│   │   ├── App.css
+│   │   └── index.css
 │   └── index.js
 │
 ├── .gitignore
@@ -68,7 +72,7 @@ $ git init
 
 `src/axios-services` contains your axios network request adapters. `src/components` contains your React component files.
 
-Inside `/routes` you have `index.js` which is responsible for building the `apiRouter` that you'll attach in the express server, and `apiRouter.test.js` which will give you direction on test-driven development for your api. You'll build all routes that your React application will use to send/receive data via JSON in this directory, for example, a `usersRouter.js`.
+Inside `/api` you have `index.js` which is responsible for building the `apiRouter` that you'll attach in the express server, and `apiRouter.test.js` which will give you direction on test-driven development for your api. Your React application and Express server use any routes you build in the `/api` directory to send/receive data via JSON, for example, a `usersRouter.js` that will be required and mounted in the `apiRouter.js`.
 
 Rounding things out, we've got the top level `index.js` that creates your Express Server. This should be responsible for setting up your API, starting your server, and connecting to your database. We've also got our `.gitignore`, `package-lock.json`, and `package.json` where you'll find the scripts necessary to get your app off the ground, as well as this `README.md`.
 
@@ -80,7 +84,7 @@ In addition to `start:dev`, `client:build`, `client:dev` and `server:dev`, you h
 
 ## Setting up Heroku
 
-Setup your heroku project by choosing a site name and creating a postgres db instance. These commands create a heroku project which will live at https://project-name-goes-here.herokuapp.com (you'll want to replace `project-name-goes-here` with your selected project name), and a postgres database instance.
+Setup your heroku project by choosing a site name and provisioning a postgres database. These commands create a heroku project backed by a postgres db instance which will live at https://project-name-goes-here.herokuapp.com. You'll want to replace `project-name-goes-here` with your selected project name.
 
 You'll only need to do this step once, at the outset of your project:
 
