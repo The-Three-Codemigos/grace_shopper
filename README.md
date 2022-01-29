@@ -1,42 +1,34 @@
-# The Smallest Starting Point
+# Let's Build a Full Stack Application
 
-So, you want to build a full-stack JavaScript application with:
+This full stack app boilerplate consists of:
 
-- An Express web server
-- A PostgreSQL database
-- A React front-end
+- an Express web server,
+- a PostgreSQL database,
+- and a React front-end
 
-And you want it to work locally as well as be easy to deploy? We've got your back!
-
---
+You'll also find a bunch of convenient commands and workflows that will allow you to develop your app locally and deploy it to heroku. Let's dive in!
 
 # Local Development
 
-## Setting Up
+## Getting Started
 
-First, clone this repo locally, then remove the current `.git` folder. Follow this up with making it a new git repo.
+1. Fork and clone this repo to your local machine, then run the following commands to reinitialize your git history from scratch:
 
 ```bash
 # these commands reset your git history
-rm -rf .git
-git init
+$ rm -rf .git
+$ git init
 ```
 
-Then go to GitHub, create a new repository, and add that remote to this local repo.
+2. Create a bare GitHub repo (no `.gitignore`, `README.md`, `CHANGELOG.md`, or license) and copy the ssh address to assign to your local clone with `git add remote origin <paste-your-ssh-address-here>`
 
-Then, run `npm install` to install all node modules.
+3. `npm install` to add project dependencies to your local machine.
 
-You should decide on a name for your local testing database, and edit `db/index.js` changing the value of `DB_NAME`.
+4. You should decide on a name for your local testing database, and edit `db/index.js` changing the value of `DB_NAME`. Once you decide on that name, make sure to run `createdb` from your command line to spin up your database.
 
-Once you decide on that name, make sure to run `createdb` from your command line so it exists (and can be connected to).
+5. `npm run start:dev` will build your react app and start your express server in concurrent mode (meaning that both processes run in the same terminal window). Once this command is running, you can start developing! The server restarts thanks to `nodemon`, and the client restarts thanks to `react-scripts`.
 
-Finally you can run `npm run server:dev` to start the web server.
-
-In a second terminal navigate back to the local repo and run `npm run client:dev` to start the react server.
-
-This is set up to run on a proxy, so that you can make calls back to your `api` without needing absolute paths. You can instead `axios.get('/api/posts')` or whatever without needing to know the root URL.
-
-Once both dev commands are running, you can start developing... the server restarts thanks to `nodemon`, and the client restarts thanks to `react-scripts`.
+<small>NB: If you see a `proxy error` message in the terminal, just hard refresh your browser window and you'll be all set.</small>
 
 ## Project Structure
 
@@ -82,22 +74,31 @@ Rounding things out, we've got the top level `index.js` that creates your Expres
 
 ## Command Line Tools
 
-In addition to `client:dev` and `server:dev`, you have access to `db:build` which (you will write to) rebuilds the database, all the tables, and ensures that there is meaningful data present.
-
----
+In addition to `start:dev`, `client:build`, `client:dev` and `server:dev`, you have access to `db:build` which rebuilds the database, all the tables, and ensures that there is meaningful data present.
 
 # Deployment
 
-## Setting up Heroku (once)
+## Setting up Heroku
+
+Setup your heroku project by choosing a site name and creating a postgres db instance. These commands create a heroku project which will live at https://project-name-goes-here.herokuapp.com (you'll want to replace `project-name-goes-here` with your selected project name), and a postgres database instance.
+
+You'll only need to do this step once, at the outset of your project:
 
 ```bash
 # create your project
-heroku create project-name-goes-here
+$ heroku create project-name-goes-here
 # create your database instance
-heroku addons:create heroku-postgresql:hobby-dev
+$ heroku addons:create heroku-postgresql:hobby-dev
 ```
 
-This creates a heroku project which will live at https://project-name-goes-here.herokuapp.com (you'll want to replace `project-name-goes-here` with your selected project name). It will also create a postgres database for you, on the free tier.
+Next we'll configure your database instance to ignore the `ssl` configuration object our `pg` client instance expects:
+
+```bash
+# set ssl mode to no-verify
+$ heroku config:set PGSSLMODE=no-verify
+# confirm your environment variable has been set
+$ heroku config
+```
 
 ## Configuring GitHub Actions Secrets for CI/CD
 
@@ -109,6 +110,8 @@ Under Settings, choose the Secrets option under Security. You'll see the followi
 - `HEROKU_APP_NAME`: this is the project name you chose above
 - `HEROKU_EMAIL`: this is the email address associated with your heroku account
 
+![](/assets/github-actions-secrets.png)
+
 Each project group will elect one person to be the "owner" of the heroku account, and that person's api key and email address will be used to register the secrets above.
 
 **After the bootcamp ends**, you might want to redeploy and make changes to your team's application. Once you've forked this repo to your personal GitHub Account, you can add your own HEROKU_ENV_VARs and redeploy under a different heroku app name!
@@ -119,13 +122,15 @@ In `.github/workflows` you'll find a YAML, an acronym for "YAML Ain't Markup Lan
 
 Optionally, you can also trigger this deployment workflow by pushing to the `deploy` branch. Many companies use this pattern to enable hotfixes without going through the review process (creating a PR and merging it).
 
-Note that this workflow does **not** re-seed your database. You'll need to perform some additional setup the first time you deploy your app:
+Note that this workflow does **not** re-seed your database. To re-seed, run the following command:
 
-1. `$ heroku login` to login to your app
-2. `$ heroku config` to verify your heroku server's environment variable config
-3. if you don't see `PGSSLMODE=no-verify` listed, run `$ heroku config:set PGSSLMODE=no-verify`
-4. now, you can seed your database with `$ heroku run npm run db:build`
+```bash
+# this command seeds your remote postgres instance
+$ heroku run npm run db:build
+```
 
-As you project grows you'll probably want to re-seed and refresh your database from time to time. Run step 4 whenever you want to re-seed.
+As you project grows you'll probably want to re-seed and refresh your database from time to time. Rerun this command whenever you want to re-seed.
 
-Once that command runs, you can type `heroku open` to get a browser to open up locally with your full-stack application running remotely.
+# Wrapup
+
+You'll be able to view your fullstack application by running `heroku open`. Bask in the glory of your live site, and happy coding!
