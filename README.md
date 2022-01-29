@@ -26,9 +26,9 @@ $ git init
 
 4. Choose a name for your local database instance and edit `db/index.js` to assign the name to `DB_NAME`. Next, run `createdb <your-db-name-goes-here>` from your command line to spin up your database.
 
-5. `npm run start:dev` will build your react app and start your express server in concurrent mode (meaning that both processes run in the same terminal window). Once this command is running, you can start developing! The server restarts thanks to `nodemon`, and the client restarts thanks to `react-scripts`.
+5. `npm run start:dev` will build your react app and start your express server in concurrent mode (meaning that both processes run in the same terminal window). Once this command is running, you can start developing! `nodemon` and `react-scripts` will listen to file changes and update continuously (hot-module-reloading).
 
-<small>NB: If you see a `proxy error` message in the terminal, just hard refresh your browser window and you'll be all set.</small>
+<em>NB: If you see a `proxy error` message in the terminal, just hard refresh your browser window and you'll be all set.</em>
 
 ## Project Structure
 
