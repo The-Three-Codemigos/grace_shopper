@@ -2,7 +2,6 @@ const {
   client,
   // declare your model imports here
   // for example, User
-  User,
 } = require('./');
 
 async function buildTables() {

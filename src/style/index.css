@@ -1,3 +1,9 @@
+/* import fonts here */
+
+* {
+  box-sizing: border-box;
+}
+
 :root {
   /* define variables here */
   --green: green;
