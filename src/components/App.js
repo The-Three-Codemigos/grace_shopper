@@ -3,25 +3,29 @@ import React, { useState, useEffect } from 'react';
 // you can think of that directory as a collection of services
 // where each service makes a network request to retrieve
 // information from our express server's /api route
-import { getAPIHealth } from '../api';
+import { getAPIHealth } from '../axios-services';
 
 const App = () => {
-  const [message, setMessage] = useState('');
+  const [APIHealth, setAPIHealth] = useState('');
 
-  useEffect(
-    () => {
-      const apiStatus = getAPIHealth();
-      // set your message variable to the apiStatus retrieved above
-    },
-    [
-      /* add any dependencies you'd like to track to this array */
-    ]
-  );
+  useEffect(() => {
+    // follow this pattern inside your useEffect calls
+    // create an async function that will wrap your axios service adapter
+    // invoke the adapter, await the response, and set the data
+    const getAPIStatus = async () => {
+      const { healthy } = await getAPIHealth();
+      setAPIHealth(healthy ? 'api is up! :D' : 'api is down :/');
+    };
+
+    // after you've defined your getter above
+    // invoke it here, inside the useEffect callback
+    getAPIStatus();
+  }, []);
 
   return (
     <div className="App">
       <h1>Hello, World!</h1>
-      <h2>{message}</h2>
+      <p>API Status: {APIHealth}</p>
     </div>
   );
 };

@@ -19,11 +19,12 @@ import axios from 'axios';
 
 */
 
-export async function getSomething() {
+export async function getAPIHealth() {
   try {
-    const { data } = await axios.get('/api');
+    const { data } = await axios.get('/api/health');
     return data;
-  } catch (error) {
+  } catch (err) {
     console.error(err);
+    return { healthy: false };
   }
 }

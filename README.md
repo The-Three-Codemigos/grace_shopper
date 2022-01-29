@@ -6,13 +6,13 @@ So, you want to build a full-stack JavaScript application with:
 - A PostgreSQL database
 - A React front-end
 
-And you want it to work locally as well as be easy to deploy?
+And you want it to work locally as well as be easy to deploy? We've got your back!
 
-We've got your back:
+--
 
-## Local Development
+# Local Development
 
-### Setting Up
+## Setting Up
 
 First, clone this repo locally, then remove the current `.git` folder. Follow this up with making it a new git repo.
 
@@ -38,7 +38,7 @@ This is set up to run on a proxy, so that you can make calls back to your `api` 
 
 Once both dev commands are running, you can start developing... the server restarts thanks to `nodemon`, and the client restarts thanks to `react-scripts`.
 
-### Project Structure
+## Project Structure
 
 ```bash
 ├── db
@@ -80,13 +80,15 @@ Inside `/routes` you have `index.js` which is responsible for building the `apiR
 
 Rounding things out, we've got the top level `index.js` that creates your Express Server. This should be responsible for setting up your API, starting your server, and connecting to your database. We've also got our `.gitignore`, `package-lock.json`, and `package.json` where you'll find the scripts necessary to get your app off the ground, as well as this `README.md`.
 
-### Command Line Tools
+## Command Line Tools
 
 In addition to `client:dev` and `server:dev`, you have access to `db:build` which (you will write to) rebuilds the database, all the tables, and ensures that there is meaningful data present.
 
-## Deployment
+---
 
-### Setting up Heroku (once)
+# Deployment
+
+## Setting up Heroku (once)
 
 ```bash
 # create your project
@@ -97,7 +99,7 @@ heroku addons:create heroku-postgresql:hobby-dev
 
 This creates a heroku project which will live at https://project-name-goes-here.herokuapp.com (you'll want to replace `project-name-goes-here` with your selected project name). It will also create a postgres database for you, on the free tier.
 
-### Configuring GitHub Actions Secrets for CI/CD
+## Configuring GitHub Actions Secrets for CI/CD
 
 We're going to leverage continuous integration and continuous development methodologies, or CI/CD, to deploy your app. To enable CI/CD you'll need to add a few environment variables to your project repo.
 
@@ -111,7 +113,7 @@ Each project group will elect one person to be the "owner" of the heroku account
 
 **After the bootcamp ends**, you might want to redeploy and make changes to your team's application. Once you've forked this repo to your personal GitHub Account, you can add your own HEROKU_ENV_VARs and redeploy under a different heroku app name!
 
-### Deployment
+## Deployment
 
 In `.github/workflows` you'll find a YAML, an acronym for "YAML Ain't Markup Language", that triggers an automated deployment by watching your `main` branch: whenever a new pull request is merged to `main`, your app will automagically deploy itself on heroku.
 

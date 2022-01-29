@@ -1,6 +1,11 @@
 // This is the Web Server
 const express = require('express');
 const server = express();
+const cors = require('cors');
+
+// enable cross-origin resource sharing to proxy api requests
+// from localhost:3000 to localhost:4000 in local dev env
+server.use(cors());
 
 // create logs for everything
 const morgan = require('morgan');
