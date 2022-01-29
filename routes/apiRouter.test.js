@@ -3,8 +3,6 @@ const { client } = require('../db');
 const supertest = require('supertest');
 const request = supertest(server);
 
-// trigger workflow comment
-
 describe('/api/health endpoint', () => {
   // close db connection and supertest server tcp connection
   afterAll(async () => {

@@ -1,0 +1,17 @@
+:root {
+  /* define variables here */
+  --green: green;
+  --red: red;
+  --blue: blue;
+}
+
+html {
+  touch-action: manipulation;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+}
