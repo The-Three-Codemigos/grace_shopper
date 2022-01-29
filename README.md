@@ -114,15 +114,15 @@ Under Settings, choose the Secrets option under Security. You'll see the followi
 
 Each project group will elect one person to be the "owner" of the heroku account, and that person's api key and email address will be used to register the secrets above.
 
-**After the bootcamp ends**, you might want to redeploy and make changes to your team's application. Once you've forked this repo to your personal GitHub Account, you can add your own HEROKU_ENV_VARs and redeploy under a different heroku app name!
+**After the bootcamp ends**, you might want to redeploy and make changes to your team's application. Once you've forked this repo to your personal GitHub Account, you can add your own secrets and redeploy under a different heroku app name!
 
 ## Deployment
 
 In `.github/workflows` you'll find a YAML, an acronym for "YAML Ain't Markup Language", that triggers an automated deployment by watching your `main` branch: whenever a new pull request is merged to `main`, your app will automagically deploy itself on heroku.
 
-Optionally, you can also trigger this deployment workflow by pushing to the `deploy` branch. Many companies use this pattern to enable hotfixes without going through the review process (creating a PR and merging it).
+Optionally, you can also trigger this deployment workflow by pushing to the `deploy` branch. Many companies use this pattern to enable hotfixes without going through the lengthy review process of creating a PR and merging it.
 
-Note that this workflow does **not** re-seed your database. To re-seed, run the following command:
+Note that this workflow does **not** seed your database. To seed your remote postgres instance, run the following command:
 
 ```bash
 # this command seeds your remote postgres instance
