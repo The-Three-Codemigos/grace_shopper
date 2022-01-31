@@ -1,0 +1,40 @@
+name: Heroku Deploy
+on:
+  push:
+    branches:
+      - 'main'
+      - 'deploy'
+  pull_request:
+    branches:
+      - 'main'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          # fetch complete commit history on all branches
+          fetch-depth: 0
+      - name: Test Suite
+        run: npm install && npm run test:unit
+      - name: Set Heroku Credentials
+        run: |
+          cat > ~/.netrc <<EOF
+            machine api.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY
+            machine git.heroku.com
+              login $HEROKU_EMAIL
+              password $HEROKU_API_KEY 
+          EOF
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          HEROKU_EMAIL: ${{ secrets.HEROKU_EMAIL }}
+      - name: Add Heroku Remote
+        run: heroku git:remote -a ${{ secrets.HEROKU_APP_NAME }}
+      - name: Push to Heroku
+        # github.ref_name is the branch name that triggered the workflow
+        # you can assign any branch(es) you like in the on: block at the top of this yaml
+        # and the ref_name will pick them up
+        run: git push heroku ${{ github.ref_name }}:refs/heads/main

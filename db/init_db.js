@@ -1,8 +1,8 @@
-// code to build and initialize DB goes here
 const {
-  client
-  // other db methods 
-} = require('./index');
+  client,
+  // declare your model imports here
+  // for example, User
+} = require('./');
 
 async function buildTables() {
   try {
@@ -11,7 +11,6 @@ async function buildTables() {
     // drop tables in correct order
 
     // build tables in correct order
-
   } catch (error) {
     throw error;
   }
@@ -19,7 +18,9 @@ async function buildTables() {
 
 async function populateInitialData() {
   try {
-    // create useful starting data
+    // create useful starting data by leveraging your
+    // Model.method() adapters to seed your db, for example:
+    // const user1 = await User.createUser({ ...user info goes here... })
   } catch (error) {
     throw error;
   }

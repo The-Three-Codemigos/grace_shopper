@@ -9,14 +9,19 @@
     "client:build": "react-scripts build",
     "server:dev": "nodemon index.js",
     "db:build": "node ./db/init_db",
-    "start": "node index.js"
+    "start:dev": "concurrently \"npm run client:build\" \"npm run client:dev\" \"npm run server:dev\"",
+    "start": "node index.js",
+    "test:unit": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
+    "concurrently": "^7.0.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "jest": "^24.9.0",
     "morgan": "^1.10.0",
     "pg": "^8.2.1",
     "react": "^16.13.1",
@@ -25,7 +30,8 @@
     "react-scripts": "^3.4.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "supertest": "^6.2.1"
   },
   "proxy": "http://localhost:4000",
   "browserslist": {
