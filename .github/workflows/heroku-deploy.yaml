@@ -7,17 +7,38 @@ on:
   pull_request:
     branches:
       - 'main'
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    # postgres image for API tests via supertest
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           # fetch complete commit history on all branches
           fetch-depth: 0
+      - name: Install Dependencies
+        run: npm install
+      - name: Seed Database
+        run: npm run db:build
       - name: Test Suite
-        run: npm install && npm run test:unit
+        run: npm run test
+        # database url supplied to pg Client constructor, db/client.js
+        env:
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/test-db
       - name: Set Heroku Credentials
         run: |
           cat > ~/.netrc <<EOF
