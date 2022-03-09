@@ -36,14 +36,11 @@ const PORT = process.env.PORT || 4000;
 const handle = server.listen(PORT, async () => {
   console.log(`Server is running on ${PORT}!`);
 
-  // if server is running in github actions context skip db connection
-  if (!process.env.CI) {
-    try {
-      await client.connect();
-      console.log('Database is open for business!');
-    } catch (error) {
-      console.error('Database is closed for repairs!\n', error);
-    }
+  try {
+    await client.connect();
+    console.log('Database is open for business!');
+  } catch (error) {
+    console.error('Database is closed for repairs!\n', error);
   }
 });
 

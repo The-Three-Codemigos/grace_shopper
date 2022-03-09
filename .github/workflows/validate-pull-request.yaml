@@ -1,0 +1,38 @@
+name: Validate Pull Request
+on:
+  pull_request:
+    branches:
+      - 'main'
+    types:
+      - 'opened'
+      - 'edited'
+      # triggered by new commits to an existing PR
+      - 'synchronize'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # postgres image for API tests via supertest
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          # fetch complete commit history on all branches
+          fetch-depth: 0
+      - name: Install Dependencies
+        run: npm install
+      - name: Seed Database
+        run: npm run db:build
+      - name: Test Suite
+        run: npm run test

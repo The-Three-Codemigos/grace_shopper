@@ -2,13 +2,12 @@ name: Heroku Deploy
 on:
   push:
     branches:
+      # for merged pull requests
       - 'main'
+      # for hotfixes
       - 'deploy'
-  pull_request:
-    branches:
-      - 'main'
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -16,8 +15,6 @@ jobs:
         with:
           # fetch complete commit history on all branches
           fetch-depth: 0
-      - name: Test Suite
-        run: npm install && npm run test:unit
       - name: Set Heroku Credentials
         run: |
           cat > ~/.netrc <<EOF
