@@ -1,6 +1,7 @@
 const {
   client,
-  createUser
+  User,
+  Product
   // declare your model imports here
   // for example, User
 } = require('./');
@@ -14,29 +15,35 @@ async function buildTables() {
 
     // build tables in correct order
 
-    await client.query(`
-      DROP TABLE IF EXISTS carts;
-      DROP TABLE IF EXISTS orders;
-      DROP TABLE IF EXISTS reviews;
-      DROP TABLE IF EXISTS products;
-      DROP TABLE IF EXISTS users;
-      `);
+    // await client.query(`
+    //   DROP TABLE IF EXISTS carts;
+    //   DROP TABLE IF EXISTS orders;
+    //   DROP TABLE IF EXISTS reviews;
+    //   DROP TABLE IF EXISTS products;
+    //   DROP TABLE IF EXISTS users;
+    //   `);
 
     await client.query(`
+      DROP TABLE IF EXISTS reviews;
+      DROP TABLE IF EXISTS orders;
+      DROP TABLE IF EXISTS carts;
+      DROP TABLE IF EXISTS products;
+      DROP TABLE IF EXISTS users;
+    
       CREATE TABLE products (
         id SERIAL PRIMARY KEY,
         title varchar(255) NOT NULL,
         description text NOT NULL,
         price decimal(10,2) NOT NULL,
-        quantitity integer(255) NOT NULL,
+        quantity integer NOT NULL,
         category varchar(255) NOT NULL,
         image varchar(255) NOT NULL
       );
 
       CREATE TABLE users (
         id SERIAL PRIMARY KEY,
-        first_name varchar(255) NOT NULL,
-        last_name varchar(255) NOT NULL,
+        "firstName" varchar(255) NOT NULL,
+        "lastName" varchar(255) NOT NULL,
         email varchar(255) UNIQUE NOT NULL,
         password varchar(255) NOT NULL
       );
@@ -52,7 +59,7 @@ async function buildTables() {
         "userId" INTEGER REFERENCES users(id),
         price decimal(10,2) NOT NULL,
         "productId" INTEGER REFERENCES products(id),
-        quantity INTEGER(255) NOT NULL
+        quantity INTEGER NOT NULL
       );
 
       CREATE TABLE reviews (
@@ -76,44 +83,54 @@ async function populateInitialData() {
     // const user1 = await User.createUser({ ...user info goes here... })
     console.log("Starting to create users...");
 
-    await createUser({ 
-      firstName: 'albert', 
-      lastName: 'alberts',
-      email: 'albert@email.com',
+    const user1 = await User.createUser({ 
+      firstName: 'Clayton', 
+      lastName: 'Carver',
+      email: 'clayton@testemail.com',
       password: 'password' 
     });
-    await createUser({ 
-      firstName: 'sandra', 
-      lastName: 'otterson',
-      email: 'sandra@email.com',
+
+    const user2 = await User.createUser({ 
+      firstName: 'Ulysses', 
+      lastName: 'Cortez',
+      email: 'ulysses@testemail.com',
       password: 'alsopassword'
     });
-    await createUser({ 
-      firstName: 'glamgal',
-      lastName: 'soglam',
-      email: 'glamgal@email.com',
-      password: 'anotherpassword'
+
+    const user3 = await User.createUser({ 
+      firstName: 'Kirk',
+      lastName: 'Bogle',
+      email: 'kirk@testemail.com',
+      password: 'athirdpassword'
     });
 
     console.log("Finished creating users!");
 
-    await createProduct({ 
-      firstName: 'albert', 
-      lastName: 'alberts',
-      email: 'albert@email.com',
-      password: 'password' 
+    const product1 = await Product.createProduct({ 
+      title: 'Computer', 
+      description: 'This is a computer',
+      price: 1,
+      quantity:  1,
+      category: 'Electronics',
+      image: 'something'
     });
-    await createProduct({ 
-      firstName: 'sandra', 
-      lastName: 'otterson',
-      email: 'sandra@email.com',
-      password: 'alsopassword'
+
+    const product2 = await Product.createProduct({ 
+      title: 'Desk', 
+      description: 'This is a desk',
+      price: 5,
+      quantity: 1,
+      category: 'Furniture',
+      image: 'something'
     });
-    await createProduct({ 
-      firstName: 'glamgal',
-      lastName: 'soglam',
-      email: 'glamgal@email.com',
-      password: 'anotherpassword'
+
+    const product3 = await Product.createProduct({ 
+      title: 'Mug',
+      description: 'This is a mug',
+      price: 5,
+      quantity: 1,
+      category: 'Drinkware',
+      image: 'something'
     });
 
     console.log("Finished creating products!");
