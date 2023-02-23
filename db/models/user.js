@@ -51,7 +51,6 @@ async function getUserById(id) {
       FROM users
       WHERE id=${id};
     `);
-
     return rows;
   } catch (error) {
     throw error;

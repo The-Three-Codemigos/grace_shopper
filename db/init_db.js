@@ -1,5 +1,6 @@
 const {
   client,
+  createUser,
   User,
   Product,
   Order
