@@ -1,8 +1,8 @@
 // grab our db client connection to use with our adapters
 const client = require('../client');
 
-async function createProduct({ 
-  title, 
+async function createProduct({
+  title,
   description,
   price,
   quantity,
@@ -10,7 +10,7 @@ async function createProduct({
   image
 }) {
   try {
-    const { rows: [ product ] } = await client.query(`
+    const { rows: [product] } = await client.query(`
       INSERT INTO products(title, description, price, quantity, category, image) 
       VALUES($1, $2, $3, $4, $5, $6) 
       RETURNING *;

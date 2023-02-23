@@ -15,14 +15,14 @@ async function getAllUsers() {
   }
 }
 
-async function createUser({ 
-  firstName, 
+async function createUser({
+  firstName,
   lastName,
   email,
   password
 }) {
   try {
-    const { rows: [ user ] } = await client.query(`
+    const { rows: [user] } = await client.query(`
       INSERT INTO users("firstName", "lastName", email, password) 
       VALUES($1, $2, $3, $4) 
       ON CONFLICT (email) DO NOTHING 

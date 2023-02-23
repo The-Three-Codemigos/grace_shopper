@@ -1,5 +1,6 @@
 const {
   client,
+  createUser,
   User,
   Product
   // declare your model imports here
@@ -15,21 +16,17 @@ async function buildTables() {
 
     // build tables in correct order
 
-    // await client.query(`
-    //   DROP TABLE IF EXISTS carts;
-    //   DROP TABLE IF EXISTS orders;
-    //   DROP TABLE IF EXISTS reviews;
-    //   DROP TABLE IF EXISTS products;
-    //   DROP TABLE IF EXISTS users;
-    //   `);
 
     await client.query(`
-      DROP TABLE IF EXISTS reviews;
-      DROP TABLE IF EXISTS orders;
       DROP TABLE IF EXISTS carts;
+      DROP TABLE IF EXISTS orders;
+      DROP TABLE IF EXISTS reviews;
       DROP TABLE IF EXISTS products;
       DROP TABLE IF EXISTS users;
-    
+      `);
+
+    await client.query(`
+
       CREATE TABLE products (
         id SERIAL PRIMARY KEY,
         title varchar(255) NOT NULL,
@@ -42,6 +39,7 @@ async function buildTables() {
 
       CREATE TABLE users (
         id SERIAL PRIMARY KEY,
+
         "firstName" varchar(255) NOT NULL,
         "lastName" varchar(255) NOT NULL,
         email varchar(255) UNIQUE NOT NULL,
@@ -69,7 +67,7 @@ async function buildTables() {
         "reviewText" text NOT NULL
       );
     `);
-      console.log("Finished building tables!");
+    console.log("Finished building tables!");
   } catch (error) {
     console.error("Error building tables!");
     throw error;
@@ -82,22 +80,21 @@ async function populateInitialData() {
     // Model.method() adapters to seed your db, for example:
     // const user1 = await User.createUser({ ...user info goes here... })
     console.log("Starting to create users...");
-
-    const user1 = await User.createUser({ 
-      firstName: 'Clayton', 
+    const user1 = await User.createUser({
+      firstName: 'Clayton',
       lastName: 'Carver',
       email: 'clayton@testemail.com',
-      password: 'password' 
+      password: 'password'
     });
 
-    const user2 = await User.createUser({ 
-      firstName: 'Ulysses', 
+    const user2 = await User.createUser({
+      firstName: 'Ulysses',
       lastName: 'Cortez',
       email: 'ulysses@testemail.com',
       password: 'alsopassword'
     });
 
-    const user3 = await User.createUser({ 
+    const user3 = await User.createUser({
       firstName: 'Kirk',
       lastName: 'Bogle',
       email: 'kirk@testemail.com',
@@ -106,17 +103,17 @@ async function populateInitialData() {
 
     console.log("Finished creating users!");
 
-    const product1 = await Product.createProduct({ 
-      title: 'Computer', 
+    const product1 = await Product.createProduct({
+      title: 'Computer',
       description: 'This is a computer',
       price: 1,
-      quantity:  1,
+      quantity: 1,
       category: 'Electronics',
       image: 'something'
     });
 
-    const product2 = await Product.createProduct({ 
-      title: 'Desk', 
+    const product2 = await Product.createProduct({
+      title: 'Desk',
       description: 'This is a desk',
       price: 5,
       quantity: 1,
@@ -124,7 +121,7 @@ async function populateInitialData() {
       image: 'something'
     });
 
-    const product3 = await Product.createProduct({ 
+    const product3 = await Product.createProduct({
       title: 'Mug',
       description: 'This is a mug',
       price: 5,
