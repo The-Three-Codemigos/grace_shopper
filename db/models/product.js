@@ -22,7 +22,65 @@ async function createProduct({
   }
 }
 
+async function getAllProducts() {
+  /* this adapter should fetch a list of products from your db */
+  try {
+    const { rows } = await client.query(`
+      SELECT id, title, description, price, quantity, category, image 
+      FROM products;
+    `);
+
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function getProductById(id) {
+  /* this adapter should fetch a specific product from your db */
+  try {
+    const { rows } = await client.query(`
+      SELECT id, title, description, price, quantity, category, image 
+      FROM products
+      WHERE id=${id};
+    `);
+
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+}
+
+async function updateProducts({ id, ...fields }) {
+  const setString = Object.keys(fields).map(
+    (key, index) => `"${key}"=$${index + 1}`
+  ).join(', ');
+
+  const { rows: [product] } = await client.query(`
+  UPDATE products
+  SET ${setString}
+  WHERE id=${id}
+  RETURNING *;
+  `, Object.values(fields))
+  return product
+}
+
+async function deleteProduct(id) {
+  await client.query(`
+  DELETE FROM products WHERE id=${id};
+  `)
+  const { rows: [product] } = await client.query(`
+  DELETE FROM products WHERE id=${id}
+  RETURNING *;
+  `)
+  return product
+}
+
 module.exports = {
   // add your database adapter functions here
-  createProduct
+  createProduct,
+  getAllProducts,
+  updateProducts,
+  deleteProduct,
+  getProductById
 };
