@@ -2,7 +2,8 @@ const {
   client,
   createUser,
   User,
-  Product
+  Product,
+  Order
   // declare your model imports here
   // for example, User
 } = require('./');
@@ -16,17 +17,15 @@ async function buildTables() {
 
     // build tables in correct order
 
-
     await client.query(`
-      DROP TABLE IF EXISTS carts;
+      DROP TABLE IF EXISTS cart;
       DROP TABLE IF EXISTS orders;
       DROP TABLE IF EXISTS reviews;
-      DROP TABLE IF EXISTS products;
       DROP TABLE IF EXISTS users;
+      DROP TABLE IF EXISTS products;
       `);
 
     await client.query(`
-
       CREATE TABLE products (
         id SERIAL PRIMARY KEY,
         title varchar(255) NOT NULL,
@@ -39,31 +38,34 @@ async function buildTables() {
 
       CREATE TABLE users (
         id SERIAL PRIMARY KEY,
-        "firstName" varchar(255) NOT NULL,
-        "lastName" varchar(255) NOT NULL,
-        email varchar(255) UNIQUE NOT NULL,
-        password varchar(255) NOT NULL
-      );
-
-      CREATE TABLE carts (
-        id SERIAL PRIMARY KEY,
-        "productId" INTEGER REFERENCES products(id),
-        "userId" INTEGER REFERENCES users(id)
+        "firstName" VARCHAR(255) NOT NULL,
+        "lastName" VARCHAR(255) NOT NULL,
+        email VARCHAR(255) UNIQUE NOT NULL,
+        password VARCHAR(255) NOT NULL,
+        "isAdmin" BOOLEAN DEFAULT false
       );
 
       CREATE TABLE orders (
         id SERIAL PRIMARY KEY,
         "userId" INTEGER REFERENCES users(id),
-        price decimal(10,2) NOT NULL,
         "productId" INTEGER REFERENCES products(id),
-        quantity INTEGER NOT NULL
+        "orderDate" DATE NOT NULL DEFAULT CURRENT_DATE,
+        "isCheckedOut" BOOLEAN
       );
 
       CREATE TABLE reviews (
         id SERIAL PRIMARY KEY,
         "productId" INTEGER REFERENCES products(id),
-        "reviewUserId" INTEGER REFERENCES users(id),
-        "reviewText" text NOT NULL
+        "userId" INTEGER REFERENCES users(id),
+        "text" text NOT NULL
+      );
+
+      CREATE TABLE cart (
+        id SERIAL PRIMARY KEY,
+        "productId" INTEGER REFERENCES products(id),
+        "userId" INTEGER REFERENCES users(id),
+        price DECIMAL(10,2) NOT NULL,
+        quantity INTEGER NOT NULL
       );
     `);
     console.log("Finished building tables!");
@@ -83,21 +85,24 @@ async function populateInitialData() {
       firstName: 'Clayton',
       lastName: 'Carver',
       email: 'clayton@testemail.com',
-      password: 'password'
+      password: 'password',
+      isAdmin: true
     });
 
     const user2 = await User.createUser({
       firstName: 'Ulysses',
       lastName: 'Cortez',
       email: 'ulysses@testemail.com',
-      password: 'alsopassword'
+      password: 'alsopassword',
+      isAdmin: true
     });
 
     const user3 = await User.createUser({
       firstName: 'Kirk',
       lastName: 'Bogle',
       email: 'kirk@testemail.com',
-      password: 'athirdpassword'
+      password: 'athirdpassword',
+      isAdmin: true
     });
 
     console.log("Finished creating users!");
@@ -130,6 +135,24 @@ async function populateInitialData() {
     });
 
     console.log("Finished creating products!");
+
+    console.log("Starting to create orders...");
+    const order1 = await Order.createOrder({
+      userId: 1,
+      productId: 1,
+      orderDate: "",
+      isCheckedOut: true,
+    });
+
+    const order2 = await Order.createOrder({
+      userId: 2,
+      productId: 2,
+      orderDate: "",
+      isCheckedOut: true,
+    });
+
+    console.log("Finished creating orders!")
+
   } catch (error) {
     throw error;
   }
