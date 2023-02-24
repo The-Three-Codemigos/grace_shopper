@@ -1,4 +1,5 @@
-const apiRouter = require('express').Router();
+const express = require('express');
+const apiRouter = express.Router();
 const bcrypt = require('bcrypt');
 const { requireUser } = require("./utils");
 
@@ -7,13 +8,12 @@ const { requireUser } = require("./utils");
 // } = require('../api/index')
 
 const {
-  getUserById
+  getUserById, getUserByEmail
 } = require('../db/models/user')
-
 
 const jwt = require('jsonwebtoken');
 
-router.post('/register', async (req, res, next) => {
+apiRouter.post('/register', async (req, res, next) => {
   const { firstName, lastName, email, password } = req.body;
 
   try {
@@ -48,7 +48,7 @@ router.post('/register', async (req, res, next) => {
       expiresIn: '1w'
     });
 
-    router.use((error, req, res, next) => {
+    apiRouter.use((error, req, res, next) => {
       res.send(error);
     });
     res.send({
@@ -63,57 +63,63 @@ router.post('/register', async (req, res, next) => {
 });
 
 // POST /api/users/login
-router.post('/login', async (req, res, next) => {
-  const { email, password } = req.body;
+// apiRouter.post('/login', async (req, res, next) => {
+//   const { email, password } = req.body;
 
-  if (!email || !password) {
-    next({
-      name: "MissingCredentialsError",
-      message: "Please supply both a username and password"
-    });
-  }
+//   if (!email || !password) {
+//     next({
+//       name: "MissingCredentialsError",
+//       message: "Please supply both a username and password"
+//     });
+//   }
+//   try {
+//     const user = await getUserByEmail(email);
+//     const isValid = await bcrypt.compare(password, user.password);
 
-  try {
-    // Do we want to make a function that gets user by emain?
-    const user = await getUserByUsername(username);
-    const isValid = await bcrypt.compare(password, user.password);
+//     if (isValid) {
+//       const token = jwt.sign({
+//         id: user.id,
+//         email
+//       }, process.env.JWT_SECRET, {
+//         expiresIn: '1w'
+//       });
 
-    if (isValid) {
-      const token = jwt.sign({
-        id: user.id,
-        email
-      }, process.env.JWT_SECRET, {
-        expiresIn: '1w'
-      });
+//       res.send({
+//         user,
+//         message: "you're logged in!",
+//         token
+//       });
+//     } else {
+//       next({
+//         name: 'IncorrectCredentialsError',
+//         message: 'Username or password is incorrect'
+//       });
+//     }
+//   } catch (error) {
+//     console.log(error);
+//     next(error);
+//   }
+// });
 
-      res.send({
-        user,
-        message: "you're logged in!",
-        token
-      });
-    } else {
-      next({
-        name: 'IncorrectCredentialsError',
-        message: 'Username or password is incorrect'
-      });
-    }
-  } catch (error) {
-    console.log(error);
-    next(error);
-  }
-});
-
-router.get('/', requireUser, async (req, res, next) => {
-  const { email, id } = req.user;
-
+apiRouter.get('/', async (req, res, next) => {
+  // const { email, id } = req.user;
   res.send({
-    "id": id,
-    "email": email
+    message: "Users api"
   });
 })
 
+apiRouter.post('/login', async (req, res, next) => {
+  const { email } = req.body;
+  if (email) {
+    res.send({
+      message: `${id}`
+    });
+  }
+
+})
+
 // GET /api/users/me
-router.get('/users/me', requireUser, async (req, res, next) => {
+apiRouter.get('/me', requireUser, async (req, res, next) => {
   const { email, id } = req.user;
 
   res.send({

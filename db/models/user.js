@@ -57,7 +57,6 @@ async function getUserById(id) {
   }
 }
 async function getUserByEmail(email) {
-  /* this adapter should fetch a specific user from your db */
   try {
     const { rows } = await client.query(`
       SELECT *

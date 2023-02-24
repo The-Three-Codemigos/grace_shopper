@@ -1,7 +1,11 @@
-const apiRouter = require('express').Router();
+// const apiRouter = require('express').Router();
+const express = require('express');
+const apiRouter = express.Router();
 // const {
 //   User
 // } = require('User')
+
+
 
 apiRouter.get('/', (req, res, next) => {
   res.send({
@@ -14,10 +18,15 @@ apiRouter.get('/health', (req, res, next) => {
     healthy: true,
   });
 });
+// apiRouter.get('/users', (req, res, next) => {
+//   res.send({
+//     message: "Users displayed!"
+//   });
+// });
 
 // place your routers here
-// const usersRouter = require(User);
-// apiRouter.use('/users', usersRouter);
+const usersRouter = require('./users');
+apiRouter.use('/users', usersRouter);
 
 // const orderRouter = require('./orders');
 // apiRouter.use('/orders', orderRouter);
