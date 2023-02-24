@@ -2,20 +2,22 @@ const apiRouter = require('express').Router();
 const bcrypt = require('bcrypt');
 const { requireUser } = require("./utils");
 
+// const {
+//   User
+// } = require('../api/index')
+
 const {
-  User
-  // getUserById
-} = require('User')
+  getUserById
+} = require('../db/models/user')
+
 
 const jwt = require('jsonwebtoken');
-
-const { requireUser } = require("./utils");
 
 router.post('/register', async (req, res, next) => {
   const { firstName, lastName, email, password } = req.body;
 
   try {
-    const _user = await User.getUserById(id);
+    const _user = await getUserById(id);
 
     if (_user) {
       next({
@@ -101,9 +103,17 @@ router.post('/login', async (req, res, next) => {
   }
 });
 
-// GET /api/users/me
+router.get('/', requireUser, async (req, res, next) => {
+  const { email, id } = req.user;
 
-router.get('/me', requireUser, async (req, res, next) => {
+  res.send({
+    "id": id,
+    "email": email
+  });
+})
+
+// GET /api/users/me
+router.get('/users/me', requireUser, async (req, res, next) => {
   const { email, id } = req.user;
 
   res.send({

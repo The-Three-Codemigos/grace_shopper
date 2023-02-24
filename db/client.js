@@ -3,7 +3,7 @@ const { Client } = require('pg');
 
 // change the DB_NAME string to whatever your group decides on
 const DB_NAME = 'univ-boilerplate';
-
+// postgres://root:4864@localhost:5432/
 // postgres://localhost:5432/${DB_NAME}
 const DB_URL =
   process.env.DATABASE_URL || `postgres://root:4864@localhost:5432/${DB_NAME}`;

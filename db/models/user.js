@@ -3,8 +3,8 @@ const client = require('../client');
 const bcrypt = require('bcrypt');
 const SALT_COUNT = 10;
 
-async function createUser({ 
-  firstName, 
+async function createUser({
+  firstName,
   lastName,
   email,
   password,
@@ -12,7 +12,7 @@ async function createUser({
 }) {
   const hashedPassword = await bcrypt.hash(password, SALT_COUNT)
   try {
-    const { rows: [ user ] } = await client.query(`
+    const { rows: [user] } = await client.query(`
       INSERT INTO users("firstName", "lastName", email, password, "isAdmin") 
       VALUES($1, $2, $3, $4, $5) 
       ON CONFLICT (email) DO NOTHING 
@@ -56,6 +56,19 @@ async function getUserById(id) {
     throw error;
   }
 }
+async function getUserByEmail(email) {
+  /* this adapter should fetch a specific user from your db */
+  try {
+    const { rows } = await client.query(`
+      SELECT *
+      FROM users
+      WHERE email=${email};
+    `);
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+}
 
 async function updateUser({ id, ...fields }) {
   const setString = Object.keys(fields).map(
@@ -88,5 +101,6 @@ module.exports = {
   createUser,
   updateUser,
   deleteUser,
-  getUserById
+  getUserById,
+  getUserByEmail
 };
