@@ -39,7 +39,6 @@ async function buildTables() {
 
       CREATE TABLE users (
         id SERIAL PRIMARY KEY,
-
         "firstName" varchar(255) NOT NULL,
         "lastName" varchar(255) NOT NULL,
         email varchar(255) UNIQUE NOT NULL,
