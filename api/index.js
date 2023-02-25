@@ -18,6 +18,7 @@ apiRouter.get('/health', (req, res, next) => {
     healthy: true,
   });
 });
+
 // apiRouter.get('/users', (req, res, next) => {
 //   res.send({
 //     message: "Users displayed!"
