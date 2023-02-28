@@ -13,11 +13,12 @@ const jwt = require('jsonwebtoken');
 
 apiRouter.post('/register', async (req, res, next) => {
   const { firstName, lastName, email, password } = req.body;
-
+  console.log(firstName)
+  console.log(lastName)
+  console.log(email)
+  console.log(password)
   try {
     const _user = await User.getUserByEmail(email);
-    console.log(password)
-    console.log(_user)
     if (_user) {
       next({
         name: 'UserTakenError',
@@ -25,6 +26,7 @@ apiRouter.post('/register', async (req, res, next) => {
         error: 'UserTakenError'
       });
     }
+
     if (password.length < 8) {
       next({
         name: 'PasswordTooShortError',
@@ -33,7 +35,7 @@ apiRouter.post('/register', async (req, res, next) => {
       });
     }
 
-    const user = await createUser({
+    const user = await User.createUser({
       firstName,
       lastName,
       email,
@@ -75,12 +77,14 @@ apiRouter.post('/login', async (req, res, next) => {
     const user = await User.getUserByEmail(email);
     const isValid = await bcrypt.compare(password, user.password);
     if (isValid) {
+
       const token = jwt.sign({
         id: user.id,
         email
       }, JWT_SECRET, {
         expiresIn: '1w'
       });
+
       res.send({
         user,
         message: "you're logged in!",
@@ -94,7 +98,7 @@ apiRouter.post('/login', async (req, res, next) => {
       });
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     next(error);
   }
 });
@@ -102,7 +106,7 @@ apiRouter.post('/login', async (req, res, next) => {
 apiRouter.get('/', async (req, res, next) => {
 
   const users = await User.getAllUsers();
-  console.log(users)
+  // console.log(users)
   res.send({
     message: users
   });
