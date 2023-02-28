@@ -64,7 +64,6 @@ async function buildTables() {
         id SERIAL PRIMARY KEY,
         "productId" INTEGER REFERENCES products(id),
         "userId" INTEGER REFERENCES users(id),
-        price DECIMAL(10,2) NOT NULL,
         quantity INTEGER NOT NULL
       );
     `);

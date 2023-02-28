@@ -8,11 +8,11 @@ const {
 } = require('../db/index')
 
 apiRouter.get('/', async (req, res, next) => {
-
+    console.log(req.user)
     const products = await Product.getAllProducts();
 
     res.send({
-        message: products
+        message: req.user
     });
 })
 
