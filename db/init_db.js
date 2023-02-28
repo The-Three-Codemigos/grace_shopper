@@ -18,7 +18,7 @@ async function buildTables() {
     // build tables in correct order
 
     await client.query(`
-      DROP TABLE IF EXISTS cart;
+      DROP TABLE IF EXISTS carts;
       DROP TABLE IF EXISTS orders;
       DROP TABLE IF EXISTS reviews;
       DROP TABLE IF EXISTS products;
@@ -60,7 +60,7 @@ async function buildTables() {
         "text" text NOT NULL
       );
 
-      CREATE TABLE cart (
+      CREATE TABLE carts (
         id SERIAL PRIMARY KEY,
         "productId" INTEGER REFERENCES products(id),
         "userId" INTEGER REFERENCES users(id),

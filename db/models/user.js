@@ -3,21 +3,20 @@ const client = require('../client');
 const bcrypt = require('bcrypt');
 const SALT_COUNT = 10;
 
-async function createUser({ 
-  firstName, 
+async function createUser({
+  firstName,
   lastName,
   email,
-  password,
-  isAdmin
+  password
 }) {
   const hashedPassword = await bcrypt.hash(password, SALT_COUNT)
   try {
-    const { rows: [ user ] } = await client.query(`
-      INSERT INTO users("firstName", "lastName", email, password, "isAdmin") 
-      VALUES($1, $2, $3, $4, $5) 
+    const { rows: [user] } = await client.query(`
+      INSERT INTO users("firstName", "lastName", email, password) 
+      VALUES($1, $2, $3, $4) 
       ON CONFLICT (email) DO NOTHING 
       RETURNING *;
-    `, [firstName, lastName, email, hashedPassword, isAdmin]);
+    `, [firstName, lastName, email, hashedPassword]);
 
     if (user) {
       delete user.password
@@ -46,12 +45,25 @@ async function getAllUsers() {
 async function getUserById(id) {
   /* this adapter should fetch a specific user from your db */
   try {
-    const { rows } = await client.query(`
+    const { rows: [user] } = await client.query(`
       SELECT *
       FROM users
       WHERE id=${id};
     `);
-    return rows;
+    return user;
+  } catch (error) {
+    throw error;
+  }
+}
+async function getUserByEmail(email) {
+  try {
+    const { rows: [user] } = await client.query(`
+      SELECT *
+      FROM users
+      WHERE email=$1;
+    `, [email]);
+
+    return user;
   } catch (error) {
     throw error;
   }
@@ -88,5 +100,6 @@ module.exports = {
   createUser,
   updateUser,
   deleteUser,
-  getUserById
+  getUserById,
+  getUserByEmail
 };
