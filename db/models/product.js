@@ -66,13 +66,14 @@ async function updateProducts({ id, ...fields }) {
 }
 
 async function deleteProduct(id) {
+
   await client.query(`
-  DELETE FROM products WHERE id=${id};
+  DELETE FROM orders WHERE "productId"=${id}
   `)
+
   const { rows: [product] } = await client.query(`
-  DELETE FROM products WHERE id=${id}
-  RETURNING *;
-  `)
+  DELETE FROM products WHERE id=$1;
+  `, [id])
   return product
 }
 
