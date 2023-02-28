@@ -70,6 +70,7 @@ apiRouter.patch('/:productId', async (req, res, next) => {
 
 apiRouter.delete('/:productId', async (req, res, next) => {
     const id = req.params.productId
+    console.log(id)
     try {
         const destroy = await Product.deleteProduct(id)
         res.send(destroy)
