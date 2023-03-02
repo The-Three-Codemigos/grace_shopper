@@ -8,17 +8,35 @@ const {
 } = require('../db/index');
 
 
-apiRouter.post('/:productId/createCarts', requireUser, async (req, res, next) => {
-    const productId = req.params.productId;
-    const { id } = req.user
+apiRouter.get('/', async (req, res, next) => {
+    const orderItems = await Cart.getAllOrderItems();
+
+    res.send(orderItems);
+})
+
+apiRouter.post('/', async (req, res, next) => {
+    const { orderId, productId, quantity } = req.body;
 
     try {
-        const newProduct = await Cart.createCarts({})
-        res.send(newProduct)
+        const newOrderItem = await Cart.addProductOrder({ orderId, productId, quantity })
+        res.send(newOrderItem)
 
     } catch (error) {
-        next(error)
+        next()
     }
 })
+
+// apiRouter.get('/:orderId', async (req, res, next) => {
+//     try {
+//       const { orderId } = req.params;
+
+//       // Get order items by order id
+//       const orderItems = await getOrderItemsByOrderId(orderId);
+
+//       res.json(orderItems);
+//     } catch (error) {
+//       next(error);
+//     }
+//   });
 
 module.exports = apiRouter;

@@ -18,7 +18,7 @@ async function buildTables() {
     // build tables in correct order
 
     await client.query(`
-      DROP TABLE IF EXISTS "orderProduct";
+      DROP TABLE IF EXISTS order_items;
       DROP TABLE IF EXISTS orders;
       DROP TABLE IF EXISTS reviews;
       DROP TABLE IF EXISTS products;
@@ -59,8 +59,9 @@ async function buildTables() {
         "text" text NOT NULL
       );
 
-      CREATE TABLE "orderProduct" (
+      CREATE TABLE order_items (
         id SERIAL PRIMARY KEY,
+        "orderId" INTEGER REFERENCES orders(id),
         "productId" INTEGER REFERENCES products(id),
         quantity INTEGER NOT NULL
       );

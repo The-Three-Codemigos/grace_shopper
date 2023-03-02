@@ -8,7 +8,7 @@ const client = require('../client');
 // }) {
 //     try {
 //         const { rows: [orderProduct] } = await client.query(`
-//       INSERT INTO orderProduct("orderId", "productId", quantity) 
+//       INSERT INTO order_Product("orderId", "productId", quantity) 
 //       VALUES($1, $2, $3) 
 //       RETURNING *;
 //     `, [orderId, productId, quantity]);
@@ -19,19 +19,52 @@ const client = require('../client');
 //     }
 // }
 
-// async function getAllProductOrder() {
-//     /* this adapter should fetch a list of all carts from your db */
-//     try {
-//         const { rows } = await client.query(`
-//       SELECT * 
-//       FROM carts;
-//     `);
+async function addProductOrder(req, res, next) {
+    try {
+        const { orderId, productId, quantity } = req.body;
 
-//         return rows;
-//     } catch (error) {
-//         throw error;
-//     }
-// }
+        // Check if order exists
+        // const order = await getOrderById(orderId);
+        // if (!order) {
+        //     return res.status(404).json({ error: 'Order not found' });
+        // }
+
+        // // Check if product exists
+        // const product = await getProductById(productId);
+        // if (!product) {
+        //     return res.status(404).json({ error: 'Product not found' });
+        // }
+
+        // Decrement product quantity
+        // await updateProduct(productId, { quantity: product.quantity - quantity });
+
+        // Create order item
+        const { rows: [orderItem] } = await client.query(`
+        INSERT INTO order_items("orderId", "productId", quantity)
+        VALUES($1, $2, $3)
+        RETURNING *;
+      `, [orderId, productId, quantity]);
+
+        return orderItem;
+
+    } catch (error) {
+        next(error);
+    }
+}
+
+async function getAllOrderItems() {
+    /* this adapter should fetch a list of all carts from your db */
+    try {
+        const { rows } = await client.query(`
+      SELECT * 
+       FROM order_items;
+    `);
+
+        return rows;
+    } catch (error) {
+        throw error;
+    }
+}
 
 // async function getCartById(id) {
 //     /* this adapter should fetch a specific cart from your db */
@@ -87,7 +120,8 @@ const client = require('../client');
 
 module.exports = {
     // add your database adapter functions here
-    // addProductOrder,
+    addProductOrder,
+    getAllOrderItems
     // getAllProductOrder,
     // getCartsByUserId,
     // deleteCart,
