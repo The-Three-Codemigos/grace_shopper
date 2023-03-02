@@ -3,16 +3,15 @@ const apiRouter = express.Router();
 const { requireUser } = require("./utils");
 
 const {
-    Product,
-    User
+    Product
 } = require('../db/index')
 
 apiRouter.get('/', async (req, res, next) => {
-
+    console.log(req.user)
     const products = await Product.getAllProducts();
 
     res.send({
-        message: products
+        message: req.user
     });
 })
 
