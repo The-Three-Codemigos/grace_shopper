@@ -3,11 +3,11 @@ module.exports = {
   // so that you can use them in your express server api routers
   // for example, create a user.js file for a User model
   // and User: require('./user') here
-  User: require('./user'),
-  Cart: require('./cart'),
-  Product: require('./product'),
-  Order: require('./order'),
-  Review: require('./review')
+  User: require("./user"),
+  Cart: require("./cart"),
+  Product: require("./product"),
+  Order: require("./order"),
+  Review: require("./review"),
 };
 
 // then, in your API, you'll require the appropriate model

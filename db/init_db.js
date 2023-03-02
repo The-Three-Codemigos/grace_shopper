@@ -18,7 +18,7 @@ async function buildTables() {
     // build tables in correct order
 
     await client.query(`
-      DROP TABLE IF EXISTS orders;
+      DROP TABLE IF EXISTS carts;
       DROP TABLE IF EXISTS "orderProduct" CASCADE;
       DROP TABLE IF EXISTS orders;
       DROP TABLE IF EXISTS reviews;
