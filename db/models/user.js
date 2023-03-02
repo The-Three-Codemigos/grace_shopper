@@ -62,7 +62,7 @@ async function getUserByEmail(email) {
       FROM users
       WHERE email=$1;
     `, [email]);
-
+    // Do not send the password
     return user;
   } catch (error) {
     throw error;

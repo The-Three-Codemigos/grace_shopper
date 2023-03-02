@@ -4,20 +4,16 @@ const { requireUser } = require("./utils");
 
 
 const {
-    Cart,
-    User,
-    Product
+    Cart
 } = require('../db/index');
 
 
 apiRouter.post('/:productId/createCarts', requireUser, async (req, res, next) => {
     const productId = req.params.productId;
+    const { id } = req.user
 
     try {
         const newProduct = await Cart.createCarts({})
-        res.send({
-            message: requireUser
-        })
         res.send(newProduct)
 
     } catch (error) {

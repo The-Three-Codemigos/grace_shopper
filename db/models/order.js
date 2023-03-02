@@ -1,19 +1,19 @@
 // grab our db client connection to use with our adapters
 const client = require('../client');
 
-async function createOrder({ 
+async function createOrder({
   userId,
-  productId,
   isCheckedOut
 }) {
   try {
-    const { rows: [ order ] } = await client.query(`
-      INSERT INTO orders("userId", "productId", "isCheckedOut") 
-      VALUES($1, $2, $3) 
+    const { rows: [order] } = await client.query(`
+      INSERT INTO orders("userId", "isCheckedOut") 
+      VALUES($1, $2) 
       RETURNING *;
-    `, [userId, productId, isCheckedOut]);
+    `, [userId, isCheckedOut]);
 
     return order;
+
   } catch (error) {
     throw error;
   }
@@ -49,19 +49,19 @@ async function getOrderById(id) {
 }
 
 async function getOrderByUserId(userId) {
-    /* this adapter should fetch an order from a specific user from your db */
-    try {
-      const { rows } = await client.query(`
+  /* this adapter should fetch an order from a specific user from your db */
+  try {
+    const { rows } = await client.query(`
         SELECT * 
         FROM orders
         WHERE "userId"=${userId};
       `);
-  
-      return rows;
-    } catch (error) {
-      throw error;
-    }
+
+    return rows;
+  } catch (error) {
+    throw error;
   }
+}
 
 async function updateOrders({ id, ...fields }) {
   const setString = Object.keys(fields).map(
