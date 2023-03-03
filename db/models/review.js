@@ -1,5 +1,5 @@
 // grab our db client connection to use with our adapters
-const client = require('../client');
+const client = require("../client");
 
 async function getAllReviews() {
   /* this adapter should fetch a list of users from your db */
@@ -15,17 +15,18 @@ async function getAllReviews() {
   }
 }
 
-async function createReview({ 
-  productId, 
-  userId,
-  text,
-}) {
+async function createReview({ productId, userId, text }) {
   try {
-    const { rows: [ review ] } = await client.query(`
+    const {
+      rows: [review],
+    } = await client.query(
+      `
       INSERT INTO reviews("productId", "userId", "text") 
       VALUES($1, $2, $3) 
       RETURNING *;
-    `, [productId, userId, text]);
+    `,
+      [productId, userId, text]
+    );
 
     return review;
   } catch (error) {

@@ -4,24 +4,27 @@ const { requireUser } = require("./utils");
 
 
 const {
-    Order,
-    Cart
+    Order
 } = require('../db/index');
 
 apiRouter.get('/', async (req, res, next) => {
     const orders = await Order.getAllOrders();
-
     res.send(orders);
 })
 
-apiRouter.post('/createOrder', async (req, res, next) => {
-    // const productId = req.params.productId;
-    const { isCheckedOut, userId } = req.body;
+apiRouter.get('/myOrders', async (req, res, next) => {
+    const { userId } = req.body
+    const usersOrders = await Order.getOrderByUserId(userId);
+    res.send(usersOrders);
+})
+
+apiRouter.post('/', async (req, res, next) => {
+    const { userId } = req.body;
 
     console.log(req)
     try {
         const newOrder = await Order.createOrder({
-            userId, isCheckedOut
+            userId
         })
         res.send(newOrder)
 
@@ -30,18 +33,10 @@ apiRouter.post('/createOrder', async (req, res, next) => {
     }
 })
 
-apiRouter.post('/:productId/order', async (req, res, next) => {
-    const productId = req.params.productId
-    const { orderId, quantity } = req.body
 
-    try {
-        const addProductToOrder = await Cart.addProductOrder({ orderId, productId, quantity })
-        res.send(addProductToOrder)
 
-    } catch (error) {
-        next(error)
-    }
-})
+
+
 
 
 module.exports = apiRouter;
