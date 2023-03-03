@@ -28,8 +28,6 @@ apiRouter.post('/:productId', async (req, res, next) => {
 apiRouter.get('/:orderId', async (req, res, next) => {
     try {
         const { orderId } = req.params;
-
-        // Get order items by order id
         const orderItems = await OrderItems.getOrderItemsByOrderId(orderId);
 
         res.send(orderItems);
@@ -48,7 +46,7 @@ apiRouter.patch('/:orderItemId', async (req, res, next) => {
         if (quantity) {
             updatedFields.quantity = quantity;
         }
-        const updatedOrderItem = await OrderItems.updateOrderItem(updatedFields);
+        const updatedOrderItem = await OrderItems.updatedOrderItem(updatedFields);
 
         res.send(updatedOrderItem);
     } catch (error) {

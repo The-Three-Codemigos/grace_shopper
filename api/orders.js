@@ -33,6 +33,32 @@ apiRouter.post('/', async (req, res, next) => {
     }
 })
 
+apiRouter.patch('/:orderId', async (req, res, next) => {
+    try {
+        const id = req.params.orderId
+        const { isCheckedOut } = req.body;
+        const updatedFields = { id: id }
+
+        if (isCheckedOut) {
+            updatedFields.isCheckedOut = isCheckedOut;
+        }
+        const updatedOrderItem = await Order.updateOrders(updatedFields);
+
+        res.send(updatedOrderItem);
+    } catch (error) {
+        next(error);
+    }
+});
+
+apiRouter.delete('/:orderId', async (req, res, next) => {
+    const id = req.params.orderId
+    try {
+        const destroy = await Order.deleteOrder(id)
+        res.send(destroy)
+    } catch (error) {
+        next(error)
+    }
+})
 
 
 
