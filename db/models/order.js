@@ -21,7 +21,6 @@ async function createOrder({ userId }) {
 }
 
 async function getAllOrders() {
-  /* this adapter should fetch a list of all orders from your db */
   try {
     const { rows } = await client.query(`
       SELECT * 
@@ -35,7 +34,6 @@ async function getAllOrders() {
 }
 
 async function getOrderById(id) {
-  /* this adapter should fetch a specific order from your db */
   try {
     const { rows } = await client.query(`
       SELECT * 
@@ -50,12 +48,11 @@ async function getOrderById(id) {
 }
 
 async function getOrderByUserId(userId) {
-  /* this adapter should fetch an order from a specific user from your db */
   try {
     const { rows } = await client.query(`
         SELECT * 
         FROM orders
-        WHERE "userId"=${userId};
+        WHERE "userId"=${userId} AND "isCheckedOut"=false;
       `);
 
     return rows;
@@ -85,7 +82,7 @@ async function updateOrders({ id, ...fields }) {
 
 async function deleteOrder(id) {
   await client.query(`
-  DELETE FROM orders WHERE id=${id};
+  DELETE FROM order_items WHERE "orderId"=${id};
   `);
   const {
     rows: [order],
@@ -97,7 +94,6 @@ async function deleteOrder(id) {
 }
 
 module.exports = {
-  // add your database adapter functions here
   createOrder,
   getAllOrders,
   getOrderByUserId,
