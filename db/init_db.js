@@ -3,27 +3,25 @@ const {
   createUser,
   User,
   Product,
-  Order
+  Order,
   // declare your model imports here
   // for example, User
-} = require('./');
+} = require("./");
 
 async function buildTables() {
   try {
-    console.log("Starting to build tables...")
+    console.log("Starting to build tables...");
     client.connect();
 
     // drop tables in correct order
-
-    // build tables in correct order
-
     await client.query(`
-      DROP TABLE IF EXISTS "orderProduct";
-      DROP TABLE IF EXISTS orders;
-      DROP TABLE IF EXISTS reviews;
-      DROP TABLE IF EXISTS products;
-      DROP TABLE IF EXISTS users;
-      `);
+    DROP TABLE IF EXISTS order_items;
+    DROP TABLE IF EXISTS orders;
+    DROP TABLE IF EXISTS reviews;
+    DROP TABLE IF EXISTS products CASCADE;
+    DROP TABLE IF EXISTS users CASCADE;
+    `);
+    // build tables in correct order
 
     await client.query(`
       CREATE TABLE products (
@@ -49,7 +47,7 @@ async function buildTables() {
         id SERIAL PRIMARY KEY,
         "userId" INTEGER REFERENCES users(id),
         "orderDate" DATE NOT NULL DEFAULT CURRENT_DATE,
-        "isCheckedOut" BOOLEAN
+        "isCheckedOut" BOOLEAN DEFAULT false
       );
 
       CREATE TABLE reviews (
@@ -59,8 +57,9 @@ async function buildTables() {
         "text" text NOT NULL
       );
 
-      CREATE TABLE "orderProduct" (
+      CREATE TABLE order_items (
         id SERIAL PRIMARY KEY,
+        "orderId" INTEGER REFERENCES orders(id),
         "productId" INTEGER REFERENCES products(id),
         quantity INTEGER NOT NULL
       );
@@ -72,63 +71,62 @@ async function buildTables() {
   }
 }
 
+
+
 async function populateInitialData() {
   try {
-    // create useful starting data by leveraging your
-    // Model.method() adapters to seed your db, for example:
-    // const user1 = await User.createUser({ ...user info goes here... })
     console.log("Starting to create users...");
     const user1 = await User.createUser({
-      firstName: 'Clayton',
-      lastName: 'Carver',
-      email: 'clayton@testemail.com',
-      password: 'password',
-      isAdmin: true
+      firstName: "Clayton",
+      lastName: "Carver",
+      email: "clayton@testemail.com",
+      password: "password",
+      isAdmin: true,
     });
 
     const user2 = await User.createUser({
-      firstName: 'Ulysses',
-      lastName: 'Cortez',
-      email: 'ulysses@testemail.com',
-      password: 'alsopassword',
-      isAdmin: true
+      firstName: "Ulysses",
+      lastName: "Cortez",
+      email: "ulysses@testemail.com",
+      password: "alsopassword",
+      isAdmin: true,
     });
 
     const user3 = await User.createUser({
-      firstName: 'Kirk',
-      lastName: 'Bogle',
-      email: 'kirk@testemail.com',
-      password: 'athirdpassword',
-      isAdmin: true
+      firstName: "Kirk",
+      lastName: "Bogle",
+      email: "kirk@testemail.com",
+      password: "athirdpassword",
+      isAdmin: true,
     });
 
     console.log("Finished creating users!");
 
     const product1 = await Product.createProduct({
-      title: 'Computer',
-      description: 'This is a computer',
+      title: "Computer",
+      description: "This is a computer",
       price: 1,
       quantity: 1,
-      category: 'Electronics',
-      image: 'something'
+      category: "Electronics",
+      image: "something",
     });
 
     const product2 = await Product.createProduct({
-      title: 'Desk',
-      description: 'This is a desk',
+      title: "Desk",
+      description: "This is a desk",
       price: 5,
       quantity: 1,
-      category: 'Furniture',
-      image: 'something'
+      category: "Furniture",
+      image: "something",
     });
 
     const product3 = await Product.createProduct({
-      title: 'Mug',
-      description: 'This is a mug',
+      title: "Mug",
+      description: "This is a mug",
       price: 5,
       quantity: 1,
-      category: 'Drinkware',
-      image: 'something'
+      category: "Drinkware",
+      image: "something",
     });
 
     console.log("Finished creating products!");
@@ -148,8 +146,7 @@ async function populateInitialData() {
       isCheckedOut: true,
     });
 
-    console.log("Finished creating orders!")
-
+    console.log("Finished creating orders!");
   } catch (error) {
     throw error;
   }

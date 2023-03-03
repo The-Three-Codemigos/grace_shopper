@@ -9,18 +9,22 @@ const {
 
 apiRouter.get('/', async (req, res, next) => {
     const orders = await Order.getAllOrders();
-
     res.send(orders);
 })
 
-apiRouter.post('/createOrder', async (req, res, next) => {
-    // const productId = req.params.productId;
-    const { isCheckedOut, id } = req.body;
+apiRouter.get('/myOrders', async (req, res, next) => {
+    const { userId } = req.body
+    const usersOrders = await Order.getOrderByUserId(userId);
+    res.send(usersOrders);
+})
+
+apiRouter.post('/', async (req, res, next) => {
+    const { userId } = req.body;
 
     console.log(req)
     try {
         const newOrder = await Order.createOrder({
-            id, isCheckedOut
+            userId
         })
         res.send(newOrder)
 
@@ -28,5 +32,11 @@ apiRouter.post('/createOrder', async (req, res, next) => {
         next(error)
     }
 })
+
+
+
+
+
+
 
 module.exports = apiRouter;
