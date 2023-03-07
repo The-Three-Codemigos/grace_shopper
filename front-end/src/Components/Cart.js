@@ -1,13 +1,13 @@
 import React from 'react';
 import Header from './Header';
 
-const Home = () => {
+const Cart = () => {
     return (
         <>
             <Header />
-            <h1>Home</h1>
+            <h1>Cart</h1>
         </>
     )
 }
 
-export default Home
+export default Cart
