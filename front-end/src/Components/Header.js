@@ -19,10 +19,10 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
                 <ul className="list">
                     <li><img className="headerIcon" src="https://cdn-icons-png.flaticon.com/512/54/54481.png" alt="searchIcon" /></li>
                     <li><Link to='/cart' className="headerIcon"><img className="headerIcon" src="https://cdn-icons-png.flaticon.com/512/2832/2832495.png" alt="searchIcon" /></Link></li>
-                    {isLoggedIn ?
-                        <li><Link to='/profile' className="headerIcon"><img className="headerIcon" src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" alt="searchIcon" /></Link></li> :
-                        <li><button className="loginButtonHeader">SignIn</button></li>
-                    }
+                    {/* {isLoggedIn ? */}
+                    <li><Link to='/profile' className="headerIcon"><img className="headerIcon" src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" alt="searchIcon" /></Link></li>
+                    {/* <li><button className="loginButtonHeader">SignIn</button></li> */}
+                    {/* } */}
                 </ul>
             </nav>
         </>
