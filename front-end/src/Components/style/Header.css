@@ -14,8 +14,8 @@
     align-items: center;
     height: 65px;
     width: 100%;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
-    margin-bottom: 15px;
+    padding: 30px 70px 30px 70px;
+    /* box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px; */
     z-index: 999;
     backdrop-filter: blur(3px);
 }
@@ -91,7 +91,8 @@
     transition: all 0.3s ease;
 }
 
-.loginButtonHeader:hover {
+.loginButtonHeader:hover,
+.buyNowBtn:hover {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
     transform: scale(1.05);
 }
