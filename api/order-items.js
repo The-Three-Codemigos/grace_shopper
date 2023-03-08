@@ -7,9 +7,13 @@ const {
 
 
 apiRouter.get('/', async (req, res, next) => {
-    const orderItems = await OrderItems.getAllOrderItems();
+    try {
+        const orderItems = await OrderItems.getAllOrderItems();
+        res.send(orderItems);
+    } catch (error) {
+        next(error)
+    }
 
-    res.send(orderItems);
 })
 
 apiRouter.post('/:productId', async (req, res, next) => {
@@ -19,9 +23,8 @@ apiRouter.post('/:productId', async (req, res, next) => {
     try {
         const newOrderItem = await OrderItems.addProductOrder({ orderId, productId, quantity })
         res.send(newOrderItem)
-
     } catch (error) {
-        next()
+        next(error)
     }
 })
 
@@ -29,13 +32,11 @@ apiRouter.get('/:orderId', async (req, res, next) => {
     try {
         const { orderId } = req.params;
         const orderItems = await OrderItems.getOrderItemsByOrderId(orderId);
-
         res.send(orderItems);
     } catch (error) {
         next(error);
     }
 });
-
 
 apiRouter.patch('/:orderItemId', async (req, res, next) => {
     try {

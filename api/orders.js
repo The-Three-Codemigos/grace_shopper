@@ -8,24 +8,28 @@ const {
 } = require('../db/index');
 
 apiRouter.get('/', async (req, res, next) => {
-    const orders = await Order.getAllOrders();
-    res.send(orders);
-})
-
-apiRouter.get('/myOrders', async (req, res, next) => {
-    const { userId } = req.body
-    const usersOrders = await Order.getOrderByUserId(userId);
-    res.send(usersOrders);
-})
-
-apiRouter.post('/', async (req, res, next) => {
-    const { userId } = req.body;
-
-    console.log(req)
     try {
-        const newOrder = await Order.createOrder({
-            userId
-        })
+        const orders = await Order.getAllOrders();
+        res.send(orders);
+    } catch (error) {
+        next(error)
+    }
+})
+
+apiRouter.get('/myOrders', requireUser, async (req, res, next) => {
+    try {
+        const usersOrders = await Order.getOrderByUserId(req.user.id);
+        res.send(usersOrders);
+    } catch (error) {
+        next(error)
+    }
+})
+
+apiRouter.post('/', requireUser, async (req, res, next) => {
+    try {
+        const newOrder = await Order.createOrder(
+            req.user.id
+        )
         res.send(newOrder)
 
     } catch (error) {
@@ -34,6 +38,7 @@ apiRouter.post('/', async (req, res, next) => {
 })
 
 apiRouter.patch('/:orderId', async (req, res, next) => {
+    //Send error if the user is not the same as userId
     try {
         const id = req.params.orderId
         const { isCheckedOut } = req.body;
