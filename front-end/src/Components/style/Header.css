@@ -101,5 +101,38 @@
     height: 25px;
     width: 25px;
     object-fit: fill;
+}
 
+.input {
+    margin-top: 10px;
+    padding: 25px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    border-radius: 50px;
+    font-size: 20px;
+    color: white;
+    outline: none;
+    transition: .5s;
+}
+
+.box:hover input {
+    width: 350px;
+    background: #3b3640;
+    border-radius: 10px;
+}
+
+.box i {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translate(-50%, -50%);
+    font-size: 26px;
+    transition: .2s;
+}
+
+.box:hover i {
+    opacity: 0;
+    z-index: -1;
 }
