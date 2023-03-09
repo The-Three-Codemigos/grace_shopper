@@ -7,24 +7,24 @@ const {
   createReview,
 } = require("../db/index");
 
-apiRouter.get('/:productId/reviews', async (req, res, next) => {
-  const { productId } = req.params;
+apiRouter.get('/:product_id/reviews', async (req, res, next) => {
+  const { product_id } = req.params;
 
   try {
-    const reviews = await getReviewsByProductId(productId);
+    const reviews = await getReviewsByProductId(product_id);
     res.send(reviews);
   } catch (error) {
     next(error);
   }
 });
 
-apiRouter.post('/:productId/reviews', requireUser, async (req, res, next) => {
-  const { productId } = req.params;
+apiRouter.post('/:product_id/reviews', requireUser, async (req, res, next) => {
+  const { product_id } = req.params;
   const { title, description, rating } = req.body;
-  const { userId } = req;
+  const { user_id } = req;
 
   try {
-    const review = await createReview(productId, {title, description, rating, userId });
+    const review = await createReview(product_id, {title, description, rating, user_id });
     res.send(review);
   } catch (error) {
     next(error);

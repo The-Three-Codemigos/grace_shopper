@@ -30,8 +30,8 @@ apiRouter.post("/createProduct", async (req, res, next) => {
     next(error);
   }
 });
-apiRouter.get("/:productId", async (req, res, next) => {
-  const id = req.params.productId;
+apiRouter.get("/:product_id", async (req, res, next) => {
+  const id = req.params.product_id;
   try {
     const product = await Product.getProductById(id);
     res.send(product);
@@ -40,8 +40,8 @@ apiRouter.get("/:productId", async (req, res, next) => {
   }
 });
 
-apiRouter.patch("/:productId", async (req, res, next) => {
-  const id = req.params.productId;
+apiRouter.patch("/:product_id", async (req, res, next) => {
+  const id = req.params.product_id;
   const { title, description, price, quantity, category, image } = req.body;
   const updatedFields = { id: id };
   // requireUser and use User.getUserById(req.user.id) to see if the logged in user is an admin if he is then let them update product otherwise throw an error
@@ -72,8 +72,8 @@ apiRouter.patch("/:productId", async (req, res, next) => {
   }
 });
 
-apiRouter.delete("/:productId", async (req, res, next) => {
-  const id = req.params.productId;
+apiRouter.delete("/:product_id", async (req, res, next) => {
+  const id = req.params.product_id;
   console.log(id);
   // verify the user is an admin to be able to delete a product
   try {

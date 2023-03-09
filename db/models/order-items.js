@@ -1,17 +1,17 @@
 // grab our db client connection to use with our adapters
 const client = require("../client");
 
-async function addProductOrder({ orderId, productId, quantity }) {
+async function addProductOrder({ orderId, product_id, quantity }) {
   try {
     const {
       rows: [orderItem],
     } = await client.query(
       `
-        INSERT INTO order_items("orderId", "productId", quantity)
+        INSERT INTO order_items("orderId", "product_id", quantity)
         VALUES($1, $2, $3)
         RETURNING *;
       `,
-      [orderId, productId, quantity]
+      [orderId, product_id, quantity]
     );
     console.log(orderItem);
 

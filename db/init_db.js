@@ -42,15 +42,15 @@ async function buildTables() {
 
       CREATE TABLE orders (
         id SERIAL PRIMARY KEY,
-        "userId" INTEGER REFERENCES users(id),
+        "user_id" INTEGER REFERENCES users(id),
         "orderDate" DATE DEFAULT CURRENT_DATE,
         "isCheckedOut" BOOLEAN DEFAULT false
       );
 
       CREATE TABLE reviews (
         id SERIAL PRIMARY KEY,
-        "productId" INTEGER REFERENCES products(id),
-        "userId" INTEGER REFERENCES users(id),
+        "product_id" INTEGER REFERENCES products(id),
+        "user_id" INTEGER REFERENCES users(id),
         title text NOT NULL,
         description text NOT NULL,
         rating INTEGER NOT NULL
@@ -59,7 +59,7 @@ async function buildTables() {
       CREATE TABLE order_items (
         id SERIAL PRIMARY KEY,
         "orderId" INTEGER REFERENCES orders(id),
-        "productId" INTEGER REFERENCES products(id),
+        "product_id" INTEGER REFERENCES products(id),
         quantity INTEGER NOT NULL
       );
     `);
@@ -130,35 +130,35 @@ async function populateInitialData() {
 
     console.log("Finished creating products!");
 
-    console.log("Starting to create orders...");
-    const order1 = await Order.createOrder({
-      userId: 1,
-      productId: 1,
-      orderDate: "",
-      isCheckedOut: true,
-    });
+    // console.log("Starting to create orders...");
+    // const order1 = await Order.createOrder({
+    //   user_id: 1,
+    //   product_id: 1,
+    //   orderDate: "",
+    //   isCheckedOut: true,
+    // });
 
-    const order2 = await Order.createOrder({
-      userId: 2,
-      productId: 2,
-      orderDate: "",
-      isCheckedOut: true,
-    });
+    // const order2 = await Order.createOrder({
+    //   user_id: 2,
+    //   product_id: 2,
+    //   orderDate: "",
+    //   isCheckedOut: true,
+    // });
 
-    console.log("Finished creating orders!");
+    // console.log("Finished creating orders!");
 
     console.log("Starting to create reviews...");
     const review1 = await Review.createReview({
-      productId: 1,
-      userId: 1,
+      product_id: 1,
+      user_id: 1,
       title: "Great Product",
       description: "I love this product",
       rating: 5,
     });
 
     const review2 = await Review.createReview({
-      productId: 2,
-      userId: 2,
+      product_id: 2,
+      user_id: 2,
       title: "Not a Great Product",
       description: "Its not great",
       rating: 5,

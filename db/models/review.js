@@ -1,13 +1,13 @@
 const client = require('../client');
 
-async function getReviewsByProductId(productId) {
+async function getReviewsByProductId(product_id) {
   try {
     const { rows: reviews } = await client.query(`
       SELECT *
       FROM reviews
-      WHERE productId = $1
+      WHERE product_id = $1
       ORDER BY created_at DESC
-    `, [productId]);
+    `, [product_id]);
 
     return reviews;
   } catch (error) {
@@ -16,13 +16,13 @@ async function getReviewsByProductId(productId) {
 }
 
 // Create a new review for a product
-async function createReview({ productId, userId, title, description, rating }) {
+async function createReview({ product_id, user_id, title, description, rating }) {
   try {
     const { rows: [review] } = await client.query(`
-      INSERT INTO reviews (productId, userId, title, description, rating)
+      INSERT INTO reviews (product_id, user_id, title, description, rating)
       VALUES ($1, $2, $3, $4, $5)
       RETURNING *
-    `, [productId, userId, title, description, rating]);
+    `, [product_id, user_id, title, description, rating]);
 
     return review;
   } catch (error) {
