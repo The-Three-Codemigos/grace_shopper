@@ -4,8 +4,7 @@ const {
   User,
   Product,
   Order,
-  // declare your model imports here
-  // for example, User
+  Review
 } = require("./");
 
 async function buildTables() {
@@ -13,15 +12,13 @@ async function buildTables() {
     console.log("Starting to build tables...");
     client.connect();
 
-    // drop tables in correct order
     await client.query(`
     DROP TABLE IF EXISTS order_items;
-    DROP TABLE IF EXISTS orders;
+    DROP TABLE IF EXISTS orders CASCADE;
     DROP TABLE IF EXISTS reviews;
     DROP TABLE IF EXISTS products CASCADE;
     DROP TABLE IF EXISTS users CASCADE;
     `);
-    // build tables in correct order
 
     await client.query(`
       CREATE TABLE products (
@@ -46,7 +43,7 @@ async function buildTables() {
       CREATE TABLE orders (
         id SERIAL PRIMARY KEY,
         "userId" INTEGER REFERENCES users(id),
-        "orderDate" DATE NOT NULL DEFAULT CURRENT_DATE,
+        "orderDate" DATE DEFAULT CURRENT_DATE,
         "isCheckedOut" BOOLEAN DEFAULT false
       );
 
@@ -54,7 +51,9 @@ async function buildTables() {
         id SERIAL PRIMARY KEY,
         "productId" INTEGER REFERENCES products(id),
         "userId" INTEGER REFERENCES users(id),
-        "text" text NOT NULL
+        title text NOT NULL,
+        description text NOT NULL,
+        rating INTEGER NOT NULL
       );
 
       CREATE TABLE order_items (
@@ -147,9 +146,33 @@ async function populateInitialData() {
     });
 
     console.log("Finished creating orders!");
+
+    console.log("Starting to create reviews...");
+    const review1 = await Review.createReview({
+      productId: 1,
+      userId: 1,
+      title: "Great Product",
+      description: "I love this product",
+      rating: 5,
+    });
+
+    const review2 = await Review.createReview({
+      productId: 2,
+      userId: 2,
+      title: "Not a Great Product",
+      description: "Its not great",
+      rating: 5,
+    });
+
+    console.log("Finished creating reviews!");
+
+
+
+
   } catch (error) {
     throw error;
   }
+  
 }
 
 buildTables()

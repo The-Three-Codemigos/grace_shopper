@@ -1,32 +1,28 @@
-// grab our db client connection to use with our adapters
-const client = require("../client");
+const client = require('../client');
 
-async function getAllReviews() {
-  /* this adapter should fetch a list of users from your db */
+async function getReviewsByProductId(productId) {
   try {
-    const { rows } = await client.query(`
-      SELECT id, "productId", "reviewUserId", "reviewText" 
-      FROM reviews;
-    `);
+    const { rows: reviews } = await client.query(`
+      SELECT *
+      FROM reviews
+      WHERE productId = $1
+      ORDER BY created_at DESC
+    `, [productId]);
 
-    return rows;
+    return reviews;
   } catch (error) {
     throw error;
   }
 }
 
-async function createReview({ productId, userId, text }) {
+// Create a new review for a product
+async function createReview({ productId, userId, title, description, rating }) {
   try {
-    const {
-      rows: [review],
-    } = await client.query(
-      `
-      INSERT INTO reviews("productId", "userId", "text") 
-      VALUES($1, $2, $3) 
-      RETURNING *;
-    `,
-      [productId, userId, text]
-    );
+    const { rows: [review] } = await client.query(`
+      INSERT INTO reviews (productId, userId, title, description, rating)
+      VALUES ($1, $2, $3, $4, $5)
+      RETURNING *
+    `, [productId, userId, title, description, rating]);
 
     return review;
   } catch (error) {
@@ -35,7 +31,6 @@ async function createReview({ productId, userId, text }) {
 }
 
 module.exports = {
-  // add your database adapter functions here
-  getAllReviews,
+  getReviewsByProductId,
   createReview,
 };
