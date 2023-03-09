@@ -1,11 +1,9 @@
 import React from 'react';
 import Header from './Header';
 import './style/Home.css'
-// import iphoneImg from "./img/iphone5.png"
 import laptopImg from "./img/ipad.png"
 import iphone from "./img/iphone.png"
 import watch from "./img/watch.png"
-// import mac from "./img/mac.png"
 
 const Home = () => {
     return (

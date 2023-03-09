@@ -9,7 +9,6 @@ const {
 } = require('../db/index')
 
 const jwt = require('jsonwebtoken');
-// const { getUserByEmail } = require('../db/models/user');
 
 apiRouter.post('/register', async (req, res, next) => {
   const { firstName, lastName, email, password } = req.body;
@@ -58,8 +57,8 @@ apiRouter.post('/register', async (req, res, next) => {
       token
     });
 
-  } catch ({ name, message }) {
-    next({ name, message });
+  } catch (error) {
+    next(ErrorEvent);
   }
 });
 
@@ -98,30 +97,32 @@ apiRouter.post('/login', async (req, res, next) => {
       });
     }
   } catch (error) {
-    // console.log(error);
     next(error);
   }
 });
 
 apiRouter.get('/', async (req, res, next) => {
-
-  const users = await User.getAllUsers();
-  // console.log(users)
-  res.send({
-    message: users
-  });
+  try {
+    const users = await User.getAllUsers();
+    res.send({
+      message: users
+    });
+  } catch (error) {
+    next(error)
+  }
 })
 
 // GET /api/users/me
 apiRouter.get('/me', requireUser, async (req, res, next) => {
-  const { email } = req.user;
-  const user = await User.getUserByEmail(email)
-
-  res.send({
-    "user": user
-  });
+  const user = await User.getUserById(req.user.id)
+  console.log(user)
+  try {
+    res.send({
+      "user": req.user
+    });
+  } catch (error) {
+    next(error)
+  }
 })
-
-// place your routers here
 
 module.exports = apiRouter;

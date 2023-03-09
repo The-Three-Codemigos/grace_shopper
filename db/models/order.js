@@ -1,7 +1,7 @@
 // grab our db client connection to use with our adapters
 const client = require("../client");
 
-async function createOrder({ userId }) {
+async function createOrder(userId) {
   try {
     const {
       rows: [order],

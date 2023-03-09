@@ -1,22 +1,11 @@
 const express = require('express');
 const apiRouter = express.Router();
+const jwt = require('jsonwebtoken');
 const { JWT_SECRET = "secret word" } = process.env;
 
 const {
   User
 } = require('../db/index')
-
-apiRouter.get('/', (req, res, next) => {
-  res.send({
-    message: 'API is under construction!',
-  });
-});
-
-apiRouter.get('/health', (req, res, next) => {
-  res.send({
-    healthy: true,
-  });
-});
 
 apiRouter.use(async (req, res, next) => {
   const prefix = 'Bearer ';
@@ -37,8 +26,8 @@ apiRouter.use(async (req, res, next) => {
           message: 'Authorization token malformed',
         });
       }
-    } catch ({ name, message }) {
-      next({ name, message });
+    } catch (error) {
+      next(error);
     }
   } else {
     next({
@@ -47,6 +36,20 @@ apiRouter.use(async (req, res, next) => {
     });
   }
 });
+
+apiRouter.get('/', (req, res, next) => {
+  res.send({
+    message: 'API is under construction!',
+  });
+});
+
+apiRouter.get('/health', (req, res, next) => {
+  res.send({
+    healthy: true,
+  });
+});
+
+
 
 
 // place your routers here

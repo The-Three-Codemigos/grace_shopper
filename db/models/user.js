@@ -52,6 +52,7 @@ async function getUserById(id) {
       FROM users
       WHERE id=${id};
     `);
+    delete user.password
     return user;
   } catch (error) {
     throw error;
@@ -59,6 +60,7 @@ async function getUserById(id) {
 }
 async function getUserByEmail(email) {
   try {
+    console.log("Email from function: ", email)
     const {
       rows: [user],
     } = await client.query(
