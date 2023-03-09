@@ -132,23 +132,6 @@ async function populateInitialData() {
     });
 
     console.log("Finished creating products!");
-
-    console.log("Starting to create orders...");
-    const order1 = await Order.createOrder({
-      userId: 1,
-      productId: 1,
-      orderDate: "",
-      isCheckedOut: true,
-    });
-
-    const order2 = await Order.createOrder({
-      userId: 2,
-      productId: 2,
-      orderDate: "",
-      isCheckedOut: true,
-    });
-
-    console.log("Finished creating orders!");
   } catch (error) {
     throw error;
   }
