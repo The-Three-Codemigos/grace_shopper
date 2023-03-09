@@ -4,25 +4,31 @@ import './style/Header.css'
 
 
 
-const Header = () => {
+const Header = ({ isLoggedIn, setIsLoggedIn }) => {
 
     return (
         <>
             <nav className="headerNav">
-                <p className="title">Grase Shoper</p>
+                <p className="title">Company</p>
                 <ul className="list">
                     <li><Link to='/' className="headerLink">HOME</Link></li>
                     <li><Link to='/about' className="headerLink">ABOUT</Link></li>
                     <li><Link to='/products' className="headerLink">PRODUCTS</Link></li>
-
                 </ul>
                 <ul className="list">
-                    <li><Link to='/search' className="headerIcon"><img className="headerIcon" src="https://cdn-icons-png.flaticon.com/512/149/149852.png" alt="searchIcon" /></Link></li>
+                    <li>
+                        <div class="box">
+                            <form name="search">
+                                <input type="text" class="input" name="txt" onmouseout="this.value = ''; this.blur();" placeholder="Search...">
+                                </input>
+                                <img className="headerIcon" src="https://cdn-icons-png.flaticon.com/512/54/54481.png" alt="searchIcon" />
+                            </form>
+                        </div>
+                    </li>
                     <li><Link to='/cart' className="headerIcon"><img className="headerIcon" src="https://cdn-icons-png.flaticon.com/512/2832/2832495.png" alt="searchIcon" /></Link></li>
-                    <li><Link to='/cart' className="headerIcon"><img className="headerIcon" src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" alt="searchIcon" /></Link></li>
-
-
+                    <li><Link to='/profile' className="headerIcon"><img className="headerIcon" src="https://cdn-icons-png.flaticon.com/512/1077/1077063.png" alt="searchIcon" /></Link></li>
                 </ul>
+
             </nav>
         </>
     )
