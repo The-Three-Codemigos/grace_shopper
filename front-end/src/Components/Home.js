@@ -1,12 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+
 import Header from './Header';
 import './style/Home.css'
 import laptopImg from "./img/ipad.png"
 import iphone from "./img/iphone.png"
 import watch from "./img/watch.png"
 
-const Home = () => {
+const Home = ({ isLoggedIn, setIsLoggedIn, API_URL }) => {
+    const [token, setToken] = useState("")
+    useEffect(() => {
+        const localToken = window.localStorage.getItem('token');
+        setToken(localToken)
+        if (localToken) {
+            setIsLoggedIn(true)
+        }
+        if (token) {
+            fetch(`${API_URL}users/me`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localToken}`,
+                },
+            })
+                .then((response) => response.json())
+                .then((result) => {
+                })
+                .catch((error) => console.log(error));
+        }
+    }, []);
     return (
+
+
         <>
             <Header />
             <main>
@@ -71,6 +94,7 @@ const Home = () => {
                         </div>
                     </section>
                 </section>
+                {/* {isLoggedIn && <h1>You are logged in!</h1>} */}
             </main>
         </>
     )
