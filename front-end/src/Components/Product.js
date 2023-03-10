@@ -35,7 +35,7 @@ const Products = ({ API_URL }) => {
                     return (
                         <div className="card2" key={product.id}>
                             <div className='imgBox'>
-                                <img className='mouse' src="https://loremflickr.com/320/240" alt="" />
+                                <img className='mouse' src={product.image} alt="" />
                             </div>
                             <div className='contentBox'>
                                 <h3>{product.title}</h3>
