@@ -1,82 +1,82 @@
 {
     "phones": [
         {
-            "title": "iPhone 6 Plus",
-            "description": "Nice Phone",
-            "price": 600.00,
-            "quantity": 1,
+            "title": "iPhone SE",
+            "description": "The iPhone SE is a compact smartphone with a 4.7-inch Retina HD display, powered by Apple's A13 Bionic chip with 3GB of RAM and available in 64GB, 128GB, and 256GB storage options. It features a 12MP rear camera with Smart HDR and 4K video recording, a 7MP front camera with 1080p HD video recording, Touch ID, Apple Pay, Siri, and supports Wi-Fi 6, Gigabit-class LTE, and dual-SIM capabilities. The device has a 1,821mAh battery that supports fast charging and wireless charging, and runs on iOS 14. Overall, the iPhone SE is a compact and affordable smartphone with excellent performance and features.",
+            "price": 429.00,
+            "quantity": 10,
             "category": "Phone",
-            "image": "http://placehold.it/300x300"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-se-finish-unselect-gallery-3-202207?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1655249913137"
         },
         {
-            "title": "iPhone 7 Plus",
-            "description": "Nicer Phone",
-            "price": 700.00,
-            "quantity": 1,
+            "title": "iPhone 12",
+            "description": "The iPhone 12 is a flagship smartphone from Apple featuring a 6.1-inch Super Retina XDR OLED display with a resolution of 1170 x 2532 pixels. It is powered by Apple's A14 Bionic chip with a 16-core Neural Engine and 4GB of RAM, and available in storage options of 64GB, 128GB, and 256GB. It boasts a dual-camera system with a 12MP ultra-wide and 12MP wide lens, both with Night mode, 4K Dolby Vision HDR video recording, and Smart HDR 3 for photos. The front-facing camera is a 12MP TrueDepth camera with Night mode and 4K Dolby Vision HDR recording. The device supports 5G connectivity, Face ID, MagSafe wireless charging, and runs on iOS 14. Overall, the iPhone 12 offers top-of-the-line features and performance in a sleek design.",
+            "price": 599.00,
+            "quantity": 8,
             "category": "Phone",
-            "image": "http://placehold.it/300x300"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-finish-unselect-gallery-2-202207?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1662129021500"
         },
         {
-            "title": "iPhone 8 Plus",
-            "description": "Even Nicer Phone",
-            "price": 800.00,
-            "quantity": 1,
+            "title": "iPhone 13 mini",
+            "description": "The iPhone 13 mini is a compact smartphone featuring a 5.4-inch Super Retina XDR OLED display with a resolution of 1080 x 2340 pixels. It is powered by Apple's A15 Bionic chip with a 6-core CPU, 5-core GPU, and 16-core Neural Engine, and comes with 4GB of RAM and storage options of 128GB, 256GB, and 512GB. The device boasts a dual-camera system with a 12MP wide and 12MP ultra-wide lens, Night mode, and Cinematic mode for video. The front-facing camera is a 12MP TrueDepth camera with Night mode and 4K Dolby Vision HDR recording. It supports 5G connectivity, Face ID, MagSafe wireless charging, and runs on iOS 15. Overall, the iPhone 13 mini offers impressive performance and features in a compact design.",
+            "price": 599.00,
+            "quantity": 5,
             "category": "Phone",
-            "image": "http://placehold.it/300x300"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-finish-select-202207-5-4inch_AV1?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1671463394187"
         },
         {
-            "title": "iPhone 9 Plus",
-            "description": "Nicest Phone Ever",
-            "price": 900.00,
-            "quantity": 1,
+            "title": "iPhone 13",
+            "description": "The iPhone 13 is a flagship smartphone featuring a 6.1-inch Super Retina XDR OLED display with a resolution of 1170 x 2532 pixels. It is powered by Apple's A15 Bionic chip with a 6-core CPU, 5-core GPU, and 16-core Neural Engine, and comes with 4GB of RAM and storage options of 128GB, 256GB, and 512GB. The device boasts a dual-camera system with a 12MP wide and 12MP ultra-wide lens, Night mode, and Cinematic mode for video. The front-facing camera is a 12MP TrueDepth camera with Night mode and 4K Dolby Vision HDR recording. It supports 5G connectivity, Face ID, MagSafe wireless charging, and runs on iOS 15. Overall, the iPhone 13 offers top-of-the-line performance and features with a stunning design.",
+            "price": 699.00,
+            "quantity": 3,
             "category": "Phone",
-            "image": "http://placehold.it/300x300"
-        },
-         {
-            "title": "iPhone 10 Plus",
-            "description": "Nice Phone",
-            "price": 600.00,
-            "quantity": 1,
-            "category": "Phone",
-            "image": "http://placehold.it/300x300"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-finish-select-202207-6-1inch-product-red?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1656720518797"
         },
         {
-            "title": "iPhone 11 Plus",
-            "description": "Nicer Phone",
-            "price": 700.00,
-            "quantity": 1,
+            "title": "iPhone 14",
+            "description": "The iPhone 14 display has rounded corners that follow a beautiful curved design, and these corners are within a standard rectangle. When measured as a standard rectangular shape, the screen is 6.06 inches diagonally (actual viewable area is less)",
+            "price": 799.00,
+            "quantity": 20,
             "category": "Phone",
-            "image": "http://placehold.it/300x300"
-        },
-        {
-            "title": "iPhone 12 Plus",
-            "description": "Even Nicer Phone",
-            "price": 800.00,
-            "quantity": 1,
-            "category": "Phone",
-            "image": "http://placehold.it/300x300"
-        },
-        {
-            "title": "iPhone 13 Plus",
-            "description": "Nicest Phone Ever",
-            "price": 900.00,
-            "quantity": 1,
-            "category": "Phone",
-            "image": "http://placehold.it/300x300"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-finish-select-202209-6-1inch-yellow?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1676505836714"
         },
         {
             "title": "iPhone 14 Plus",
-            "description": "Nicest Phone Ever",
-            "price": 900.00,
-            "quantity": 1,
+            "description": "The iPhone 14 Plus display has rounded corners that follow a beautiful curved design, and these corners are within a standard rectangle. When measured as a standard rectangular shape, the screen is 6.68 inches diagonally (actual viewable area is less).",
+            "price": 899.00,
+            "quantity": 10,
             "category": "Phone",
-            "image": "http://placehold.it/300x300"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-finish-select-202209-6-7inch-midnight?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1661027925267"
         },
         {
-            "title": "iPhone 15 Plus",
-            "description": "Nicest Phone Ever",
-            "price": 900.00,
-            "quantity": 1,
+            "title": "iPhone 12 mini",
+            "description": "The iPhone 12 Mini was released by Apple in October 2020, and it is the smallest member of the iPhone 12 family. The phone has a 5.4-inch Super Retina XDR OLED display with a resolution of 1080 x 2340 pixels. It is powered by the A14 Bionic chip, which is the same processor used in the rest of the iPhone 12 models. The phone features a dual-camera system with a 12-megapixel ultra-wide lens and a 12-megapixel wide-angle lens, as well as a 12-megapixel front-facing camera. It supports 5G connectivity, has Face ID, and runs on iOS 14. The iPhone 12 Mini is available in storage options of 64GB, 128GB, and 256GB, and is offered in five different colors: black, white, red, green, and blue.",
+            "price": 499.00,
+            "quantity": 2,
+            "category": "Phone",
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-finish-unselect-gallery-3-202207_GEO_US?wid=2560&hei=1440&fmt=p-jpg&qlt=80&.v=1662128988137"
+        },
+        {
+            "title": "iPhone 12 Pro",
+            "description": "The iPhone 12 Pro was released by Apple in October 2020, and it is one of the high-end models in the iPhone 12 family. The phone has a 6.1-inch Super Retina XDR OLED display with a resolution of 1170 x 2532 pixels, and it is powered by the A14 Bionic chip, which is the same processor used in the rest of the iPhone 12 models. The phone features a triple-camera system with a 12-megapixel ultra-wide lens, a 12-megapixel wide-angle lens, and a 12-megapixel telephoto lens, as well as a LiDAR scanner for enhanced AR experiences. It supports 5G connectivity, has Face ID, and runs on iOS 14. The iPhone 12 Pro is available in storage options of 128GB, 256GB, and 512GB, and is offered in four different colors: graphite, silver, gold, and pacific blue.",
+            "price": 749.00,
+            "quantity": 5,
+            "category": "Phone",
+            "image": "https://m.media-amazon.com/images/I/71MdQiaT9qL._AC_SY300_SX300_.jpg"
+        },
+        {
+            "title": "iPhone 12 Pro Max",
+            "description": "The iPhone 12 Pro Max is the largest and most advanced model in the iPhone 12 family, released by Apple in October 2020. The phone has a massive 6.7-inch Super Retina XDR OLED display with a resolution of 1284 x 2778 pixels, and it is powered by the A14 Bionic chip, which is the same processor used in the rest of the iPhone 12 models. The phone features a triple-camera system with a 12-megapixel ultra-wide lens, a 12-megapixel wide-angle lens, and a 12-megapixel telephoto lens, as well as a LiDAR scanner for enhanced AR experiences. It supports 5G connectivity, has Face ID, and runs on iOS 14. The iPhone 12 Pro Max is available in storage options of 128GB, 256GB, and 512GB, and is offered in four different colors: graphite, silver, gold, and pacific blue.",
+            "price": 800.00,
+            "quantity": 3,
+            "category": "Phone",
+            "image": "https://m.media-amazon.com/images/I/61AhDuc-qbL._AC_SX569_.jpg"
+        },
+        {
+            "title": "iPhone X",
+            "description": "The iPhone X was released by Apple in November 2017, and it was a significant departure from previous iPhone models in terms of design and features. The phone has a 5.8-inch Super Retina OLED display with a resolution of 1125 x 2436 pixels, and it is powered by the A11 Bionic chip. The phone features a dual-camera system with a 12-megapixel wide-angle lens and a 12-megapixel telephoto lens, as well as a 7-megapixel front-facing camera. It introduced Face ID, replacing the traditional home button with a swipe-up gesture, and it runs on iOS 11, upgradable to iOS 14. The iPhone X is available in storage options of 64GB and 256GB, and it is offered in two different colors: silver and space gray. It was also the first iPhone to support wireless charging.",
+            "price": 250.00,
+            "quantity": 2,
             "category": "Phone",
             "image": "http://placehold.it/300x300"
         }
@@ -114,7 +114,7 @@
             "category": "Phone",
             "image": "http://placehold.it/300x300"
         },
-         {
+        {
             "title": "iPad 10 Plus",
             "description": "Nice Phone",
             "price": 600.00,
@@ -196,7 +196,7 @@
             "category": "Phone",
             "image": "http://placehold.it/300x300"
         },
-         {
+        {
             "title": "MacBook 10 Plus",
             "description": "Nice Phone",
             "price": 600.00,
@@ -278,7 +278,7 @@
             "category": "Phone",
             "image": "http://placehold.it/300x300"
         },
-         {
+        {
             "title": "AppleWatch 10 Plus",
             "description": "Nice Phone",
             "price": 600.00,
