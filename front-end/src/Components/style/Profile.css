@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Avenir Next", sans-serif;
+}
+
+.loginSection,
+.usersInfo {
+    padding: 140px 0 0 90px;
+    height: 100vh;
+    background-color: #e5eaee;
+}
+
+.loginSection h1 {
+    font-size: 38px;
+}
+
+.loginSection p {
+    font-size: 20px;
+    margin: 30px 0 30px 0;
+}

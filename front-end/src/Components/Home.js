@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+
 import Header from './Header';
 import './style/Home.css'
 import laptopImg from "./img/ipad.png"
 import iphone from "./img/iphone.png"
 import watch from "./img/watch.png"
 
-const Home = () => {
+const Home = ({ isLoggedIn, setIsLoggedIn, API_URL }) => {
+
+
     return (
+
+
         <>
-            <Header />
+            <Header isLoggedIn={isLoggedIn} />
             <main>
                 <section className='landingPageSec'>
                     <div className='sloganSec'>
@@ -71,6 +76,7 @@ const Home = () => {
                         </div>
                     </section>
                 </section>
+                {/* {isLoggedIn && <h1>You are logged in!</h1>} */}
             </main>
         </>
     )

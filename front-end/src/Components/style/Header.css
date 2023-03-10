@@ -82,10 +82,10 @@
 .loginButtonHeader {
     background-color: transparent;
     border-radius: 5px;
-    width: 100px;
+    width: 110px;
     height: 40px;
     cursor: pointer;
-    background-color: #ff6e51;
+    background-color: #c24d4d;
     color: white;
     border: none;
     transition: all 0.3s ease;
@@ -135,4 +135,10 @@
 .box:hover i {
     opacity: 0;
     z-index: -1;
+}
+
+.signOutIcon {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
