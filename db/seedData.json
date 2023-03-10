@@ -1,0 +1,330 @@
+{
+    "phones": [
+        {
+            "title": "iPhone 6 Plus",
+            "description": "Nice Phone",
+            "price": 600.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "iPhone 7 Plus",
+            "description": "Nicer Phone",
+            "price": 700.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "iPhone 8 Plus",
+            "description": "Even Nicer Phone",
+            "price": 800.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "iPhone 9 Plus",
+            "description": "Nicest Phone Ever",
+            "price": 900.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+         {
+            "title": "iPhone 10 Plus",
+            "description": "Nice Phone",
+            "price": 600.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "iPhone 11 Plus",
+            "description": "Nicer Phone",
+            "price": 700.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "iPhone 12 Plus",
+            "description": "Even Nicer Phone",
+            "price": 800.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "iPhone 13 Plus",
+            "description": "Nicest Phone Ever",
+            "price": 900.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "iPhone 14 Plus",
+            "description": "Nicest Phone Ever",
+            "price": 900.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "iPhone 15 Plus",
+            "description": "Nicest Phone Ever",
+            "price": 900.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        }
+    ],
+    "tablets": [
+        {
+            "title": "iPad 6 Plus",
+            "description": "Nice Phone",
+            "price": 600.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "iPad 7 Plus",
+            "description": "Nicer Phone",
+            "price": 700.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "iPad 8 Plus",
+            "description": "Even Nicer Phone",
+            "price": 800.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "iPad 9 Plus",
+            "description": "Nicest Phone Ever",
+            "price": 900.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+         {
+            "title": "iPad 10 Plus",
+            "description": "Nice Phone",
+            "price": 600.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "iPad 11 Plus",
+            "description": "Nicer Phone",
+            "price": 700.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "iPad 12 Plus",
+            "description": "Even Nicer Phone",
+            "price": 800.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "iPad 13 Plus",
+            "description": "Nicest Phone Ever",
+            "price": 900.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "iPad 14 Plus",
+            "description": "Nicest Phone Ever",
+            "price": 900.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "iPad 15 Plus",
+            "description": "Nicest Phone Ever",
+            "price": 900.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        }
+    ],
+    "laptops": [
+        {
+            "title": "MacBook 6 Plus",
+            "description": "Nice Phone",
+            "price": 600.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "MacBook 7 Plus",
+            "description": "Nicer Phone",
+            "price": 700.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "MacBook 8 Plus",
+            "description": "Even Nicer Phone",
+            "price": 800.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "MacBook 9 Plus",
+            "description": "Nicest Phone Ever",
+            "price": 900.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+         {
+            "title": "MacBook 10 Plus",
+            "description": "Nice Phone",
+            "price": 600.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "MacBook 11 Plus",
+            "description": "Nicer Phone",
+            "price": 700.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "MacBook 12 Plus",
+            "description": "Even Nicer Phone",
+            "price": 800.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "MacBook 13 Plus",
+            "description": "Nicest Phone Ever",
+            "price": 900.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "MacBook 14 Plus",
+            "description": "Nicer Phone",
+            "price": 700.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "MacBook 15 Plus",
+            "description": "Nicer Phone",
+            "price": 700.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        }
+    ],
+    "watches": [
+        {
+            "title": "AppleWatch 6 Plus",
+            "description": "Nice Phone",
+            "price": 600.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "AppleWatch 7 Plus",
+            "description": "Nicer Phone",
+            "price": 700.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "AppleWatch 8 Plus",
+            "description": "Even Nicer Phone",
+            "price": 800.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "AppleWatch 9 Plus",
+            "description": "Nicest Phone Ever",
+            "price": 900.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+         {
+            "title": "AppleWatch 10 Plus",
+            "description": "Nice Phone",
+            "price": 600.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "AppleWatch 11 Plus",
+            "description": "Nicer Phone",
+            "price": 700.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "AppleWatch 12 Plus",
+            "description": "Even Nicer Phone",
+            "price": 800.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "AppleWatch 13 Plus",
+            "description": "Nicest Phone Ever",
+            "price": 900.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "AppleWatch 14 Plus",
+            "description": "Nicest Phone Ever",
+            "price": 900.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        },
+        {
+            "title": "AppleWatch 15 Plus",
+            "description": "Nicest Phone Ever",
+            "price": 900.00,
+            "quantity": 1,
+            "category": "Phone",
+            "image": "http://placehold.it/300x300"
+        }
+    ]
+}

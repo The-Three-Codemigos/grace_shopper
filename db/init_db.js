@@ -1,11 +1,12 @@
 const {
   client,
-  createUser,
   User,
   Product,
-  Order,
+  // Order,
   Review
 } = require("./");
+
+const { phones, tablets, laptops, watches } = require('../db/seedData.json')
 
 async function buildTables() {
   try {
@@ -70,12 +71,10 @@ async function buildTables() {
   }
 }
 
-
-
 async function populateInitialData() {
-  try {
-    console.log("Starting to create users...");
-    const user1 = await User.createUser({
+  console.log("Starting to create users...");
+
+    await User.createUser({
       firstName: "Clayton",
       lastName: "Carver",
       email: "clayton@testemail.com",
@@ -83,7 +82,7 @@ async function populateInitialData() {
       isAdmin: true,
     });
 
-    const user2 = await User.createUser({
+    await User.createUser({
       firstName: "Ulysses",
       lastName: "Cortez",
       email: "ulysses@testemail.com",
@@ -91,7 +90,7 @@ async function populateInitialData() {
       isAdmin: true,
     });
 
-    const user3 = await User.createUser({
+    await User.createUser({
       firstName: "Kirk",
       lastName: "Bogle",
       email: "kirk@testemail.com",
@@ -101,32 +100,26 @@ async function populateInitialData() {
 
     console.log("Finished creating users!");
 
-    const product1 = await Product.createProduct({
-      title: "Computer",
-      description: "This is a computer",
-      price: 1,
-      quantity: 1,
-      category: "Electronics",
-      image: "something",
-    });
-
-    const product2 = await Product.createProduct({
-      title: "Desk",
-      description: "This is a desk",
-      price: 5,
-      quantity: 1,
-      category: "Furniture",
-      image: "something",
-    });
-
-    const product3 = await Product.createProduct({
-      title: "Mug",
-      description: "This is a mug",
-      price: 5,
-      quantity: 1,
-      category: "Drinkware",
-      image: "something",
-    });
+    await Promise.all(
+      phones.map(async (phone) => {
+        await Product.createProduct(phone);
+      })
+    );
+    await Promise.all(
+      tablets.map(async (tablet) => {
+        await Product.createProduct(tablet);
+      })
+    );
+    await Promise.all(
+      laptops.map(async (laptop) => {
+        await Product.createProduct(laptop);
+      })
+    );
+    await Promise.all(
+      watches.map(async (watch) => {
+        await Product.createProduct(watch);
+      })
+    );
 
     console.log("Finished creating products!");
 
@@ -148,7 +141,7 @@ async function populateInitialData() {
     // console.log("Finished creating orders!");
 
     console.log("Starting to create reviews...");
-    const review1 = await Review.createReview({
+    await Review.createReview({
       product_id: 1,
       user_id: 1,
       title: "Great Product",
@@ -156,7 +149,7 @@ async function populateInitialData() {
       rating: 5,
     });
 
-    const review2 = await Review.createReview({
+    await Review.createReview({
       product_id: 2,
       user_id: 2,
       title: "Not a Great Product",
@@ -165,15 +158,8 @@ async function populateInitialData() {
     });
 
     console.log("Finished creating reviews!");
-
-
-
-
-  } catch (error) {
-    throw error;
   }
   
-}
 
 buildTables()
   .then(populateInitialData)
