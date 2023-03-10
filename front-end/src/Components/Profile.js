@@ -8,13 +8,7 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, API_URL }) => {
     const [showLoginModal, setShowLoginModal] = useState(false)
     const btnClicked = () => {
         setShowLoginModal(!showLoginModal)
-        console.log(showLoginModal)
     }
-    const handleLogOutBtn = () => {
-        window.localStorage.removeItem('token');
-        setIsLoggedIn(false)
-    }
-    console.log(isLoggedIn)
     return (
         <>
             <Header isLoggedIn={isLoggedIn} />
@@ -30,8 +24,6 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, API_URL }) => {
                 </section> :
                 <section className='usersInfo'>
                     <h1>You are looged in!</h1>
-                    <button onClick={handleLogOutBtn} className='loginButtonHeader'>LOG OUT</button>
-                    {/* Loggout btn */}
                     {/* Here the user will be able to see the order history and user info or if admin then show the settings for admin */}
                 </section>
             }

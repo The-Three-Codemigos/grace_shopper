@@ -136,3 +136,9 @@
     opacity: 0;
     z-index: -1;
 }
+
+.signOutIcon {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
