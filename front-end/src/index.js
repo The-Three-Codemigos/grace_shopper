@@ -6,6 +6,7 @@ import Products from './Components/Product';
 import About from './Components/About';
 
 const App = () => {
+  const API_URL = "https://grace-shoper.onrender.com/api/"
   return (
     <>
       <BrowserRouter>
@@ -18,7 +19,7 @@ const App = () => {
         <Routes>
           <Route
             path='/products'
-            element={<Products />}
+            element={<Products API_URL={API_URL} />}
           />
           <Route
             path='/about'
