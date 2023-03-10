@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import './style/Product.css'
 
@@ -9,33 +9,33 @@ const Products = ({ API_URL }) => {
     const getProducts = async () => {
         try {
             const response = await fetch(`${API_URL}products`, {
-              headers: {
-                "Content-Type": "application/json",
-              },
+                headers: {
+                    "Content-Type": "application/json",
+                },
             });
             const result = await response.json();
             if (result) {
                 setProducts(result);
             }
             return result;
-          } catch (error) {
+        } catch (error) {
             console.error(error);
-          }
-        };
+        }
+    };
 
-        useEffect(() => {
-            getProducts();
-        }, []);
+    useEffect(() => {
+        getProducts();
+    }, []);
 
-        return (
-            <div>
-                <Header />                
-                <div className='product-card'>
-                { products && products.map((product) => {
+    return (
+        <div>
+            <Header />
+            <div className='product-card'>
+                {products && products.map((product) => {
                     return (
-                        <div className="card" key={product.id}>
+                        <div className="card2" key={product.id}>
                             <div className='imgBox'>
-                                <img className='mouse' src="https://loremflickr.com/320/240" alt=""/>
+                                <img className='mouse' src="https://loremflickr.com/320/240" alt="" />
                             </div>
                             <div className='contentBox'>
                                 <h3>{product.title}</h3>
@@ -44,12 +44,12 @@ const Products = ({ API_URL }) => {
                                 <button className='buy'>Add to Cart</button>
                             </div>
                         </div>
-                        )
-                    })
-                } 
-                </div>
+                    )
+                })
+                }
             </div>
-        )
-    }    
+        </div>
+    )
+}
 
 export default Products;

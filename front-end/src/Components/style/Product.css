@@ -1,5 +1,9 @@
 .product-card {
     padding-top: 70px;
+    padding: 150px 50px 0 50px;
     display: flex;
     justify-content: space-evenly;
+    min-width: 250px;
+    flex-wrap: wrap;
+    gap: 10px
 }

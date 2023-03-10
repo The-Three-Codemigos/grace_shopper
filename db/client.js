@@ -7,7 +7,7 @@ const DB_NAME = 'univ-boilerplate';
 // `postgres://postgres:postgres@localhost:5432/${DB_NAME}`;
 // `postgres://root:4864@localhost:5432/${DB_NAME}`;
 const DB_URL =
-  process.env.DATABASE_URL || `postgres://postgres:postgres@localhost:5432/${DB_NAME}`;
+  process.env.DATABASE_URL || `postgres://root:4864@localhost:5432/${DB_NAME}`;
 
 let client;
 
