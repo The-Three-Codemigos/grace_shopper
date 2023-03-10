@@ -1,12 +1,15 @@
 const client = require('../client');
 
+
+
+
+
 async function getReviewsByProductId(product_id) {
   try {
     const { rows: reviews } = await client.query(`
       SELECT *
       FROM reviews
       WHERE product_id = $1
-      ORDER BY created_at DESC
     `, [product_id]);
 
     return reviews;

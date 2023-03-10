@@ -37,20 +37,20 @@ async function buildTables() {
         "lastName" VARCHAR(255) NOT NULL,
         email VARCHAR(255) UNIQUE NOT NULL,
         password VARCHAR(255) NOT NULL,
-        "isAdmin" BOOLEAN DEFAULT false
+        isAdmin BOOLEAN DEFAULT false
       );
 
       CREATE TABLE orders (
         id SERIAL PRIMARY KEY,
-        "user_id" INTEGER REFERENCES users(id),
-        "orderDate" DATE DEFAULT CURRENT_DATE,
-        "isCheckedOut" BOOLEAN DEFAULT false
+        user_id INTEGER REFERENCES users(id),
+        orderDate DATE DEFAULT CURRENT_DATE,
+        isCheckedOut BOOLEAN DEFAULT false
       );
 
       CREATE TABLE reviews (
         id SERIAL PRIMARY KEY,
-        "product_id" INTEGER REFERENCES products(id),
-        "user_id" INTEGER REFERENCES users(id),
+        product_id INTEGER REFERENCES products(id),
+        user_id INTEGER REFERENCES users(id),
         title text NOT NULL,
         description text NOT NULL,
         rating INTEGER NOT NULL
@@ -58,8 +58,8 @@ async function buildTables() {
 
       CREATE TABLE order_items (
         id SERIAL PRIMARY KEY,
-        "orderId" INTEGER REFERENCES orders(id),
-        "product_id" INTEGER REFERENCES products(id),
+        orderId INTEGER REFERENCES orders(id),
+        product_id INTEGER REFERENCES products(id),
         quantity INTEGER NOT NULL
       );
     `);

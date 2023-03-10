@@ -32,7 +32,6 @@ apiRouter.post("/", requireUser, async (req, res, next) => {
 });
 
 apiRouter.patch("/:orderId", async (req, res, next) => {
-  //Send error if the user is not the same as user_id
   try {
     const id = req.params.orderId;
     const { isCheckedOut } = req.body;
