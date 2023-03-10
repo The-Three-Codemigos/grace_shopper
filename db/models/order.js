@@ -1,17 +1,17 @@
 // grab our db client connection to use with our adapters
 const client = require("../client");
 
-async function createOrder(userId) {
+async function createOrder(user_id) {
   try {
     const {
       rows: [order],
     } = await client.query(
       `
-      INSERT INTO orders("userId") 
+      INSERT INTO orders("user_id") 
       VALUES($1) 
       RETURNING *;
     `,
-      [userId]
+      [user_id]
     );
 
     return order;
@@ -47,12 +47,12 @@ async function getOrderById(id) {
   }
 }
 
-async function getOrderByUserId(userId) {
+async function getOrderByUserId(user_id) {
   try {
     const { rows } = await client.query(`
         SELECT * 
         FROM orders
-        WHERE "userId"=${userId} AND "isCheckedOut"=false;
+        WHERE "user_id"=${user_id} AND "isCheckedOut"=false;
       `);
 
     return rows;

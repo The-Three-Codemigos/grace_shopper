@@ -1,15 +1,13 @@
-const express = require('express');
+const express = require("express");
 const apiRouter = express.Router();
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 const { JWT_SECRET = "secret word" } = process.env;
 
-const {
-  User
-} = require('../db/index')
+const { User } = require("../db/index");
 
 apiRouter.use(async (req, res, next) => {
-  const prefix = 'Bearer ';
-  const auth = req.header('Authorization');
+  const prefix = "Bearer ";
+  const auth = req.header("Authorization");
 
   if (!auth) {
     next();
@@ -22,8 +20,8 @@ apiRouter.use(async (req, res, next) => {
         next();
       } else {
         next({
-          name: 'AuthorizationHeaderError',
-          message: 'Authorization token malformed',
+          name: "AuthorizationHeaderError",
+          message: "Authorization token malformed",
         });
       }
     } catch (error) {
@@ -31,41 +29,38 @@ apiRouter.use(async (req, res, next) => {
     }
   } else {
     next({
-      name: 'AuthorizationHeaderError',
+      name: "AuthorizationHeaderError",
       message: `Authorization token must start with ${prefix}`,
     });
   }
 });
 
-apiRouter.get('/', (req, res, next) => {
+apiRouter.get("/", (req, res, next) => {
   res.send({
-    message: 'API is under construction!',
+    message: "API is under construction!",
   });
 });
 
-apiRouter.get('/health', (req, res, next) => {
+apiRouter.get("/health", (req, res, next) => {
   res.send({
     healthy: true,
   });
 });
 
-
-
-
 // place your routers here
-const usersRouter = require('./users');
-apiRouter.use('/users', usersRouter);
+const usersRouter = require("./users");
+apiRouter.use("/users", usersRouter);
 
-const orderRouter = require('./orders');
-apiRouter.use('/orders', orderRouter);
+const orderRouter = require("./orders");
+apiRouter.use("/orders", orderRouter);
 
-const productsRouter = require('./products');
-apiRouter.use('/products', productsRouter);
+const productsRouter = require("./products");
+apiRouter.use("/products", productsRouter);
 
-const orderItemsRoute = require('./order-items');
-apiRouter.use('/order-items', orderItemsRoute);
+const orderItemsRoute = require("./order-items");
+apiRouter.use("/order-items", orderItemsRoute);
 
-// const reviewRouter = require('./review');
-// apiRouter.use('/review', reviewRouter);
+const reviewRouter = require('./reviews');
+apiRouter.use('/reviews', reviewRouter);
 
 module.exports = apiRouter;

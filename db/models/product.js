@@ -77,7 +77,7 @@ async function updateProducts({ id, ...fields }) {
 
 async function deleteProduct(id) {
   await client.query(`
-  DELETE FROM orders WHERE "productId"=${id}
+  DELETE FROM orders WHERE "product_id"=${id}
   `);
 
   const {
