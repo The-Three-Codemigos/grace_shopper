@@ -71,8 +71,6 @@ async function buildTables() {
   }
 }
 
-
-
 async function populateInitialData() {
   try {
     console.log("Starting to create users...");

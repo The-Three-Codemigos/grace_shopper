@@ -7,31 +7,13 @@ import iphone from "./img/iphone.png"
 import watch from "./img/watch.png"
 
 const Home = ({ isLoggedIn, setIsLoggedIn, API_URL }) => {
-    const [token, setToken] = useState("")
-    useEffect(() => {
-        const localToken = window.localStorage.getItem('token');
-        setToken(localToken)
-        if (localToken) {
-            setIsLoggedIn(true)
-        }
-        if (token) {
-            fetch(`${API_URL}users/me`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localToken}`,
-                },
-            })
-                .then((response) => response.json())
-                .then((result) => {
-                })
-                .catch((error) => console.log(error));
-        }
-    }, []);
+
+
     return (
 
 
         <>
-            <Header />
+            <Header isLoggedIn={isLoggedIn} />
             <main>
                 <section className='landingPageSec'>
                     <div className='sloganSec'>

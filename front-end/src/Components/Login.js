@@ -18,7 +18,6 @@ const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, showLoginModal, setShowLogi
     const [validInfo, setValidInfo] = useState(true)
     const [weakPass, setWeakPass] = useState(false)
     const [registered, setRegistered] = useState(false)
-    // const [showLoginModel, setShowLoginModel] = useState(false)
 
     const btnClicked = () => {
         setShowLoginModal(!showLoginModal)
