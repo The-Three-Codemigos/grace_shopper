@@ -1,38 +1,27 @@
 const express = require('express');
-const { requireUser } = require('./utils');
 const apiRouter = express.Router();
+const { requireUser } = require('./utils');
+
 const { Review } = require("../db/index");
 
-
-apiRouter.get('/', async (req, res, next) => {
-  try {
-    const reviews = await Review.getAllReviews();
-    res.send(reviews);
-  } catch (error) {
-    next(error)
-  }
-})
-
-apiRouter.get('/:productId', async (req, res, next) => {
-  const { productId } = req.params;
+apiRouter.get('/:product_id', async (req, res, next) => {
+  const { product_id } = req.params;
 
   try {
-    const reviews = await Review.getReviewsByProductId(productId);
-    console.log(await Review.getReviewsByProductId(productId))
-
+    const reviews = await Review.getReviewsByProductId(product_id);
     res.send(reviews);
   } catch (error) {
     next(error);
   }
 });
 
-apiRouter.post('/:productId', requireUser, async (req, res, next) => {
-  const { productId } = req.params;
+apiRouter.post('/:product_id', requireUser, async (req, res, next) => {
+  const { product_id } = req.params;
   const { title, description, rating } = req.body;
-  const { userId } = req.user.id;
+  const { user_id } = req;
 
   try {
-    const review = await Review.createReview({ productId, userId, title, description, rating });
+    const review = await createReview(product_id, {user_id, title, description, rating });
     res.send(review);
   } catch (error) {
     next(error);

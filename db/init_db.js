@@ -1,27 +1,25 @@
 const {
   client,
-  createUser,
   User,
   Product,
-  Order,
-  // declare your model imports here
-  // for example, User
+  // Order,
+  Review
 } = require("./");
+
+const { phones, tablets, laptops, watches } = require('../db/seedData.json')
 
 async function buildTables() {
   try {
     console.log("Starting to build tables...");
     client.connect();
 
-    // drop tables in correct order
     await client.query(`
     DROP TABLE IF EXISTS order_items;
-    DROP TABLE IF EXISTS orders;
+    DROP TABLE IF EXISTS orders CASCADE;
     DROP TABLE IF EXISTS reviews;
     DROP TABLE IF EXISTS products CASCADE;
     DROP TABLE IF EXISTS users CASCADE;
     `);
-    // build tables in correct order
 
     await client.query(`
       CREATE TABLE products (
@@ -40,27 +38,29 @@ async function buildTables() {
         "lastName" VARCHAR(255) NOT NULL,
         email VARCHAR(255) UNIQUE NOT NULL,
         password VARCHAR(255) NOT NULL,
-        "isAdmin" BOOLEAN DEFAULT false
+        isAdmin BOOLEAN DEFAULT false
       );
 
       CREATE TABLE orders (
         id SERIAL PRIMARY KEY,
-        "userId" INTEGER REFERENCES users(id),
-        "orderDate" DATE NOT NULL DEFAULT CURRENT_DATE,
-        "isCheckedOut" BOOLEAN DEFAULT false
+        user_id INTEGER REFERENCES users(id),
+        orderDate DATE DEFAULT CURRENT_DATE,
+        isCheckedOut BOOLEAN DEFAULT false
       );
 
       CREATE TABLE reviews (
         id SERIAL PRIMARY KEY,
-        "productId" INTEGER REFERENCES products(id),
-        "userId" INTEGER REFERENCES users(id),
-        "text" text NOT NULL
+        product_id INTEGER REFERENCES products(id),
+        user_id INTEGER REFERENCES users(id),
+        title text NOT NULL,
+        description text NOT NULL,
+        rating INTEGER NOT NULL
       );
 
       CREATE TABLE order_items (
         id SERIAL PRIMARY KEY,
-        "orderId" INTEGER REFERENCES orders(id),
-        "productId" INTEGER REFERENCES products(id),
+        orderId INTEGER REFERENCES orders(id),
+        product_id INTEGER REFERENCES products(id),
         quantity INTEGER NOT NULL
       );
     `);
@@ -72,9 +72,9 @@ async function buildTables() {
 }
 
 async function populateInitialData() {
-  try {
-    console.log("Starting to create users...");
-    const user1 = await User.createUser({
+  console.log("Starting to create users...");
+
+    await User.createUser({
       firstName: "Clayton",
       lastName: "Carver",
       email: "clayton@testemail.com",
@@ -82,7 +82,7 @@ async function populateInitialData() {
       isAdmin: true,
     });
 
-    const user2 = await User.createUser({
+    await User.createUser({
       firstName: "Ulysses",
       lastName: "Cortez",
       email: "ulysses@testemail.com",
@@ -90,7 +90,7 @@ async function populateInitialData() {
       isAdmin: true,
     });
 
-    const user3 = await User.createUser({
+    await User.createUser({
       firstName: "Kirk",
       lastName: "Bogle",
       email: "kirk@testemail.com",
@@ -100,55 +100,66 @@ async function populateInitialData() {
 
     console.log("Finished creating users!");
 
-    const product1 = await Product.createProduct({
-      title: "Computer",
-      description: "This is a computer",
-      price: 1,
-      quantity: 1,
-      category: "Electronics",
-      image: "something",
-    });
-
-    const product2 = await Product.createProduct({
-      title: "Desk",
-      description: "This is a desk",
-      price: 5,
-      quantity: 1,
-      category: "Furniture",
-      image: "something",
-    });
-
-    const product3 = await Product.createProduct({
-      title: "Mug",
-      description: "This is a mug",
-      price: 5,
-      quantity: 1,
-      category: "Drinkware",
-      image: "something",
-    });
+    await Promise.all(
+      phones.map(async (phone) => {
+        await Product.createProduct(phone);
+      })
+    );
+    await Promise.all(
+      tablets.map(async (tablet) => {
+        await Product.createProduct(tablet);
+      })
+    );
+    await Promise.all(
+      laptops.map(async (laptop) => {
+        await Product.createProduct(laptop);
+      })
+    );
+    await Promise.all(
+      watches.map(async (watch) => {
+        await Product.createProduct(watch);
+      })
+    );
 
     console.log("Finished creating products!");
 
-    console.log("Starting to create orders...");
-    const order1 = await Order.createOrder({
-      userId: 1,
-      productId: 1,
-      orderDate: "",
-      isCheckedOut: true,
+    // console.log("Starting to create orders...");
+    // const order1 = await Order.createOrder({
+    //   user_id: 1,
+    //   product_id: 1,
+    //   orderDate: "",
+    //   isCheckedOut: true,
+    // });
+
+    // const order2 = await Order.createOrder({
+    //   user_id: 2,
+    //   product_id: 2,
+    //   orderDate: "",
+    //   isCheckedOut: true,
+    // });
+
+    // console.log("Finished creating orders!");
+
+    console.log("Starting to create reviews...");
+    await Review.createReview({
+      product_id: 1,
+      user_id: 1,
+      title: "Great Product",
+      description: "I love this product",
+      rating: 5,
     });
 
-    const order2 = await Order.createOrder({
-      userId: 2,
-      productId: 2,
-      orderDate: "",
-      isCheckedOut: true,
+    await Review.createReview({
+      product_id: 2,
+      user_id: 2,
+      title: "Not a Great Product",
+      description: "Its not great",
+      rating: 5,
     });
 
-    console.log("Finished creating orders!");
-  } catch (error) {
-    throw error;
+    console.log("Finished creating reviews!");
   }
-}
+  
 
 buildTables()
   .then(populateInitialData)

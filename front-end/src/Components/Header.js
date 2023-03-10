@@ -21,9 +21,9 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
                 </ul>
                 <ul className="list">
                     <li>
-                        <div class="box">
+                        <div className="box">
                             <form name="search">
-                                <input type="text" class="input" name="txt" onmouseout="this.value = ''; this.blur();" placeholder="Search...">
+                                <input type="text" className="input" name="txt" onMouseOut="this.value = ''; this.blur();" placeholder="Search...">
                                 </input>
                                 <img className="headerIcon" src="https://cdn-icons-png.flaticon.com/512/54/54481.png" alt="searchIcon" />
                             </form>
