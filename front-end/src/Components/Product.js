@@ -15,6 +15,7 @@ const Products = ({ API_URL }) => {
             });
             const result = await response.json();
             if (result) {
+                console.log(result)
                 setProducts(result);
             }
             return result;
