@@ -5,6 +5,7 @@ import Home from './Components/Home';
 import Products from './Components/Product';
 import About from './Components/About';
 import Profile from './Components/Profile';
+import Admin from './Components/Admin';
 
 const App = () => {
 
@@ -55,7 +56,11 @@ const App = () => {
             path='/profile'
             element={<Profile isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} />}
           />
-        </Routes>
+        <Route
+            path='/admin'
+            element={<Admin isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} />}
+          />
+          </Routes>
       </BrowserRouter>
     </>
   )
