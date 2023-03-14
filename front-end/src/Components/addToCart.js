@@ -2,28 +2,32 @@ import React, { useState } from 'react';
 
 
 const addToCart = async (API_URL, user, product_Id, token) => {
-    // console.log(product_Id)
-    // console.log(token)
-    // console.log(user)
+    console.log(product_Id)
+    console.log(token)
+    console.log(user)
 
     let order = []
+    let items = []
+
     try {
-        const response = await fetch(`${API_URL}orders`, {
+        const orders = await fetch(`${API_URL}orders`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
-                user_id: `${user.id}`
+                user_id: `${user.id}`,
             })
         }).then((response) => response.json())
             .then((result) =>
                 order = result
             )
         console.log(order)
+
         if (order) {
-            await fetch(`${API_URL}order-items/${product_Id}`, {
+            console.log("Ordere correct")
+            const item = await fetch(`${API_URL}order-items/${product_Id}`, {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -36,10 +40,13 @@ const addToCart = async (API_URL, user, product_Id, token) => {
                 })
             }).then((response) => response.json())
                 .then((result) =>
-                    console.log(result)
+                    items = result
                 )
+            console.log(items)
         }
+
     }
+
     catch (err) {
         console.error(err)
     }
