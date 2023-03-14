@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Header from './Header';
+import Pagination from './Pagination';
 import './style/Product.css'
 
 
 const Products = ({ API_URL }) => {
     const [products, setProducts] = useState([]);
-
+    const [currentPage, setCurrentPage] = useState(1);
+    const [productsPerPage, setProductsPerPage] = useState(8);
+    
     const getProducts = async () => {
         try {
             const response = await fetch(`${API_URL}products`, {
@@ -27,13 +30,22 @@ const Products = ({ API_URL }) => {
         getProducts();
     }, []);
 
-    return (
-        <div>
-            <Header />
-            <div className='product-card'>
-                {products && products.map((product) => {
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+
+    const paginate = (event, pageNumber) => {
+        event.preventdefault();
+        setCurrentPage(pageNumber);
+    }
+
+        return (
+            <div>
+                <Header />                
+                <div className='product-card'>
+                { currentProducts && currentProducts.map((product) => {
                     return (
-                        <div className="card2" key={product.id}>
+                        <div className='card' key={product.id}>
                             <div className='imgBox'>
                                 <img className='mouse' src="https://loremflickr.com/320/240" alt="" />
                             </div>
@@ -47,8 +59,14 @@ const Products = ({ API_URL }) => {
                     )
                 })
                 }
+
+                </div>
+                <br></br>
+
+                <div className='pagination-container'>
+                    <Pagination productsPerPage={productsPerPage} totalProducts={products.length} paginate={paginate} />
+                </div>
             </div>
-        </div>
     )
 }
 

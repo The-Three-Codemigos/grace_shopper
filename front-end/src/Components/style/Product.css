@@ -7,3 +7,9 @@
     flex-wrap: wrap;
     gap: 10px
 }
+
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
