@@ -1,16 +1,16 @@
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px
+}
+
 .product-card {
     padding-top: 70px;
     padding: 150px 50px 0 50px;
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    gap: 10px
-}
-
-.pagination-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 30px
 }
 
