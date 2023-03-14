@@ -12,6 +12,8 @@ const App = () => {
   const API_URL = "https://grace-shoper.onrender.com/api/";
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [token, setToken] = useState("")
+  const [user, setUser] = useState("")
+
 
   useEffect(() => {
     const localToken = window.localStorage.getItem('token');
@@ -29,10 +31,11 @@ const App = () => {
         .then((response) => response.json())
         .then((result) => {
           console.log(result)
+          setUser(result)
         })
         .catch((error) => console.log(error));
     }
-  }, []);
+  }, [token]);
 
   return (
     <>
@@ -46,7 +49,7 @@ const App = () => {
         <Routes>
           <Route
             path='/products'
-            element={<Products API_URL={API_URL} />}
+            element={<Products API_URL={API_URL} user={user} token={token} />}
           />
           <Route
             path='/about'
@@ -54,13 +57,13 @@ const App = () => {
           />
           <Route
             path='/profile'
-            element={<Profile isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} />}
+            element={<Profile isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} setUser={setUser} />}
           />
-        <Route
+          <Route
             path='/admin'
             element={<Admin isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} />}
           />
-          </Routes>
+        </Routes>
       </BrowserRouter>
     </>
   )

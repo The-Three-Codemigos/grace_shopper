@@ -2,22 +2,20 @@
 const client = require("../client");
 
 async function addProductOrder({ orderId, product_id, quantity }) {
+
   try {
-    const {
-      rows: [orderItem],
-    } = await client.query(
-      `
-        INSERT INTO order_items("orderId", "product_id", quantity)
+    const { rows: [orderItem] } = await client.query(`
+        INSERT INTO order_items("orderId", product_id, quantity)
         VALUES($1, $2, $3)
         RETURNING *;
       `,
       [orderId, product_id, quantity]
     );
-    console.log(orderItem);
+    // console.log(orderItem);
 
     return orderItem;
   } catch (error) {
-    next(error);
+    console.error(error);
   }
 }
 
