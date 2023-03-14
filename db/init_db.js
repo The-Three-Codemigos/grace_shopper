@@ -2,7 +2,7 @@ const {
   client,
   User,
   Product,
-  // Order,
+  Order,
   Review
 } = require("./");
 
