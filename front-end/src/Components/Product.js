@@ -5,10 +5,11 @@ import './style/Product.css'
 import addToCart from './addToCart';
 
 
-const Products = ({ API_URL }) => {
+const Products = ({ API_URL, user }) => {
     const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [productsPerPage, setProductsPerPage] = useState(8);
+    // const [currProductId, setCurrProductId] = useState(null)
 
     const [value, setValue] = useState(100);
 
@@ -80,6 +81,7 @@ const Products = ({ API_URL }) => {
                 {currentProducts && currentProducts.map((product) => {
                     return (
                         <div className="card2" key={product.id}>
+                            {/* {setCurrProductId(product.id)} */}
                             <div className='imgBox2'>
                                 <img className='mouse' src={product.image} alt="" />
                             </div>
@@ -87,18 +89,14 @@ const Products = ({ API_URL }) => {
                                 <h3>{product.title}</h3>
                                 {/* <p>{product.description}</p> */}
                                 <h2>${product.price}</h2>
-                                <button className='buy2' onClick={() => addToCart(API_URL)}>Add to Cart</button>
+                                <button className='buy2' onClick={() => addToCart(API_URL, user, product.id)}>Add to Cart</button>
                             </div>
                         </div>
                     )
                 })
                 }
-
-
-
             </div>
             <br></br>
-
             <div className='pagination-container'>
                 <Pagination productsPerPage={productsPerPage} totalProducts={products.length} paginate={paginate} />
             </div>

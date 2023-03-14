@@ -7,8 +7,6 @@ import iphone from "./img/iphone.png"
 import watch from "./img/watch.png"
 
 const Home = ({ isLoggedIn, setIsLoggedIn, API_URL }) => {
-
-
     return (
 
 
