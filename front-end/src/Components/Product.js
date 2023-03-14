@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Header from './Header';
+import Pagination from './Pagination';
 import './style/Product.css'
 
 
 const Products = ({ API_URL }) => {
     const [products, setProducts] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [productsPerPage, setProductsPerPage] = useState(8);
+    
     const [value, setValue] = useState(100);
 
     const getProducts = async () => {
@@ -28,6 +32,14 @@ const Products = ({ API_URL }) => {
         getProducts();
     }, []);
 
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+
+    const paginate = (event, pageNumber) => {
+        event.preventdefault();
+        setCurrentPage(pageNumber);
+    }
 
     const handleChange = (event) => {
         setValue(event.target.value);
@@ -81,6 +93,11 @@ const Products = ({ API_URL }) => {
                 })
                 }
 
+                <br></br>
+
+                <div className='pagination-container'>
+                    <Pagination productsPerPage={productsPerPage} totalProducts={products.length} paginate={paginate} />
+                </div>
             </div>
         </div >
     )
