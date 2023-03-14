@@ -23,7 +23,7 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, API_URL }) => {
                     }
                 </section> :
                 <section className='usersInfo'>
-                    <h1>You are looged in!</h1>
+                    <h1>You are logged in!</h1>
                     {/* Here the user will be able to see the order history and user info or if admin then show the settings for admin */}
                 </section>
             }
