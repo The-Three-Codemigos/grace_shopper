@@ -15,7 +15,6 @@
     height: 65px;
     width: 100%;
     padding: 30px 70px 30px 70px;
-    /* box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px; */
     z-index: 999;
     backdrop-filter: blur(3px);
 }

@@ -74,92 +74,92 @@ async function buildTables() {
 async function populateInitialData() {
   console.log("Starting to create users...");
 
-    await User.createUser({
-      firstName: "Clayton",
-      lastName: "Carver",
-      email: "clayton@testemail.com",
-      password: "password",
-      isAdmin: true,
-    });
+  await User.createUser({
+    firstName: "Clayton",
+    lastName: "Carver",
+    email: "clayton@testemail.com",
+    password: "password",
+    isAdmin: true,
+  });
 
-    await User.createUser({
-      firstName: "Ulysses",
-      lastName: "Cortez",
-      email: "ulysses@testemail.com",
-      password: "alsopassword",
-      isAdmin: true,
-    });
+  await User.createUser({
+    firstName: "Ulysses",
+    lastName: "Cortez",
+    email: "ulysses@testemail.com",
+    password: "alsopassword",
+    isAdmin: true,
+  });
 
-    await User.createUser({
-      firstName: "Kirk",
-      lastName: "Bogle",
-      email: "kirk@testemail.com",
-      password: "athirdpassword",
-      isAdmin: true,
-    });
+  await User.createUser({
+    firstName: "Kirk",
+    lastName: "Bogle",
+    email: "kirk@testemail.com",
+    password: "athirdpassword",
+    isAdmin: true,
+  });
 
-    console.log("Finished creating users!");
+  console.log("Finished creating users!");
 
-    await Promise.all(
-      phones.map(async (phone) => {
-        await Product.createProduct(phone);
-      })
-    );
-    await Promise.all(
-      tablets.map(async (tablet) => {
-        await Product.createProduct(tablet);
-      })
-    );
-    await Promise.all(
-      laptops.map(async (laptop) => {
-        await Product.createProduct(laptop);
-      })
-    );
-    await Promise.all(
-      watches.map(async (watch) => {
-        await Product.createProduct(watch);
-      })
-    );
+  await Promise.all(
+    phones.map(async (phone) => {
+      await Product.createProduct(phone);
+    })
+  );
+  await Promise.all(
+    tablets.map(async (tablet) => {
+      await Product.createProduct(tablet);
+    })
+  );
+  await Promise.all(
+    laptops.map(async (laptop) => {
+      await Product.createProduct(laptop);
+    })
+  );
+  await Promise.all(
+    watches.map(async (watch) => {
+      await Product.createProduct(watch);
+    })
+  );
 
-    console.log("Finished creating products!");
+  console.log("Finished creating products!");
 
-    // console.log("Starting to create orders...");
-    // const order1 = await Order.createOrder({
-    //   user_id: 1,
-    //   product_id: 1,
-    //   orderDate: "",
-    //   isCheckedOut: true,
-    // });
+  // console.log("Starting to create orders...");
+  // const order1 = await Order.createOrder({
+  //   user_id: 1,
+  //   product_id: 1,
+  //   orderDate: "",
+  //   isCheckedOut: true,
+  // });
 
-    // const order2 = await Order.createOrder({
-    //   user_id: 2,
-    //   product_id: 2,
-    //   orderDate: "",
-    //   isCheckedOut: true,
-    // });
+  // const order2 = await Order.createOrder({
+  //   user_id: 2,
+  //   product_id: 2,
+  //   orderDate: "",
+  //   isCheckedOut: true,
+  // });
 
-    // console.log("Finished creating orders!");
+  // console.log("Finished creating orders!");
 
-    console.log("Starting to create reviews...");
-    await Review.createReview({
-      product_id: 1,
-      user_id: 1,
-      title: "Great Product",
-      description: "I love this product",
-      rating: 5,
-    });
+  console.log("Starting to create reviews...");
+  await Review.createReview({
+    product_id: 1,
+    user_id: 1,
+    title: "Great Product",
+    description: "I love this product",
+    rating: 5,
+  });
 
-    await Review.createReview({
-      product_id: 2,
-      user_id: 2,
-      title: "Not a Great Product",
-      description: "Its not great",
-      rating: 5,
-    });
+  await Review.createReview({
+    product_id: 2,
+    user_id: 2,
+    title: "Not a Great Product",
+    description: "Its not great",
+    rating: 5,
+  });
 
-    console.log("Finished creating reviews!");
-  }
-  
+  console.log("Finished creating reviews!");
+}
+
 
 buildTables()
   .then(populateInitialData)

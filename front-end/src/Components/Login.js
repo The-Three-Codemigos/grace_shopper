@@ -3,11 +3,11 @@ import './style/Login.css'
 
 
 
-const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, showLoginModal, setShowLoginModal }) => {
+const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, showLoginModal, setShowLoginModal, setUser }) => {
     const [email, setEamil] = useState("")
     const [password, setPassword] = useState("")
     const [token, setToken] = useState("")
-    const [user, setUser] = useState("")
+    // const [user, setUser] = useState("")
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [emailReg, setEmailReg] = useState("")
@@ -134,6 +134,7 @@ const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, showLoginModal, setShowLogi
                         localStorage.setItem('token', result.token);
                         setToken(result.token)
                         setUser(result.data);
+                        console.log(result.data)
                     }
                     if (result.name === 'IncorrectCredentialsError') {
                         setValidInfo(false)
