@@ -56,11 +56,11 @@ const App = () => {
             path='/profile'
             element={<Profile isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} />}
           />
-        <Route
+          <Route
             path='/admin'
             element={<Admin isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} />}
           />
-          </Routes>
+        </Routes>
       </BrowserRouter>
     </>
   )

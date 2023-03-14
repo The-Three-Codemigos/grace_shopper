@@ -2,22 +2,22 @@
 const client = require("../client");
 
 async function createOrder(user_id) {
-  try {
-    const {
-      rows: [order],
-    } = await client.query(
-      `
+  // try {
+  const {
+    rows: [order],
+  } = await client.query(
+    `
       INSERT INTO orders("user_id") 
       VALUES($1) 
       RETURNING *;
     `,
-      [user_id]
-    );
+    [user_id]
+  );
 
-    return order;
-  } catch (error) {
-    throw error;
-  }
+  return order;
+} catch (error) {
+  throw error;
+}
 }
 
 async function getAllOrders() {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Header from './Header';
 import Pagination from './Pagination';
 import './style/Product.css'
+import addToCart from './addToCart';
 
 
 const Products = ({ API_URL }) => {
@@ -86,7 +87,7 @@ const Products = ({ API_URL }) => {
                                 <h3>{product.title}</h3>
                                 {/* <p>{product.description}</p> */}
                                 <h2>${product.price}</h2>
-                                <button className='buy2'>Add to Cart</button>
+                                <button className='buy2' onClick={() => addToCart(API_URL)}>Add to Cart</button>
                             </div>
                         </div>
                     )
