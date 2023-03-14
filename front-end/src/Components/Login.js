@@ -177,7 +177,7 @@ const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, showLoginModal, setShowLogi
                             {weakPass && <div className="container">{passwordTooWeekAlert()}</div>}
                             {registered && <div className="container">{registeredAlert()}</div>}
                             <input type='text' placeholder="First Name" value={firstName} onChange={handleChangeFirstName} className="inputLogin"></input>
-                            <input type='text' placeholder="Last Name" value={lastName} onChange={handleChangeEmailReg} className="inputLogin"></input>
+                            <input type='text' placeholder="Last Name" value={lastName} onChange={handleChangeLastName} className="inputLogin"></input>
                             <input type='text' placeholder="Email" value={emailReg} onChange={handleChangeEmailReg} className="inputLogin"></input>
                             <input type='password' placeholder="Password" value={passwordReg} onChange={handleChangePasswordRegister} className="inputLogin"></input>
                             <button type="submit" className="btnModal">Register &rarr;</button>

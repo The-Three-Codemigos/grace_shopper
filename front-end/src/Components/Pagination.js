@@ -10,7 +10,7 @@ const Pagination = ({ productsPerPage, totalProducts, paginate }) => {
             <ul className='pagination'>
                 {pageNumbers.map(number => (
                     <li key={number} className='page-item'>
-                        <a onClick={() => paginate(number)} href="products" className='page-link'>
+                        <a onClick={(e) => paginate(e, number)} href="products" className='page-link'>
                             {number}
                         </a>
                     </li>

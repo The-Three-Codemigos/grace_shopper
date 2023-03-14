@@ -36,8 +36,8 @@ const Products = ({ API_URL }) => {
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
     const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
 
-    const paginate = (event, pageNumber) => {
-        event.preventdefault();
+    const paginate = (e, pageNumber) => {
+        e.preventDefault();
         setCurrentPage(pageNumber);
     }
 
@@ -76,7 +76,7 @@ const Products = ({ API_URL }) => {
                     </div>
                 </section>
 
-                {products && products.map((product) => {
+                {currentProducts && currentProducts.map((product) => {
                     return (
                         <div className="card2" key={product.id}>
                             <div className='imgBox2'>
@@ -93,11 +93,12 @@ const Products = ({ API_URL }) => {
                 })
                 }
 
-                <br></br>
+               
+            </div>
+            <br></br>
 
-                <div className='pagination-container'>
-                    <Pagination productsPerPage={productsPerPage} totalProducts={products.length} paginate={paginate} />
-                </div>
+            <div className='pagination-container'>
+                <Pagination productsPerPage={productsPerPage} totalProducts={products.length} paginate={paginate} />
             </div>
         </div >
     )
