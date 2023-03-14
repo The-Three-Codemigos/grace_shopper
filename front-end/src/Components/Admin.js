@@ -52,52 +52,52 @@ const Admin = ({ isLoggedIn, setIsLoggedIn, API_URL }) => {
             />
           )}
         </section>
-      ) : 
-      (
-        <section className="usersInfo">
-          <h1>All Users</h1>
-          <div className="main">
-        <div className="title">Admin Board</div>
-        <table className="table">
-          <caption>User Information</caption>
-          <thead>
-            <tr>
-              <th>User Id</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Email</th>
-              <th>Admin</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users &&
-              users.map(
-                ({
-                  id,
-                  firstName,
-                  lastName,
-                  email,
-                  isadmin,
-                }) => (
-                  <tr key={id}>
-                    <td>{id}</td>
-
-                    <td>{firstName}</td>
-
-                    <td>{lastName}</td>
-
-                    <td>{email}</td>
-
-                    <td>{isadmin}</td>
-
+      ) :
+        (
+          <section className="usersInfo">
+            <h1>All Users</h1>
+            <div className="main">
+              <div className="title">Admin Board</div>
+              <table className="table">
+                <caption>User Information</caption>
+                <thead>
+                  <tr>
+                    <th>User Id</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Admin</th>
                   </tr>
-                )
-              )}
-          </tbody>
-        </table>
-      </div>
-        </section>
-      )}
+                </thead>
+                <tbody>
+                  {users &&
+                    users.map(
+                      ({
+                        id,
+                        firstName,
+                        lastName,
+                        email,
+                        isadmin,
+                      }) => (
+                        <tr key={id}>
+                          <td>{id}</td>
+
+                          <td>{firstName}</td>
+
+                          <td>{lastName}</td>
+
+                          <td>{email}</td>
+
+                          <td>{isadmin}</td>
+
+                        </tr>
+                      )
+                    )}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        )}
     </>
   );
 };
