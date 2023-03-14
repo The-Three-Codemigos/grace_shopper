@@ -9,14 +9,23 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, API_URL }) => {
     const btnClicked = () => {
         setShowLoginModal(!showLoginModal)
     }
-
     useEffect(() => {
         fetch(`${API_URL}/orders`)
             .then((response) => response.json())
             .then((data) => {
                 console.log(data)
+
+                if (data) {
+                    fetch(`${API_URL}/order_items`)
+                        .then((response) => response.json())
+                        .then((data) => {
+                            console.log(data)
+                        })
+                        .catch((error) => console.error(error));
+                }
             })
             .catch((error) => console.error(error));
+
     }, []);
 
     return (

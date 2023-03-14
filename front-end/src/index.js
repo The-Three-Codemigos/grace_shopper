@@ -14,35 +14,6 @@ const App = () => {
   const [token, setToken] = useState("")
   const [user, setUser] = useState("")
 
-  // useEffect(() => {
-  //   const localToken = window.localStorage.getItem('token');
-  //   setToken(localToken);
-
-  //   if (localToken) {
-  //     setIsLoggedIn(true);
-  //   }
-
-  //   if (token) {
-  //     fetch(`${API_URL}users/me`, {
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         'Authorization': `Bearer ${localToken}`,
-  //       },
-  //     })
-  //       .then((response) => {
-  //         console.log(response);
-  //         return response.json();
-  //       })
-  //       .then((result) => {
-  //         console.log(result);
-  //         setUser(result);
-  //       })
-  //       .catch((error) => console.log(error));
-  //   }
-  // }, [token]);
-
-
-
 
   useEffect(() => {
     const localToken = window.localStorage.getItem('token');
@@ -78,7 +49,7 @@ const App = () => {
         <Routes>
           <Route
             path='/products'
-            element={<Products API_URL={API_URL} user={user} />}
+            element={<Products API_URL={API_URL} user={user} token={token} />}
           />
           <Route
             path='/about'

@@ -1,12 +1,13 @@
 import React from 'react'
 
-const addToCart = async (API_URL, user, productId) => {
+const addToCart = async (API_URL, user, productId, token) => {
 
     try {
         const response = await fetch(`${API_URL}/orders`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
                 user_id: `${user.id}`
@@ -18,6 +19,7 @@ const addToCart = async (API_URL, user, productId) => {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     orderId: `${response.id}`,
@@ -33,7 +35,5 @@ const addToCart = async (API_URL, user, productId) => {
     catch (err) {
         console.error(err)
     }
-
-
 }
 export default addToCart

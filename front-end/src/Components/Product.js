@@ -5,7 +5,7 @@ import './style/Product.css'
 import addToCart from './addToCart';
 
 
-const Products = ({ API_URL, user }) => {
+const Products = ({ API_URL, user, token }) => {
     const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [productsPerPage, setProductsPerPage] = useState(8);
@@ -89,7 +89,7 @@ const Products = ({ API_URL, user }) => {
                                 <h3>{product.title}</h3>
                                 {/* <p>{product.description}</p> */}
                                 <h2>${product.price}</h2>
-                                <button className='buy2' onClick={() => addToCart(API_URL, user, product.id)}>Add to Cart</button>
+                                <button className='buy2' onClick={() => addToCart(API_URL, user, product.id, token)}>Add to Cart</button>
                             </div>
                         </div>
                     )
