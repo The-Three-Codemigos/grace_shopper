@@ -17,7 +17,7 @@ const Admin = ({ isLoggedIn, setIsLoggedIn, API_URL }) => {
 
   async function fetchAllUsers() {
     try {
-      const response = await fetch('${API_URL}api/user', {
+      const response = await fetch('${API_URL}user', {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -52,7 +52,8 @@ const Admin = ({ isLoggedIn, setIsLoggedIn, API_URL }) => {
             />
           )}
         </section>
-      ) : (
+      ) : 
+      (
         <section className="usersInfo">
           <h1>All Users</h1>
           <div className="main">
@@ -77,10 +78,6 @@ const Admin = ({ isLoggedIn, setIsLoggedIn, API_URL }) => {
                   lastName,
                   email,
                   isadmin,
-                  city,
-                  state,
-                  zipcode,
-                  phone,
                 }) => (
                   <tr key={id}>
                     <td>{id}</td>
