@@ -6,6 +6,7 @@ import Products from './Components/Product';
 import About from './Components/About';
 import Profile from './Components/Profile';
 import Admin from './Components/Admin';
+import Cart from './Components/Cart';
 
 const App = () => {
 
@@ -44,6 +45,10 @@ const App = () => {
           <Route
             path='/'
             element={<Home isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} />}
+          />
+          <Route
+            path='/cart'
+            element={<Cart isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} />}
           />
         </Routes>
         <Routes>
