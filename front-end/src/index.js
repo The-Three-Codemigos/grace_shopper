@@ -48,7 +48,7 @@ const App = () => {
           />
           <Route
             path='/cart'
-            element={<Cart isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} />}
+            element={<Cart isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} token={token} />}
           />
         </Routes>
         <Routes>

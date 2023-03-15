@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Header from './Header';
 import './style/Cart.css'
 
 
-const Cart = ({ API_URL }) => {
+const Cart = ({ API_URL, token }) => {
     const [orderList, setOrderList] = useState([])
     const [myItems, setMyItems] = useState([])
     const [myCart, setMyCart] = useState([])
+    const [error, setError] = useState(null);
 
     // All orders but not myOrders need to fix that issue
 
@@ -16,16 +18,25 @@ const Cart = ({ API_URL }) => {
     }, []);
     console.log(orderList)
     console.log(myItems)
+
+
     const getOrders = async () => {
         try {
-            await fetch(`${API_URL}/myOrders`)
-                .then((response) => response.json())
-                .then((data) => {
-                    setOrderList(data)
-                })
-                .catch((error) => console.error(error));
+            const response = await fetch(`${API_URL}/orders/myOrders`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+
+            const data = await response.json();
+            setOrderList(data);
         } catch (error) {
             console.error(error);
+            setError("An error occurred while fetching orders. Please try again later.");
         }
     }
 
@@ -42,9 +53,9 @@ const Cart = ({ API_URL }) => {
         }
     }
 
-    const showMyCart = () => {
+    // const showMyCart = () => {
 
-    }
+    // }
 
 
     return (
@@ -55,7 +66,9 @@ const Cart = ({ API_URL }) => {
                     <h1>RESPONSIVE TABLE SHOPPING CART</h1>
                     <section className='CartBtnContainer'>
                         <p>My Cart</p>
-                        <button>Continue Shoping</button>
+                        <Link to='/products'>
+                            <button>Continue Shoping</button>
+                        </Link>
                     </section>
 
                     <section className='productsSec'>
@@ -76,6 +89,7 @@ const Cart = ({ API_URL }) => {
                             </div>
                         </div>
                     </section>
+                    {error && <div className="error">{error}</div>}
                 </div>
             </section>
         </body>
