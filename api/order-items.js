@@ -58,7 +58,7 @@ apiRouter.patch("/:orderItemId", async (req, res, next) => {
 apiRouter.delete("/:orderItemId", async (req, res, next) => {
   const id = req.params.orderItemId;
   try {
-    const destroy = await OrderItems.deleteOrderItem(id);
+    const destroy = await OrderItems.updateOrderItem(id);
     res.send(destroy);
   } catch (error) {
     next(error);

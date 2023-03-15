@@ -3,14 +3,11 @@ import { Link } from 'react-router-dom';
 import Header from './Header';
 import './style/Cart.css'
 
-
+// ERROR need to reload once signed in to register the token and user
 const Cart = ({ API_URL, token }) => {
     const [orderList, setOrderList] = useState([])
     const [myItems, setMyItems] = useState([])
     const [myCart, setMyCart] = useState([])
-    const [error, setError] = useState(null);
-
-    // All orders but not myOrders need to fix that issue
 
     useEffect(() => {
         getOrders()
@@ -18,8 +15,7 @@ const Cart = ({ API_URL, token }) => {
     }, []);
     console.log(orderList)
     console.log(myItems)
-
-
+    // console.log(token)
     const getOrders = async () => {
         try {
             const response = await fetch(`${API_URL}/orders/myOrders`, {
@@ -36,7 +32,6 @@ const Cart = ({ API_URL, token }) => {
             setOrderList(data);
         } catch (error) {
             console.error(error);
-            setError("An error occurred while fetching orders. Please try again later.");
         }
     }
 
@@ -54,9 +49,7 @@ const Cart = ({ API_URL, token }) => {
     }
 
     // const showMyCart = () => {
-
     // }
-
 
     return (
         <body className='cartBody'>
@@ -89,7 +82,6 @@ const Cart = ({ API_URL, token }) => {
                             </div>
                         </div>
                     </section>
-                    {error && <div className="error">{error}</div>}
                 </div>
             </section>
         </body>
