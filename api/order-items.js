@@ -47,7 +47,7 @@ apiRouter.patch("/:orderItemId", async (req, res, next) => {
     if (quantity) {
       updatedFields.quantity = quantity;
     }
-    const updatedOrderItem = await OrderItems.updatedOrderItem(updatedFields);
+    const updatedOrderItem = await OrderItems.updateOrderItem(updatedFields);
 
     res.send(updatedOrderItem);
   } catch (error) {
@@ -58,7 +58,7 @@ apiRouter.patch("/:orderItemId", async (req, res, next) => {
 apiRouter.delete("/:orderItemId", async (req, res, next) => {
   const id = req.params.orderItemId;
   try {
-    const destroy = await OrderItems.updateOrderItem(id);
+    const destroy = await OrderItems.deleteOrderItem(id);
     res.send(destroy);
   } catch (error) {
     next(error);

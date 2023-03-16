@@ -3,10 +3,10 @@ import './style/Login.css'
 
 
 
-const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, showLoginModal, setShowLoginModal, setUser }) => {
+const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, showLoginModal, setShowLoginModal, setUser, setToken }) => {
     const [email, setEamil] = useState("")
     const [password, setPassword] = useState("")
-    const [token, setToken] = useState("")
+    // const [token, setToken] = useState("")
     // const [user, setUser] = useState("")
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")

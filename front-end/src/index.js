@@ -49,7 +49,7 @@ const App = () => {
           />
           <Route
             path='/cart'
-            element={<Cart isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} token={token} />}
+            element={<Cart isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} token={token} setToken={setToken} setUser={setUser} />}
           />
         </Routes>
         <Routes>
@@ -63,7 +63,7 @@ const App = () => {
           />
           <Route
             path='/profile'
-            element={<Profile isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} setUser={setUser} />}
+            element={<Profile isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} setUser={setUser} setToken={setToken} />}
           />
           <Route
             path='/admin'

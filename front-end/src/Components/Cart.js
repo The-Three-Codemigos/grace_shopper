@@ -3,22 +3,16 @@ import { Link } from 'react-router-dom';
 import Header from './Header';
 import './style/Cart.css'
 
-// ERROR need to reload once signed in to register the token and user
-const Cart = ({ API_URL, token }) => {
+const Cart = ({ API_URL, token, setToken, setUser }) => {
     const [orderList, setOrderList] = useState([])
-    const [myItems, setMyItems] = useState([])
+    // const [myItems, setMyItems] = useState([])
     const [myCart, setMyCart] = useState([])
+    console.log("MY CART: ", myCart)
 
-    useEffect(() => {
-        getOrders()
-        getItems()
-    }, []);
-    console.log(orderList)
-    console.log(myItems)
-    // console.log(token)
+
     const getOrders = async () => {
         try {
-            const response = await fetch(`${API_URL}/orders/myOrders`, {
+            const response = await fetch(`${API_URL}orders/myOrders`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -29,27 +23,26 @@ const Cart = ({ API_URL, token }) => {
             }
 
             const data = await response.json();
-            setOrderList(data);
+            // setOrderList(() => data);
+            if (data) {
+                const myCartData = await Promise.all(
+                    data && data.map((order) =>
+                        fetch(`${API_URL}order-items/${order.id}`)
+                            .then((response) => response.json())
+                            .catch((error) => console.error(error))
+                    )
+                );
+                setMyCart(myCartData.flat());
+            }
         } catch (error) {
             console.error(error);
         }
     }
 
-    const getItems = async () => {
-        try {
-            await fetch(`${API_URL}/order-items`)
-                .then((response) => response.json())
-                .then((data) => {
-                    setMyItems(data)
-                })
-                .catch((error) => console.error(error));
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
-    // const showMyCart = () => {
-    // }
+    useEffect(() => {
+        getOrders()
+        // getMyCart()
+    }, [token]);
 
     return (
         <body className='cartBody'>
@@ -65,7 +58,9 @@ const Cart = ({ API_URL, token }) => {
                     </section>
 
                     <section className='productsSec'>
-                        {/* Map goes here */}
+                        {/* {myCart.map((cart) => {
+
+                        })} */}
                         <div className='productCart'>
                             <div className='productCartLeft'>
                                 <h3>Product Name</h3>
