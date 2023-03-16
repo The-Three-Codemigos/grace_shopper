@@ -4,10 +4,9 @@ import Header from './Header';
 import './style/Cart.css'
 
 const Cart = ({ API_URL, token, setToken, setUser }) => {
-    const [orderList, setOrderList] = useState([])
-    // const [myItems, setMyItems] = useState([])
     const [myCart, setMyCart] = useState([])
-    console.log("MY CART: ", myCart)
+    const [products, setProducts] = useState([])
+    let sum = 0;
 
 
     const getOrders = async () => {
@@ -18,13 +17,9 @@ const Cart = ({ API_URL, token, setToken, setUser }) => {
                 }
             });
 
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
-            }
-
             const data = await response.json();
-            // setOrderList(() => data);
             if (data) {
+
                 const myCartData = await Promise.all(
                     data && data.map((order) =>
                         fetch(`${API_URL}order-items/${order.id}`)
@@ -33,7 +28,10 @@ const Cart = ({ API_URL, token, setToken, setUser }) => {
                     )
                 );
                 setMyCart(myCartData.flat());
+
+
             }
+
         } catch (error) {
             console.error(error);
         }
@@ -41,8 +39,25 @@ const Cart = ({ API_URL, token, setToken, setUser }) => {
 
     useEffect(() => {
         getOrders()
-        // getMyCart()
     }, [token]);
+
+    useEffect(() => {
+        const getProducts = async () => {
+            try {
+                const myProductData = await Promise.all(
+                    myCart && myCart.map((product) =>
+                        fetch(`${API_URL}products/${product.product_id}`)
+                            .then((response) => response.json())
+                            .catch((error) => console.error(error))
+                    )
+                );
+                setProducts(myProductData.flat());
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        getProducts();
+    }, [myCart]);
 
     return (
         <body className='cartBody'>
@@ -58,24 +73,21 @@ const Cart = ({ API_URL, token, setToken, setUser }) => {
                     </section>
 
                     <section className='productsSec'>
-                        {/* {myCart.map((cart) => {
+                        {products && products.map((data) =>
+                            <div className="card2 cartCard" key={data.id}>
+                                <p className='totalPriceP'>{sum += parseFloat(data.price)}</p>
 
-                        })} */}
-                        <div className='productCart'>
-                            <div className='productCartLeft'>
-                                <h3>Product Name</h3>
-                                <div className='productPriceSec'>
-                                    <input type="number" value={1}></input>
-                                    <p>X</p>
-                                    <p>$15</p>
+                                <button className='removeBtn'>X</button>
+                                <div className='imgBox2'>
+                                    <img className='mouse' src={data.image} alt="" />
                                 </div>
-
+                                <div className='contentBox2'>
+                                    <h3>{data.title}</h3>
+                                    <h2>${data.price}</h2>
+                                </div>
                             </div>
-                            <div className='productCartRight'>
-                                <p>$15</p>
-                                <button>X</button>
-                            </div>
-                        </div>
+                        )}
+                        <h1 className='totalPrice'>Total ${sum}</h1>
                     </section>
                 </div>
             </section>

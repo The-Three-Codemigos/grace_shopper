@@ -81,13 +81,11 @@ const Products = ({ API_URL, user, token }) => {
                 {currentProducts && currentProducts.map((product) => {
                     return (
                         <div className="card2" key={product.id}>
-                            {/* {setCurrProductId(product.id)} */}
                             <div className='imgBox2'>
                                 <img className='mouse' src={product.image} alt="" />
                             </div>
                             <div className='contentBox2'>
                                 <h3>{product.title}</h3>
-                                {/* <p>{product.description}</p> */}
                                 <h2>${product.price}</h2>
                                 <button className='buy2' onClick={() => addToCart(API_URL, user, product.id, token)}>Add to Cart</button>
                             </div>

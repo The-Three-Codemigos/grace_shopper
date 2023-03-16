@@ -45,10 +45,12 @@
 }
 
 .productsSec {
-    border-top: 1px solid grey;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     border-bottom: 1px solid grey;
-    padding: 20px 0 20px 0;
     font-size: 20px;
+    margin-top: -2em;
 }
 
 .productCart {
@@ -86,4 +88,33 @@
     border-radius: 50px;
     font-size: 20px;
     background-color: transparent;
+}
+
+/* .mouse {
+    width: 300px;
+    height: 200px;
+} */
+
+.cartCard {
+    scale: .7;
+}
+
+.removeBtn {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    border-radius: 50px;
+    font-size: 20px;
+    background-color: transparent;
+    z-index: 2;
+    right: 0;
+    margin: 10px 10px 0 0;
+}
+
+.totalPriceP {
+    display: none;
+}
+
+.totalPrice {
+    margin-left: 50px;
 }
