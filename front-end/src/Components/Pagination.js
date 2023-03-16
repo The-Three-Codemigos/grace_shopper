@@ -6,7 +6,7 @@ const Pagination = ({ productsPerPage, totalProducts, paginate }) => {
         pageNumbers.push(i)
     }
     return (
-        <nav>
+        <nav className='pages'>
             <ul className='pagination'>
                 {pageNumbers.map(number => (
                     <li key={number} className='page-item'>

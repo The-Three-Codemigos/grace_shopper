@@ -12,13 +12,36 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px
+    gap: 30px;
 }
 
 .pagination {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+}
+
+.pages a {
+    border: 1px solid #ddd;
+    font-size: 25px;
+    padding-left: 15px;
+    padding-right: 15px;
+    text-decoration: none;
+}
+
+.pages a:first-child {
+    border-top-left-radius: 5px; 
+    border-bottom-left-radius: 5px;
+}
+
+.pages a:last-child {
+    border-top-right-radius: 5px; 
+    border-bottom-right-radius: 5px;
+}
+
+.pagination a:hover:not(.active) {
+    border: solid lightblue 5px;
+    background-color: #ddd;
+    color: white;
 }
 
 .page-item {
