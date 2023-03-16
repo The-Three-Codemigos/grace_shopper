@@ -47,7 +47,7 @@ apiRouter.patch("/:orderItemId", async (req, res, next) => {
     if (quantity) {
       updatedFields.quantity = quantity;
     }
-    const updatedOrderItem = await OrderItems.updatedOrderItem(updatedFields);
+    const updatedOrderItem = await OrderItems.updateOrderItem(updatedFields);
 
     res.send(updatedOrderItem);
   } catch (error) {

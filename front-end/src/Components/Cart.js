@@ -3,60 +3,61 @@ import { Link } from 'react-router-dom';
 import Header from './Header';
 import './style/Cart.css'
 
-
-const Cart = ({ API_URL, token }) => {
-    const [orderList, setOrderList] = useState([])
-    const [myItems, setMyItems] = useState([])
+const Cart = ({ API_URL, token, setToken, setUser }) => {
     const [myCart, setMyCart] = useState([])
-    const [error, setError] = useState(null);
-
-    // All orders but not myOrders need to fix that issue
-
-    useEffect(() => {
-        getOrders()
-        getItems()
-    }, []);
-    console.log(orderList)
-    console.log(myItems)
+    const [products, setProducts] = useState([])
+    let sum = 0;
 
 
     const getOrders = async () => {
         try {
-            const response = await fetch(`${API_URL}/orders/myOrders`, {
+            const response = await fetch(`${API_URL}orders/myOrders`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
 
-            if (!response.ok) {
-                throw new Error("Network response was not ok");
+            const data = await response.json();
+            if (data) {
+
+                const myCartData = await Promise.all(
+                    data && data.map((order) =>
+                        fetch(`${API_URL}order-items/${order.id}`)
+                            .then((response) => response.json())
+                            .catch((error) => console.error(error))
+                    )
+                );
+                setMyCart(myCartData.flat());
+
+
             }
 
-            const data = await response.json();
-            setOrderList(data);
-        } catch (error) {
-            console.error(error);
-            setError("An error occurred while fetching orders. Please try again later.");
-        }
-    }
-
-    const getItems = async () => {
-        try {
-            await fetch(`${API_URL}/order-items`)
-                .then((response) => response.json())
-                .then((data) => {
-                    setMyItems(data)
-                })
-                .catch((error) => console.error(error));
         } catch (error) {
             console.error(error);
         }
     }
 
-    // const showMyCart = () => {
+    useEffect(() => {
+        getOrders()
+    }, [token]);
 
-    // }
-
+    useEffect(() => {
+        const getProducts = async () => {
+            try {
+                const myProductData = await Promise.all(
+                    myCart && myCart.map((product) =>
+                        fetch(`${API_URL}products/${product.product_id}`)
+                            .then((response) => response.json())
+                            .catch((error) => console.error(error))
+                    )
+                );
+                setProducts(myProductData.flat());
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        getProducts();
+    }, [myCart]);
 
     return (
         <body className='cartBody'>
@@ -72,24 +73,22 @@ const Cart = ({ API_URL, token }) => {
                     </section>
 
                     <section className='productsSec'>
-                        {/* Map goes here */}
-                        <div className='productCart'>
-                            <div className='productCartLeft'>
-                                <h3>Product Name</h3>
-                                <div className='productPriceSec'>
-                                    <input type="number" value={1}></input>
-                                    <p>X</p>
-                                    <p>$15</p>
-                                </div>
+                        {products && products.map((data) =>
+                            <div className="card2 cartCard" key={data.id}>
+                                <p className='totalPriceP'>{sum += parseFloat(data.price)}</p>
 
+                                <button className='removeBtn'>X</button>
+                                <div className='imgBox2'>
+                                    <img className='mouse' src={data.image} alt="" />
+                                </div>
+                                <div className='contentBox2'>
+                                    <h3>{data.title}</h3>
+                                    <h2>${data.price}</h2>
+                                </div>
                             </div>
-                            <div className='productCartRight'>
-                                <p>$15</p>
-                                <button>X</button>
-                            </div>
-                        </div>
+                        )}
+                        <h1 className='totalPrice'>Total ${sum}</h1>
                     </section>
-                    {error && <div className="error">{error}</div>}
                 </div>
             </section>
         </body>
