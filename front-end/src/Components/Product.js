@@ -100,6 +100,7 @@ const Products = ({ API_URL, user, token }) => {
             <div className='pagination-container'>
                 <Pagination productsPerPage={productsPerPage} totalProducts={products.length} paginate={paginate} />
             </div>
+            <br></br>
         </div >
     )
 }
