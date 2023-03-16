@@ -4,7 +4,7 @@ import Header from './Header';
 import Login from './Login';
 import './style/Profile.css'
 
-const Profile = ({ isLoggedIn, setIsLoggedIn, API_URL }) => {
+const Profile = ({ isLoggedIn, setIsLoggedIn, API_URL, setToken }) => {
     const [showLoginModal, setShowLoginModal] = useState(false)
     const btnClicked = () => {
         setShowLoginModal(!showLoginModal)
@@ -13,8 +13,7 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, API_URL }) => {
         fetch(`${API_URL}/orders`)
             .then((response) => response.json())
             .then((data) => {
-                console.log(data)
-
+                // console.log(data)
                 if (data) {
                     fetch(`${API_URL}/order_items`)
                         .then((response) => response.json())
@@ -38,7 +37,7 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, API_URL }) => {
                     <button className='signInBtn' onClick={() => btnClicked()}>Sign In</button>
                     <Link to='/products'><button className='continueShoping'>Continue Shopping</button></Link>
                     {showLoginModal &&
-                        <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} showLoginModal={showLoginModal} setShowLoginModal={setShowLoginModal} />
+                        <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} showLoginModal={showLoginModal} setShowLoginModal={setShowLoginModal} setToken={setToken} />
                     }
                 </section> :
                 <section className='usersInfo'>

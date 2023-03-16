@@ -6,6 +6,7 @@ import Products from './Components/Product';
 import About from './Components/About';
 import Profile from './Components/Profile';
 import Admin from './Components/Admin';
+import Cart from './Components/Cart';
 
 const App = () => {
 
@@ -14,6 +15,7 @@ const App = () => {
   const [token, setToken] = useState("")
   const [user, setUser] = useState("")
 
+  // console.log(token)
 
   useEffect(() => {
     const localToken = window.localStorage.getItem('token');
@@ -45,6 +47,10 @@ const App = () => {
             path='/'
             element={<Home isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} />}
           />
+          <Route
+            path='/cart'
+            element={<Cart isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} token={token} setToken={setToken} setUser={setUser} />}
+          />
         </Routes>
         <Routes>
           <Route
@@ -57,7 +63,7 @@ const App = () => {
           />
           <Route
             path='/profile'
-            element={<Profile isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} setUser={setUser} />}
+            element={<Profile isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} setUser={setUser} setToken={setToken} />}
           />
           <Route
             path='/admin'

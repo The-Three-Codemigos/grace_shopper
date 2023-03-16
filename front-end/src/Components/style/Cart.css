@@ -1,0 +1,120 @@
+.cartBody {
+    display: flex;
+    justify-content: center;
+}
+
+.cartSection {
+    position: absolute;
+    margin-top: 150px;
+    width: 90%;
+    height: 100vh;
+}
+
+.subHeaderCart {
+    padding: 0 100px 0 100px;
+}
+
+.subHeaderCart h1 {
+    text-align: center;
+    font-size: 30px;
+}
+
+.CartBtnContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    margin: 50px 0 50px 0;
+    padding: 20px 0 20px 0;
+    font-size: 20px;
+}
+
+.CartBtnContainer button {
+    font-size: 20px;
+    padding: 5px;
+    border-radius: 20px;
+    border: none;
+    background-color: transparent;
+    border-radius: 20px;
+    width: 200px;
+    height: 50px;
+    cursor: pointer;
+    background: linear-gradient(100deg, #1695cc 0%, #9c8de0 100%);
+    color: white;
+}
+
+.productsSec {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-bottom: 1px solid grey;
+    font-size: 20px;
+    margin-top: -2em;
+}
+
+.productCart {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.productCartLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.productPriceSec {
+    display: flex;
+    gap: 15px;
+}
+
+.productPriceSec input {
+    width: 25px;
+}
+
+.productCartRight {
+    display: flex;
+    align-items: center;
+    gap: 75px;
+}
+
+.productCartRight button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    font-size: 20px;
+    background-color: transparent;
+}
+
+/* .mouse {
+    width: 300px;
+    height: 200px;
+} */
+
+.cartCard {
+    scale: .7;
+}
+
+.removeBtn {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    border-radius: 50px;
+    font-size: 20px;
+    background-color: transparent;
+    z-index: 2;
+    right: 0;
+    margin: 10px 10px 0 0;
+}
+
+.totalPriceP {
+    display: none;
+}
+
+.totalPrice {
+    margin-left: 50px;
+}
