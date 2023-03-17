@@ -78,7 +78,7 @@
             "price": 250.00,
             "quantity": 2,
             "category": "Phone",
-            "image": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP770/iphonex_2x.png"
+            "image": "https://www.apple.com/newsroom/images/product/iphone/standard/iphonex_front_homescreen_inline.jpg.large_2x.jpg"
         }
     ],
     "tablets": [
@@ -96,7 +96,7 @@
             "price": 700.00,
             "quantity": 1,
             "category": "Tablet",
-            "image": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP787/ipad-air-2019.jpg"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/refurb-ipad-mini-wifi-gold-gallery-2019?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1581026440444"
         },
         {
             "title": "iPad Air 4th Generation",
@@ -112,7 +112,7 @@
             "price": 900.00,
             "quantity": 1,
             "category": "Tablet",
-            "image": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP866/sp866-ipad-air-5gen_2x.png"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-air-storage-select-202207-space-gray?wid=5120&hei=2880&fmt=p-jpg&qlt=95&.v=1654903003209"
         },
         {
             "title": "iPad Pro",
@@ -152,7 +152,7 @@
             "price": 900.00,
             "quantity": 1,
             "category": "Tablet",
-            "image": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP844/ipad-pro-12-9_2x.png"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/refurb-ipad-pro-12-wifi-spacegray-2021?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1674663706569"
         },
         {
             "title": "iPad Pro 6th Generation",
@@ -160,7 +160,7 @@
             "price": 900.00,
             "quantity": 1,
             "category": "Tablet",
-            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-model-select-gallery-2-202212?wid=5120&hei=2880&fmt=p-jpg&qlt=95&.v=1667594167534"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-finish-select-202212-12-9inch-space-gray?wid=5120&hei=2880&fmt=jpeg&qlt=90&.v=1667595007854"
         }
     ],
     "laptops": [
@@ -284,7 +284,7 @@
             "price": 600.00,
             "quantity": 1,
             "category": "Watch",
-            "image": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP778/SP778-apple-watch-series-4.jpg"
+            "image": "https://www.apple.com/newsroom/images/product/watch/standard/apple-watch-series4_gold-milanese_09122018_carousel.jpg.large_2x.jpg"
         },
         {
             "title": "AppleWatch Series 5",
