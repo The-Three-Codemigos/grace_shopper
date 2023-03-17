@@ -62,7 +62,7 @@
             "price": 749.00,
             "quantity": 5,
             "category": "Phone",
-            "image": "https://m.media-amazon.com/images/I/71MdQiaT9qL._AC_SY300_SX300_.jpg"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/refurb-iphone-12-pro-blue-2020?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1635202834000"
         },
         {
             "title": "iPhone 12 Pro Max",
@@ -70,7 +70,7 @@
             "price": 800.00,
             "quantity": 3,
             "category": "Phone",
-            "image": "https://m.media-amazon.com/images/I/61AhDuc-qbL._AC_SX569_.jpg"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/refurb-iphone-12-pro-max-graphite-2020?wid=1144&hei=1144&fmt=jpeg&qlt=95&.v=1635202942000"
         },
         {
             "title": "iPhone X",
@@ -78,253 +78,253 @@
             "price": 250.00,
             "quantity": 2,
             "category": "Phone",
-            "image": "http://placehold.it/300x300"
+            "image": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP770/iphonex_2x.png"
         }
     ],
     "tablets": [
         {
-            "title": "iPad 6 Plus",
+            "title": "iPad Air 2nd Generation",
             "description": "Nice Tablet",
             "price": 600.00,
             "quantity": 1,
             "category": "Tablet",
-            "image": "http://placehold.it/300x300"
+            "image": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP708/SP708-space_gray.jpeg"
         },
         {
-            "title": "iPad 7 Plus",
+            "title": "iPad Air 3rd Generation",
             "description": "Nicer Tablet",
             "price": 700.00,
             "quantity": 1,
             "category": "Tablet",
-            "image": "http://placehold.it/300x300"
+            "image": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP787/ipad-air-2019.jpg"
         },
         {
-            "title": "iPad 8 Plus",
+            "title": "iPad Air 4th Generation",
             "description": "Even Nicer Tablet",
             "price": 800.00,
             "quantity": 1,
             "category": "Tablet",
-            "image": "http://placehold.it/300x300"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/refurb-ipad-air-wifi-green-2021?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1644268592092"
         },
         {
-            "title": "iPad 9 Plus",
+            "title": "iPad Air 5th Generation",
             "description": "Nicest Tablet Ever",
             "price": 900.00,
             "quantity": 1,
             "category": "Tablet",
-            "image": "http://placehold.it/300x300"
+            "image": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP866/sp866-ipad-air-5gen_2x.png"
         },
         {
-            "title": "iPad 10 Plus",
+            "title": "iPad Pro",
             "description": "Nice Tablet",
             "price": 600.00,
             "quantity": 1,
             "category": "Tablet",
-            "image": "http://placehold.it/300x300"
+            "image": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP784/ipad-pro-11-2018_2x.png"
         },
         {
-            "title": "iPad 11 Plus",
+            "title": "iPad Pro 2nd Generation",
             "description": "Nicer Tablet",
             "price": 700.00,
             "quantity": 1,
             "category": "Tablet",
-            "image": "http://placehold.it/300x300"
+            "image": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP761/ipad-pro-12in-hero-201706_2x.png"
         },
         {
-            "title": "iPad 12 Plus",
+            "title": "iPad Pro 3rd Generation",
             "description": "Even Nicer Tablet",
             "price": 800.00,
             "quantity": 1,
             "category": "Tablet",
-            "image": "http://placehold.it/300x300"
+            "image": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP785/ipad-pro-12-2018_2x.png"
         },
         {
-            "title": "iPad 13 Plus",
+            "title": "iPad Pro 4th Generation",
             "description": "Nicest Tablet Ever",
             "price": 900.00,
             "quantity": 1,
             "category": "Tablet",
-            "image": "http://placehold.it/300x300"
+            "image": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP882/ipad-pro-4gen-mainimage_2x.png"
         },
         {
-            "title": "iPad 14 Plus",
+            "title": "iPad Pro 5th Generation",
             "description": "Nicest Tablet Ever",
             "price": 900.00,
             "quantity": 1,
             "category": "Tablet",
-            "image": "http://placehold.it/300x300"
+            "image": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP844/ipad-pro-12-9_2x.png"
         },
         {
-            "title": "iPad 15 Plus",
+            "title": "iPad Pro 6th Generation",
             "description": "Nicest Tablet Ever",
             "price": 900.00,
             "quantity": 1,
             "category": "Tablet",
-            "image": "http://placehold.it/300x300"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ipad-pro-model-select-gallery-2-202212?wid=5120&hei=2880&fmt=p-jpg&qlt=95&.v=1667594167534"
         }
     ],
     "laptops": [
         {
-            "title": "MacBook 6 Plus",
+            "title": "MacBook Air",
             "description": "Nice Laptop",
             "price": 600.00,
             "quantity": 1,
             "category": "Laptop",
-            "image": "http://placehold.it/300x300"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-silver-select-201810?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1664472289056"
         },
         {
-            "title": "MacBook 7 Plus",
+            "title": "MacBook Air 11in",
             "description": "Nicer Laptop",
             "price": 700.00,
             "quantity": 1,
             "category": "Laptop",
-            "image": "http://placehold.it/300x300"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-silver-select-201810?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1664472289056"
         },
         {
-            "title": "MacBook 8 Plus",
+            "title": "MacBook Air 12in",
             "description": "Even Nicer Laptop",
             "price": 800.00,
             "quantity": 1,
             "category": "Laptop",
-            "image": "http://placehold.it/300x300"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-gold-select-201810?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1664472289059"
         },
         {
-            "title": "MacBook 9 Plus",
+            "title": "MacBook Air 13in",
             "description": "Nicest Laptop Ever",
             "price": 900.00,
             "quantity": 1,
             "category": "Laptop",
-            "image": "http://placehold.it/300x300"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-silver-select-20220606?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1653084303678"
         },
         {
-            "title": "MacBook 10 Plus",
+            "title": "MacBook Air 14in",
             "description": "Nice Laptop",
             "price": 600.00,
             "quantity": 1,
             "category": "Laptop",
-            "image": "http://placehold.it/300x300"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-starlight-select-20220606?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1653084303732"
         },
         {
-            "title": "MacBook 11 Plus",
+            "title": "MacBook Air M1",
             "description": "Nicer Laptop",
             "price": 700.00,
             "quantity": 1,
             "category": "Laptop",
-            "image": "http://placehold.it/300x300"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-space-gray-select-201810?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1664472289661"
         },
         {
-            "title": "MacBook 12 Plus",
+            "title": "MacBook Air M2",
             "description": "Even Nicer Laptop",
             "price": 800.00,
             "quantity": 1,
             "category": "Laptop",
-            "image": "http://placehold.it/300x300"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-midnight-select-20220606?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1653084303665"
         },
         {
-            "title": "MacBook 13 Plus",
+            "title": "MacBook Pro 13in",
             "description": "Nicest Laptop Ever",
             "price": 900.00,
             "quantity": 1,
             "category": "Laptop",
-            "image": "http://placehold.it/300x300"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp16-spacegray-select-202301?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1671304673202"
         },
         {
-            "title": "MacBook 14 Plus",
+            "title": "MacBook Pro 14in",
             "description": "Nicer Laptop",
             "price": 700.00,
             "quantity": 1,
             "category": "Laptop",
-            "image": "http://placehold.it/300x300"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp16-spacegray-select-202301?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1671304673202"
         },
         {
-            "title": "MacBook 15 Plus",
+            "title": "MacBook Pro 16in",
             "description": "Nicer Laptop",
             "price": 700.00,
             "quantity": 1,
             "category": "Laptop",
-            "image": "http://placehold.it/300x300"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/mbp16-spacegray-select-202301?wid=904&hei=840&fmt=jpeg&qlt=90&.v=1671304673202"
         }
     ],
     "watches": [
         {
-            "title": "AppleWatch 6 Plus",
+            "title": "AppleWatch",
             "description": "Nice Watch",
             "price": 600.00,
             "quantity": 1,
             "category": "Watch",
-            "image": "http://placehold.it/300x300"
+            "image": "https://upload.wikimedia.org/wikipedia/commons/2/21/Apple_Watch_%28Space_Grey_42mm%29.png"
         },
         {
-            "title": "AppleWatch 7 Plus",
+            "title": "AppleWatch Series 1",
             "description": "Nicer Watch",
             "price": 700.00,
             "quantity": 1,
             "category": "Watch",
-            "image": "http://placehold.it/300x300"
+            "image": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP746/alu-silver.jpg"
         },
         {
-            "title": "AppleWatch 8 Plus",
+            "title": "AppleWatch Series 2",
             "description": "Even Nicer Watch",
             "price": 800.00,
             "quantity": 1,
             "category": "Watch",
-            "image": "http://placehold.it/300x300"
+            "image": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP746/alu-spacegray-nike.jpg"
         },
         {
-            "title": "AppleWatch 9 Plus",
+            "title": "AppleWatch Series 3",
             "description": "Nicest Watch Ever",
             "price": 900.00,
             "quantity": 1,
             "category": "Watch",
-            "image": "http://placehold.it/300x300"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/FQKW2?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1517334319257"
         },
         {
-            "title": "AppleWatch 10 Plus",
+            "title": "AppleWatch Series 4",
             "description": "Nice Watch",
             "price": 600.00,
             "quantity": 1,
             "category": "Watch",
-            "image": "http://placehold.it/300x300"
+            "image": "https://support.apple.com/library/APPLE/APPLECARE_ALLGEOS/SP778/SP778-apple-watch-series-4.jpg"
         },
         {
-            "title": "AppleWatch 11 Plus",
+            "title": "AppleWatch Series 5",
             "description": "Nicer Watch",
             "price": 700.00,
             "quantity": 1,
             "category": "Watch",
-            "image": "http://placehold.it/300x300"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/FWVF2_AV1?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1580325954394"
         },
         {
-            "title": "AppleWatch 12 Plus",
+            "title": "AppleWatch Series 6",
             "description": "Even Nicer Watch",
             "price": 800.00,
             "quantity": 1,
             "category": "Watch",
-            "image": "http://placehold.it/300x300"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/F00H3?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1614983163000"
         },
         {
-            "title": "AppleWatch 13 Plus",
+            "title": "AppleWatch Series 7",
             "description": "Nicest Watch Ever",
             "price": 900.00,
             "quantity": 1,
             "category": "Watch",
-            "image": "http://placehold.it/300x300"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/FKN53_AV1?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1647901190725"
         },
         {
-            "title": "AppleWatch 14 Plus",
+            "title": "AppleWatch Series 8",
             "description": "Nicest Watch Ever",
             "price": 900.00,
             "quantity": 1,
             "category": "Watch",
-            "image": "http://placehold.it/300x300"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MR2P3ref_VW_34FR+watch-41-stainless-silver-cell-8s_VW_34FR_WF_CO?wid=1400&hei=1400&trim=1%2C0&fmt=p-jpg&qlt=95&.v=1676836802403%2C1661890809922"
         },
         {
-            "title": "AppleWatch 15 Plus",
+            "title": "AppleWatch Ultra",
             "description": "Nicest Watch Ever",
             "price": 900.00,
             "quantity": 1,
             "category": "Watch",
-            "image": "http://placehold.it/300x300"
+            "image": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MQDY3ref_VW_34FR+watch-49-titanium-ultra_VW_34FR_WF_CO+watch-face-49-alpine-ultra_VW_34FR_WF_CO?wid=1400&hei=1400&trim=1%2C0&fmt=p-jpg&qlt=95&.v=1660713659063%2C1660927566964%2C1660927563656"
         }
     ]
 }
