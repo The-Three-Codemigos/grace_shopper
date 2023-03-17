@@ -51,8 +51,6 @@ const App = () => {
             path='/cart'
             element={<Cart isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} token={token} setToken={setToken} setUser={setUser} />}
           />
-        </Routes>
-        <Routes>
           <Route
             path='/products'
             element={<Products API_URL={API_URL} user={user} token={token} />}
