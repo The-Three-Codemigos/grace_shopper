@@ -16,7 +16,7 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
                 <p className="title">Company</p>
                 <ul className="list">
                     <li><Link to='/' className="headerLink">HOME</Link></li>
-                    <li><Link to='/about' className="headerLink">ABOUT</Link></li>
+                    <li><a href="#promo" className="headerLink">SALE</a></li>
                     <li><Link to='/products' className="headerLink">PRODUCTS</Link></li>
                 </ul>
                 <ul className="list">
