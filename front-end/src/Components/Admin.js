@@ -35,7 +35,7 @@ const Admin = ({ API_URL }) => {
     return (
         <>
             <Header />
-            {/* <section className="usersInfo">
+            <section className="usersInfo">
                 <h1>All Users</h1>
                 <div className="main">
                     <div className="title">Admin Board</div>
@@ -52,27 +52,25 @@ const Admin = ({ API_URL }) => {
                         </thead>
                         <tbody>
                             {users &&
-                                users.map(
-                                    ({
-                                        user
-                                    }) => (
-                                        <tr key={user.id}>
-                                            <td>{user.id}</td>
+                                users.map((user) => (
 
-                                            <td>{user.firstName}</td>
+                                    <tr key={user.id}>
+                                        <td>{user.id}</td>
+                                        {console.log(user.isAdmin)}
+                                        <td>{user.firstName}</td>
 
-                                            <td>{user.lastName}</td>
+                                        <td>{user.lastName}</td>
 
-                                            <td>{user.email}</td>
+                                        <td>{user.email}</td>
 
-                                            <td>{user.isadmin}</td>
-                                        </tr>
-                                    )
+                                        <td>{user.isAdmin}</td>
+                                    </tr>
+                                )
                                 )}
                         </tbody>
                     </table>
                 </div>
-            </section> */}
+            </section>
         </>
     );
 };

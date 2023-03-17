@@ -9,6 +9,8 @@ const Products = ({ API_URL, user, token }) => {
     const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [productsPerPage, setProductsPerPage] = useState(8);
+    const [mySearch, setMySearch] = useState(null)
+
     // const [currProductId, setCurrProductId] = useState(null)
 
     const [value, setValue] = useState(100);
@@ -47,13 +49,21 @@ const Products = ({ API_URL, user, token }) => {
         setValue(event.target.value);
     };
 
+    const handleTitleSearch = (event) => {
+        if (event.target.value) {
+            setMySearch(event.target.value.toLowerCase())
+        }
+    }
+
     return (
         <div>
             <Header />
             <div className='product-card'>
 
                 <section className='subHeader'>
-                    <div className='searchBar sub'></div>
+                    {/* <div className='searchBar sub'></div> */}
+                    <input type='text' placeholder='Search... ' onChange={handleTitleSearch}></input>
+
 
                     <select className='sort sub'>
                         <option value="Phone">Phone</option>
