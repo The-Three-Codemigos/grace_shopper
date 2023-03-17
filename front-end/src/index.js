@@ -32,7 +32,6 @@ const App = () => {
       })
         .then((response) => response.json())
         .then((result) => {
-          console.log(result)
           setUser(result)
         })
         .catch((error) => console.log(error));
