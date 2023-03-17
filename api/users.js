@@ -107,9 +107,7 @@ apiRouter.post("/login", async (req, res, next) => {
 apiRouter.get("/", async (req, res, next) => {
   try {
     const users = await User.getAllUsers();
-    res.send({
-      message: users,
-    });
+    res.send(users);
   } catch (error) {
     next(error);
   }

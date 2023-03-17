@@ -28,8 +28,6 @@ const Cart = ({ API_URL, token, setToken, setUser }) => {
                     )
                 );
                 setMyCart(myCartData.flat());
-
-
             }
 
         } catch (error) {
