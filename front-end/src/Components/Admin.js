@@ -7,6 +7,7 @@ const Admin = ({ API_URL }) => {
 
 
     const fetchAllUsers = async () => {
+
         try {
             const response = await fetch(`${API_URL}users`, {
                 headers: {
@@ -15,6 +16,7 @@ const Admin = ({ API_URL }) => {
             });
             const result = await response.json();
             console.log(result);
+
             if (result) {
                 setUsers(result);
             }
@@ -27,6 +29,7 @@ const Admin = ({ API_URL }) => {
     useEffect(() => {
         fetchAllUsers();
     }, []);
+
     console.log(users)
 
     return (
