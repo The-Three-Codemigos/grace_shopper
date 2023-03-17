@@ -85,6 +85,11 @@
     border: none;
 }
 
+.buy2:hover {
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 2px 9px 0px;
+    cursor: pointer;
+}
+
 .subHeader {
     display: flex;
     justify-content: flex-end;

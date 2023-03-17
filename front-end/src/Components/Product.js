@@ -34,8 +34,6 @@ const Products = ({ API_URL, user, token }) => {
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
 
-    // const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
-
     const handleTitleSearch = (event) => {
         setMySearch(event.target.value.toLowerCase());
     }
