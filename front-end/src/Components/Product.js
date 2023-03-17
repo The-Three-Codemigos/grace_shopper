@@ -4,14 +4,11 @@ import Pagination from './Pagination';
 import './style/Product.css'
 import addToCart from './addToCart';
 
-
 const Products = ({ API_URL, user, token }) => {
     const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [productsPerPage, setProductsPerPage] = useState(8);
-    // const [currProductId, setCurrProductId] = useState(null)
-
-    const [value, setValue] = useState(100);
+    const [mySearch, setMySearch] = useState(null)
 
     const getProducts = async () => {
         try {
@@ -36,16 +33,17 @@ const Products = ({ API_URL, user, token }) => {
 
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-    const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+
+    const handleTitleSearch = (event) => {
+        setMySearch(event.target.value.toLowerCase());
+    }
+
+    const filteredProducts = products.filter(product => !mySearch || product.title.toLowerCase().includes(mySearch));
 
     const paginate = (e, pageNumber) => {
         e.preventDefault();
         setCurrentPage(pageNumber);
     }
-
-    const handleChange = (event) => {
-        setValue(event.target.value);
-    };
 
     return (
         <div>
@@ -53,32 +51,11 @@ const Products = ({ API_URL, user, token }) => {
             <div className='product-card'>
 
                 <section className='subHeader'>
-                    <div className='searchBar sub'></div>
+                    <input className='searchBar' type='text' placeholder='Search... ' onChange={handleTitleSearch}></input>
 
-                    <select className='sort sub'>
-                        <option value="Phone">Phone</option>
-                        <option value="Tablet">Tablet</option>
-                        <option value="Watch">Watch</option>
-                        <option value="Laptop">Laptop</option>
-                    </select>
-                    <div className='priceSlider sub'>Price Range
-                        <div className="price-slider-container">
-                            <input
-                                type="range"
-                                min="0"
-                                max="1000"
-                                step="10"
-                                value={value}
-                                onChange={handleChange}
-                            />
-                            <div className="price-slider-value">
-                                <span>{value}</span>
-                            </div>
-                        </div>
-                    </div>
                 </section>
 
-                {currentProducts && currentProducts.map((product) => {
+                {filteredProducts && filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct).map((product) => {
                     return (
                         <div className="card2" key={product.id}>
                             <div className='imgBox2'>
@@ -96,7 +73,7 @@ const Products = ({ API_URL, user, token }) => {
             </div>
             <br></br>
             <div className='pagination-container'>
-                <Pagination productsPerPage={productsPerPage} totalProducts={products.length} paginate={paginate} />
+                <Pagination productsPerPage={productsPerPage} totalProducts={filteredProducts.length} paginate={paginate} />
             </div>
             <br></br>
         </div >
