@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
 import './style/Login.css'
 
-
-
 const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, showLoginModal, setShowLoginModal, setUser, setToken }) => {
     const [email, setEamil] = useState("")
     const [password, setPassword] = useState("")
-    // const [token, setToken] = useState("")
-    // const [user, setUser] = useState("")
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [emailReg, setEmailReg] = useState("")
@@ -164,7 +160,9 @@ const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, showLoginModal, setShowLogi
                             <button type="submit" className="btnModal">Log In &rarr;</button>
                         </form>
                         <button onClick={() => btnClicked()} className="link-2"></button>
-                        <p className="signUpContainer">Not a member?<p onClick={() => registerPage()} className="signUp">Sign Up</p></p>
+                        <div className='memberDetail'>
+                            <p className="signUpContainer">Not a member?</p><p onClick={() => registerPage()} className="signUp">Sign Up</p>
+                        </div>
                     </div>
                 }
                 {register &&
@@ -177,14 +175,19 @@ const Login = ({ isLoggedIn, setIsLoggedIn, API_URL, showLoginModal, setShowLogi
                             {userNameTaken && <div className="container">{usernameTakenAlert()}</div>}
                             {weakPass && <div className="container">{passwordTooWeekAlert()}</div>}
                             {registered && <div className="container">{registeredAlert()}</div>}
-                            <input type='text' placeholder="First Name" value={firstName} onChange={handleChangeFirstName} className="inputLogin"></input>
-                            <input type='text' placeholder="Last Name" value={lastName} onChange={handleChangeLastName} className="inputLogin"></input>
+                            <div className='names'>
+                                <input type='text' placeholder="First Name" value={firstName} onChange={handleChangeFirstName} className="inputLogin"></input>
+                                <input type='text' placeholder="Last Name" value={lastName} onChange={handleChangeLastName} className="inputLogin"></input>
+                            </div>
+
                             <input type='text' placeholder="Email" value={emailReg} onChange={handleChangeEmailReg} className="inputLogin"></input>
                             <input type='password' placeholder="Password" value={passwordReg} onChange={handleChangePasswordRegister} className="inputLogin"></input>
                             <button type="submit" className="btnModal">Register &rarr;</button>
                         </form>
                         <button onClick={() => btnClicked()} className="link-2"></button>
-                        <p className="signUpContainer">Have an account?<p onClick={() => registerPage()} className="signUp">Log In</p></p>
+                        <div className='memberDetail'>
+                            <p className="signUpContainer">Have an account?</p><p onClick={() => registerPage()} className="signUp">Log In</p>
+                        </div>
                     </div>
                 }
             </div>

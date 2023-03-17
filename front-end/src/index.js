@@ -37,6 +37,7 @@ const App = () => {
         .catch((error) => console.log(error));
     }
   }, [token]);
+  console.log(user)
 
   return (
     <>
@@ -60,7 +61,7 @@ const App = () => {
           />
           <Route
             path='/profile'
-            element={<Profile isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} setUser={setUser} setToken={setToken} />}
+            element={<Profile isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} setUser={setUser} setToken={setToken} user={user} />}
           />
           <Route
             path='/admin'

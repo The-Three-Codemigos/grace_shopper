@@ -40,7 +40,7 @@
 .formContainer {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 5px;
 }
 
 .inputLogin {
@@ -95,6 +95,16 @@
     font-weight: bold;
 }
 
+.memberDetail {
+    display: flex;
+    gap: 5px;
+}
+
+.names {
+    display: flex;
+    gap: 5px;
+}
+
 .containerModal {
     position: fixed;
     display: flex;
@@ -114,7 +124,7 @@
 }
 
 .modal {
-    width: 50rem;
+    width: 30rem;
     padding: 4rem 2rem;
     border-radius: .8rem;
     color: hsl(0, 1%, 27%);
@@ -122,15 +132,13 @@
     position: relative;
     overflow: hidden;
     margin: auto;
-    margin-top: 10%;
-    background: linear-gradient(90deg, #e6e4e4fa, #edededfc, rgba(226, 226, 226, 1));
+    background-color: rgba(219, 216, 216, 0.5);
+    border: 1px solid rgb(202, 202, 202);
+    backdrop-filter: blur(5px);
 }
 
 .details {
     text-align: center;
-    margin-bottom: 4rem;
-    padding-bottom: 4rem;
-    border-bottom: 1px solid hsla(0, 0%, 100%, .4);
 }
 
 .titleLog {

@@ -12,7 +12,7 @@ const Home = ({ isLoggedIn, setIsLoggedIn, API_URL }) => {
 
         <>
             <Header isLoggedIn={isLoggedIn} />
-            <main>
+            <main >
                 <section className='landingPageSec'>
                     <div className='sloganSec'>
                         <p className='slogan1'>Powered</p>
@@ -29,7 +29,7 @@ const Home = ({ isLoggedIn, setIsLoggedIn, API_URL }) => {
                 </section>
                 <section className='newPromosSec'>
 
-                    <p className='titlePromo'>New Promos</p>
+                    <p className='titlePromo' id="promo">New Promos</p>
 
                     <ul className='promosLink'>
                         <li><button className='promoBtn' autoFocus>Recomendations</button></li>
