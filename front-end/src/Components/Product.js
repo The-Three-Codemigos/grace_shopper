@@ -11,10 +11,6 @@ const Products = ({ API_URL, user, token }) => {
     const [productsPerPage, setProductsPerPage] = useState(8);
     const [mySearch, setMySearch] = useState(null)
 
-    // const [currProductId, setCurrProductId] = useState(null)
-
-    const [value, setValue] = useState(100);
-
     const getProducts = async () => {
         try {
             const response = await fetch(`${API_URL}products`, {
@@ -38,21 +34,17 @@ const Products = ({ API_URL, user, token }) => {
 
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-    const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+
+    const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct)
+        .filter(product => !mySearch || product.title.toLowerCase().includes(mySearch));
 
     const paginate = (e, pageNumber) => {
         e.preventDefault();
         setCurrentPage(pageNumber);
     }
 
-    const handleChange = (event) => {
-        setValue(event.target.value);
-    };
-
     const handleTitleSearch = (event) => {
-        if (event.target.value) {
-            setMySearch(event.target.value.toLowerCase())
-        }
+        setMySearch(event.target.value.toLowerCase());
     }
 
     return (
@@ -61,31 +53,8 @@ const Products = ({ API_URL, user, token }) => {
             <div className='product-card'>
 
                 <section className='subHeader'>
-                    {/* <div className='searchBar sub'></div> */}
-                    <input type='text' placeholder='Search... ' onChange={handleTitleSearch}></input>
+                    <input className='searchBar' type='text' placeholder='Search... ' onChange={handleTitleSearch}></input>
 
-
-                    <select className='sort sub'>
-                        <option value="Phone">Phone</option>
-                        <option value="Tablet">Tablet</option>
-                        <option value="Watch">Watch</option>
-                        <option value="Laptop">Laptop</option>
-                    </select>
-                    <div className='priceSlider sub'>Price Range
-                        <div className="price-slider-container">
-                            <input
-                                type="range"
-                                min="0"
-                                max="1000"
-                                step="10"
-                                value={value}
-                                onChange={handleChange}
-                            />
-                            <div className="price-slider-value">
-                                <span>{value}</span>
-                            </div>
-                        </div>
-                    </div>
                 </section>
 
                 {currentProducts && currentProducts.map((product) => {
