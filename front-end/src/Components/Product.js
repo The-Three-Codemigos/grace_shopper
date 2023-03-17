@@ -4,7 +4,6 @@ import Pagination from './Pagination';
 import './style/Product.css'
 import addToCart from './addToCart';
 
-
 const Products = ({ API_URL, user, token }) => {
     const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -35,16 +34,17 @@ const Products = ({ API_URL, user, token }) => {
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
 
-    const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct)
-        .filter(product => !mySearch || product.title.toLowerCase().includes(mySearch));
+    // const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+
+    const handleTitleSearch = (event) => {
+        setMySearch(event.target.value.toLowerCase());
+    }
+
+    const filteredProducts = products.filter(product => !mySearch || product.title.toLowerCase().includes(mySearch));
 
     const paginate = (e, pageNumber) => {
         e.preventDefault();
         setCurrentPage(pageNumber);
-    }
-
-    const handleTitleSearch = (event) => {
-        setMySearch(event.target.value.toLowerCase());
     }
 
     return (
@@ -57,7 +57,7 @@ const Products = ({ API_URL, user, token }) => {
 
                 </section>
 
-                {currentProducts && currentProducts.map((product) => {
+                {filteredProducts && filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct).map((product) => {
                     return (
                         <div className="card2" key={product.id}>
                             <div className='imgBox2'>
@@ -75,7 +75,7 @@ const Products = ({ API_URL, user, token }) => {
             </div>
             <br></br>
             <div className='pagination-container'>
-                <Pagination productsPerPage={productsPerPage} totalProducts={products.length} paginate={paginate} />
+                <Pagination productsPerPage={productsPerPage} totalProducts={filteredProducts.length} paginate={paginate} />
             </div>
             <br></br>
         </div >
