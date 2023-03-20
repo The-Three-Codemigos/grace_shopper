@@ -23,7 +23,7 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, API_URL, setToken, user }) => {
                     }
                 </section> :
                 <section className='usersInfo'>
-                    <h1>You are logged in {user.user.firstName}!</h1>
+                    <h1>You are logged in {user.firstName}!</h1>
 
                 </section>
             }
