@@ -34,8 +34,7 @@ const addToCart = async (API_URL, user, product_Id, token) => {
                     items = result
                 )
             if (items) {
-                alert("Added to cart!");
-
+                alert("Product added to cart!");
             }
             console.log(items)
         }

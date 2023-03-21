@@ -77,7 +77,7 @@ async function updateProducts({ id, ...fields }) {
 
 async function deleteProduct(id) {
   await client.query(`
-  DELETE FROM orders WHERE "product_id"=${id}
+  DELETE FROM orders WHERE product_id=${id}
   `);
 
   const {
@@ -92,7 +92,6 @@ async function deleteProduct(id) {
 }
 
 module.exports = {
-  // add your database adapter functions here
   createProduct,
   getAllProducts,
   updateProducts,

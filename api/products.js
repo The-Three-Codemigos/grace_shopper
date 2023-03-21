@@ -15,7 +15,6 @@ apiRouter.get("/", async (req, res, next) => {
 
 apiRouter.post("/createProduct", async (req, res, next) => {
   const { title, description, price, quantity, category, image } = req.body;
-  // requireUser and use User.getUserById(req.user.id) to see if the logged in user is an admin if he is then let them create otherwise throw an error
   try {
     const newProduct = await Product.createProduct({
       title,
@@ -75,7 +74,6 @@ apiRouter.patch("/:product_id", async (req, res, next) => {
 apiRouter.delete("/:product_id", async (req, res, next) => {
   const id = req.params.product_id;
   console.log(id);
-  // verify the user is an admin to be able to delete a product
   try {
     const destroy = await Product.deleteProduct(id);
     res.send(destroy);
