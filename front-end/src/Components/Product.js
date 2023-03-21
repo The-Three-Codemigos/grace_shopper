@@ -17,6 +17,7 @@ const Products = ({ API_URL, user, token }) => {
                     "Content-Type": "application/json",
                 },
             });
+
             const result = await response.json();
             if (result) {
                 setProducts(result);
