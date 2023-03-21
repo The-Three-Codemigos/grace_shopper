@@ -13,7 +13,7 @@ const Header = ({ isLoggedIn, setIsLoggedIn }) => {
     return (
         <>
             <nav className="headerNav">
-                <p className="title">Company</p>
+                <p className="title">DigitalDepot®</p>
                 <ul className="list">
                     <li><Link to='/' className="headerLink">HOME</Link></li>
                     <li><a href="#promo" className="headerLink">SALE</a></li>
