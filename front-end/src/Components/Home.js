@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from "react";
-
 import Header from './Header';
 import './style/Home.css'
 import laptopImg from "./img/ipad.png"
 import iphone from "./img/iphone.png"
 import watch from "./img/watch.png"
 
-const Home = ({ isLoggedIn, setIsLoggedIn, API_URL }) => {
+const Home = ({ isLoggedIn }) => {
+    const [clicked, setClicked] = useState(false)
+
+
+    const clickedBtn = document.getElementById("focusedLink")
+    if (clicked) {
+        clickedBtn.classList.remove("focusedLink")
+    }
+
+    const handleLinkBtn = () => {
+        setClicked(true)
+    }
+
     return (
-
-
         <>
             <Header isLoggedIn={isLoggedIn} />
             <main >
@@ -32,46 +41,43 @@ const Home = ({ isLoggedIn, setIsLoggedIn, API_URL }) => {
                     <p className='titlePromo' id="promo">New Promos</p>
 
                     <ul className='promosLink'>
-                        <li><button className='promoBtn' autoFocus>Recomendations</button></li>
-                        <li><button className='promoBtn'>Mobile</button></li>
-                        <li><button className='promoBtn'>Tablets</button></li>
-                        <li><button className='promoBtn'>Laptop</button></li>
-                        <li><button className='promoBtn'>Watches</button></li>
+                        <li><button className='promoBtn focusedLink' id="focusedLink" >Recomendations</button></li>
+                        <li><button className='promoBtn' onClick={() => handleLinkBtn()} >Mobile</button></li>
+                        <li><button className='promoBtn' onClick={() => handleLinkBtn()}>Tablets</button></li>
+                        <li><button className='promoBtn' onClick={() => handleLinkBtn()}>Laptop</button></li>
+                        <li><button className='promoBtn' onClick={() => handleLinkBtn()}>Watches</button></li>
                     </ul>
 
                     <section className='promoProducts'>
 
-                        <div class="card">
-                            <div class="imgBox">
-                                <img src={laptopImg} alt="mouse corsair" class="mouse" />
+                        <div className="card">
+                            <div className="imgBox">
+                                <img src={laptopImg} alt="mouse corsair" className="mouse" />
                             </div>
-                            <div class="contentBox">
-                                <h3>Refurbished iPad</h3>
-                                 <h2 class="price">$399.<small>98</small> </h2>
-                                <h2 class="price">$61.<small>98</small> </h2>
+                            <div className="contentBox">
+                                <h3>Product name</h3>
+                                <h2 className="price">$399.<small>98</small> </h2>
                                 <button href="#" className="buy">Add to cart</button>
 
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="imgBox">
-                                <img src={watch} alt="mouse corsair" class="mouse" />
+                        <div className="card">
+                            <div className="imgBox">
+                                <img src={watch} alt="mouse corsair" className="mouse" />
                             </div>
-                            <div class="contentBox">
-
-                                <h3>Refurbished Apple Watch</h3>
-                 
-                                <h2 class="price">$249.<small>98</small></h2>
+                            <div className="contentBox">
+                                <h3>Product name</h3>
+                                <h2 className="price">$249.<small>98</small></h2>
                                 <button href="#" className="buy">Add to cart</button>
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="imgBox">
-                                <img src={iphone} alt="mouse corsair" class="mouse" />
+                        <div className="card">
+                            <div className="imgBox">
+                                <img src={iphone} alt="mouse corsair" className="mouse" />
                             </div>
-                            <div class="contentBox">
-                                <h3>Refurbished iPhone 12</h3>
-                                <h2 class="price">$499.<small>98</small></h2>
+                            <div className="contentBox">
+                                <h3>Product name</h3>
+                                <h2 className="price">$499.<small>98</small></h2>
                                 <button href="#" className="buy">Add to cart</button>
                             </div>
                         </div>
