@@ -47,6 +47,7 @@ const Home = ({ isLoggedIn, setIsLoggedIn, API_URL }) => {
                             </div>
                             <div class="contentBox">
                                 <h3>Refurbished iPad</h3>
+                                 <h2 class="price">$399.<small>98</small> </h2>
                                 <h2 class="price">$61.<small>98</small> </h2>
                                 <button href="#" className="buy">Add to cart</button>
 
@@ -57,8 +58,10 @@ const Home = ({ isLoggedIn, setIsLoggedIn, API_URL }) => {
                                 <img src={watch} alt="mouse corsair" class="mouse" />
                             </div>
                             <div class="contentBox">
+
                                 <h3>Refurbished Apple Watch</h3>
-                                <h2 class="price">$61.<small>98</small></h2>
+                 
+                                <h2 class="price">$249.<small>98</small></h2>
                                 <button href="#" className="buy">Add to cart</button>
                             </div>
                         </div>
@@ -68,7 +71,7 @@ const Home = ({ isLoggedIn, setIsLoggedIn, API_URL }) => {
                             </div>
                             <div class="contentBox">
                                 <h3>Refurbished iPhone 12</h3>
-                                <h2 class="price">$61.<small>98</small></h2>
+                                <h2 class="price">$499.<small>98</small></h2>
                                 <button href="#" className="buy">Add to cart</button>
                             </div>
                         </div>
