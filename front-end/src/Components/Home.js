@@ -1,21 +1,65 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Header from './Header';
 import './style/Home.css'
-import laptopImg from "./img/ipad.png"
 import iphone from "./img/iphone.png"
-import watch from "./img/watch.png"
+import Recomendation from "./Recomendation";
+import Laptop from "./Laptop";
+import Tablet from "./Tablets";
+import Mobile from "./Mobile";
+import Watch from "./Watch";
 
 const Home = ({ isLoggedIn }) => {
     const [clicked, setClicked] = useState(false)
-
+    const [recomendationClicked, setRecomendationClicked] = useState(true)
+    const [mobileClicked, setMobileClicked] = useState(false)
+    const [tabletClicked, setTabletClicked] = useState(false)
+    const [watchClicked, setWatchClicked] = useState(false)
+    const [laptopClicked, setLaptopClicked] = useState(false)
 
     const clickedBtn = document.getElementById("focusedLink")
     if (clicked) {
         clickedBtn.classList.remove("focusedLink")
     }
-
-    const handleLinkBtn = () => {
+    const handleMobileBtn = () => {
         setClicked(true)
+        setMobileClicked(true)
+        setTabletClicked(false)
+        setLaptopClicked(false)
+        setWatchClicked(false)
+        setRecomendationClicked(false)
+    }
+
+    const handleRecomendationBtn = () => {
+        setClicked(false)
+        setMobileClicked(false)
+        setTabletClicked(false)
+        setLaptopClicked(false)
+        setWatchClicked(false)
+        setRecomendationClicked(true)
+    }
+    const handleTabletBtn = () => {
+        setClicked(true)
+        setTabletClicked(true)
+        setMobileClicked(false)
+        setLaptopClicked(false)
+        setWatchClicked(false)
+        setRecomendationClicked(false)
+    }
+    const handleLaptopBtn = () => {
+        setClicked(true)
+        setMobileClicked(false)
+        setTabletClicked(false)
+        setLaptopClicked(true)
+        setWatchClicked(false)
+        setRecomendationClicked(false)
+    }
+    const handleWatchBtn = () => {
+        setClicked(true)
+        setMobileClicked(false)
+        setTabletClicked(false)
+        setLaptopClicked(false)
+        setWatchClicked(true)
+        setRecomendationClicked(false)
     }
 
     return (
@@ -41,49 +85,21 @@ const Home = ({ isLoggedIn }) => {
                     <p className='titlePromo' id="promo">New Promos</p>
 
                     <ul className='promosLink'>
-                        <li><button className='promoBtn focusedLink' id="focusedLink" >Recomendations</button></li>
-                        <li><button className='promoBtn' onClick={() => handleLinkBtn()} >Mobile</button></li>
-                        <li><button className='promoBtn' onClick={() => handleLinkBtn()}>Tablets</button></li>
-                        <li><button className='promoBtn' onClick={() => handleLinkBtn()}>Laptop</button></li>
-                        <li><button className='promoBtn' onClick={() => handleLinkBtn()}>Watches</button></li>
+                        <li><button className='promoBtn focusedLink' id="focusedLink" onClick={() => handleRecomendationBtn()} >Recomendations</button></li>
+                        <li><button className='promoBtn' onClick={() => handleMobileBtn()} >Mobile</button></li>
+                        <li><button className='promoBtn' onClick={() => handleTabletBtn()}>Tablets</button></li>
+                        <li><button className='promoBtn' onClick={() => handleLaptopBtn()}>Laptop</button></li>
+                        <li><button className='promoBtn' onClick={() => handleWatchBtn()}>Watches</button></li>
                     </ul>
 
                     <section className='promoProducts'>
-
-                        <div className="card">
-                            <div className="imgBox">
-                                <img src={laptopImg} alt="mouse corsair" className="mouse" />
-                            </div>
-                            <div className="contentBox">
-                                <h3>Product name</h3>
-                                <h2 className="price">$399.<small>98</small> </h2>
-                                <button href="#" className="buy">Add to cart</button>
-
-                            </div>
-                        </div>
-                        <div className="card">
-                            <div className="imgBox">
-                                <img src={watch} alt="mouse corsair" className="mouse" />
-                            </div>
-                            <div className="contentBox">
-                                <h3>Product name</h3>
-                                <h2 className="price">$249.<small>98</small></h2>
-                                <button href="#" className="buy">Add to cart</button>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <div className="imgBox">
-                                <img src={iphone} alt="mouse corsair" className="mouse" />
-                            </div>
-                            <div className="contentBox">
-                                <h3>Product name</h3>
-                                <h2 className="price">$499.<small>98</small></h2>
-                                <button href="#" className="buy">Add to cart</button>
-                            </div>
-                        </div>
+                        {recomendationClicked && <Recomendation />}
+                        {mobileClicked && <Mobile />}
+                        {tabletClicked && <Tablet />}
+                        {watchClicked && <Watch />}
+                        {laptopClicked && <Laptop />}
                     </section>
                 </section>
-                {/* {isLoggedIn && <h1>You are logged in!</h1>} */}
             </main>
         </>
     )
