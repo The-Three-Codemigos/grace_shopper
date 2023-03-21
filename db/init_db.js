@@ -38,7 +38,7 @@ async function buildTables() {
         "lastName" VARCHAR(255) NOT NULL,
         email VARCHAR(255) UNIQUE NOT NULL,
         password VARCHAR(255) NOT NULL,
-        "isAdmin" BOOLEAN DEFAULT false
+        "isAdmin" BOOLEAN DEFAULT true
       );
 
       CREATE TABLE orders (

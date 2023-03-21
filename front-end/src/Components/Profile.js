@@ -9,6 +9,7 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, API_URL, setToken, user }) => {
     const btnClicked = () => {
         setShowLoginModal(!showLoginModal)
     }
+    console.log("user", user.user)
     return (
         <>
             <Header isLoggedIn={isLoggedIn} />
@@ -26,6 +27,9 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, API_URL, setToken, user }) => {
                     <h1>You are logged in {user.firstName}!</h1>
 
                 </section>
+            }
+            {user.user.isAdmin && console.log("ADMIN")
+
             }
         </>
     )
