@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from './Header';
 import Login from './Login';
+import Admin from './Admin';
 import './style/Profile.css'
 
-const Profile = ({ isLoggedIn, setIsLoggedIn, API_URL, setToken, user }) => {
+const Profile = ({ isLoggedIn, setIsLoggedIn, API_URL, setToken, user, token }) => {
     const [showLoginModal, setShowLoginModal] = useState(false)
     const btnClicked = () => {
         setShowLoginModal(!showLoginModal)
     }
-    console.log("user", user.user)
+
     return (
         <>
             <Header isLoggedIn={isLoggedIn} />
@@ -28,8 +29,8 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, API_URL, setToken, user }) => {
 
                 </section>
             }
-            {user.user.isAdmin && console.log("ADMIN")
-
+            {user.user.isAdmin &&
+                <Admin isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} token={token} />
             }
         </>
     )

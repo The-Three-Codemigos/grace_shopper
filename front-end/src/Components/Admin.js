@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Header from "./Header";
 import "./style/Profile.css";
 
-const Admin = ({ API_URL }) => {
+const Admin = ({ API_URL, token }) => {
     const [users, setUsers] = useState([]);
     const [products, setProducts] = useState([]);
 
@@ -42,16 +41,19 @@ const Admin = ({ API_URL }) => {
     };
 
     const removeProduct = async (product_id) => {
+        console.log(product_id)
         try {
             const response = await fetch(`${API_URL}products/${product_id}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",
+
                 },
             });
             const result = await response.json();
             if (result) {
                 setProducts(result);
+                console.log(result)
             }
             return result;
         } catch (error) {
@@ -61,15 +63,12 @@ const Admin = ({ API_URL }) => {
 
     useEffect(() => {
         fetchAllUsers();
-    });
-
-    useEffect(() => {
         getProducts();
-    });
+    }, []);
 
     return (
         <>
-            <Header />
+            {/* <Header /> */}
             <section className="usersInfo">
                 <h2>User Info</h2>
                 <table className="table">
