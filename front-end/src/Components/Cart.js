@@ -62,7 +62,7 @@ const Cart = ({ API_URL, token, setToken, setUser }) => {
             <Header />
             <section className='cartSection'>
                 <div className='subHeaderCart'>
-                    <h1>RESPONSIVE TABLE SHOPPING CART</h1>
+                    <h1>SHOPPING CART</h1>
                     <section className='CartBtnContainer'>
                         <p>My Cart</p>
                         <Link to='/products'>
@@ -85,7 +85,13 @@ const Cart = ({ API_URL, token, setToken, setUser }) => {
                                 </div>
                             </div>
                         )}
+
+                    </section>
+                    <section className='CartBtnContainer'>
                         <h1 className='totalPrice'>Total ${sum}</h1>
+                        <Link to='/products'>
+                            <button>Checkout</button>
+                        </Link>
                     </section>
                 </div>
             </section>
