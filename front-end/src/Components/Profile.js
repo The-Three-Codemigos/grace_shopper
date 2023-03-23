@@ -29,9 +29,9 @@ const Profile = ({ isLoggedIn, setIsLoggedIn, API_URL, setToken, user, token }) 
 
                 </section>
             }
-            {user.user.isAdmin &&
+            {/* {user.user.isAdmin &&
                 <Admin isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} API_URL={API_URL} token={token} />
-            }
+            } */}
         </>
     )
 }
