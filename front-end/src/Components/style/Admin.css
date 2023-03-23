@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Avenir Next", sans-serif;
+}
+
+.loginSection,
+.usersInfo {
+    padding: 140px 0 0 90px;
+    background-color: #e5eaee;
+}
+
+.productsInfo {
+    padding: 140px 0 0 90px;
+    background-color: #e5eaee;
+}
+
+.addProduct {
+    padding: 140px 0 0 90px;
+    background-color: #e5eaee;
+}
+
+.loginSection h1 {
+    font-size: 38px;
+}
+
+.loginSection p {
+    font-size: 20px;
+    margin: 30px 0 30px 0;
+}
+
+table {
+    padding: 10px 0px 10px 0px;
+    text-align: center;
+    border: solid black 1px;
+}
+
+thead {
+    font-size: 20px;
+    font-weight: 600;
+    padding: 10px 0px 10px 0px;
+    text-align: center;
+    border: solid black 1px;
+}
+
+th {
+    border-bottom: solid black 1px;
+}
+
+button {
+    background-color: #e5eaee;
+    border: solid black 0.5px;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 10px 20px 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
