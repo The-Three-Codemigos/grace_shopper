@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from './Header';
 import './style/Cart.css'
 
-const Cart = ({ API_URL, token, setToken, setUser }) => {
+const Cart = ({ API_URL, token }) => {
     const [myCart, setMyCart] = useState([])
     const [products, setProducts] = useState([])
     let sum = 0;
